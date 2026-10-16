@@ -2,8 +2,16 @@
   {
     "id": "cat",
     "category": "animals",
-    "translations": { "fr": "chat", "ar": "قطة", "ary": "مشّ" },
-    "phonetic": { "fr": "sha", "ar": "qittah", "ary": "mouch" },
+    "translations": {
+      "fr": "chat",
+      "ar": "قطة",
+      "ary": "مشّ"
+    },
+    "phonetic": {
+      "fr": "sha",
+      "ar": "qittah",
+      "ary": "mouch"
+    },
     "image": "/assets/words/cat.png",
     "audio": {
       "fr": "/assets/audio/fr/cat.mp3",
@@ -11,9 +19,27 @@
       "ary": "/assets/audio/ary/cat.mp3"
     },
     "acceptedVariants": {
-      "fr": ["chat", "un chat", "le chat", "chaton", "minou"],
-      "ar": ["قطة", "قط", "بسة", "هر", "هرة"],
-      "ary": ["مش", "مشة", "قط", "قطة", "موش"]
+      "fr": [
+        "chat",
+        "un chat",
+        "le chat",
+        "chaton",
+        "minou"
+      ],
+      "ar": [
+        "قطة",
+        "قط",
+        "بسة",
+        "هر",
+        "هرة"
+      ],
+      "ary": [
+        "مش",
+        "مشة",
+        "قط",
+        "قطة",
+        "موش"
+      ]
     },
     "exampleSentence": {
       "fr": "Le chat fait miaou !",
@@ -24,8 +50,16 @@
   {
     "id": "dog",
     "category": "animals",
-    "translations": { "fr": "chien", "ar": "كلب", "ary": "كلب" },
-    "phonetic": { "fr": "shyen", "ar": "kalb", "ary": "kelb" },
+    "translations": {
+      "fr": "chien",
+      "ar": "كلب",
+      "ary": "كلب"
+    },
+    "phonetic": {
+      "fr": "shyen",
+      "ar": "kalb",
+      "ary": "kelb"
+    },
     "image": "/assets/words/dog.png",
     "audio": {
       "fr": "/assets/audio/fr/dog.mp3",
@@ -33,9 +67,23 @@
       "ary": "/assets/audio/ary/dog.mp3"
     },
     "acceptedVariants": {
-      "fr": ["chien", "un chien", "le chien", "chiot", "toutou"],
-      "ar": ["كلب", "كلب صغير", "الكلب"],
-      "ary": ["كلب", "الكلب", "كليب"]
+      "fr": [
+        "chien",
+        "un chien",
+        "le chien",
+        "chiot",
+        "toutou"
+      ],
+      "ar": [
+        "كلب",
+        "كلب صغير",
+        "الكلب"
+      ],
+      "ary": [
+        "كلب",
+        "الكلب",
+        "كليب"
+      ]
     },
     "exampleSentence": {
       "fr": "Le chien remue la queue !",
@@ -46,8 +94,16 @@
   {
     "id": "bird",
     "category": "animals",
-    "translations": { "fr": "oiseau", "ar": "عصفور", "ary": "طير" },
-    "phonetic": { "fr": "wazo", "ar": "osfoor", "ary": "tiyr" },
+    "translations": {
+      "fr": "oiseau",
+      "ar": "عصفور",
+      "ary": "طير"
+    },
+    "phonetic": {
+      "fr": "wazo",
+      "ar": "osfoor",
+      "ary": "tiyr"
+    },
     "image": "/assets/words/bird.png",
     "audio": {
       "fr": "/assets/audio/fr/bird.mp3",
@@ -55,9 +111,23 @@
       "ary": "/assets/audio/ary/bird.mp3"
     },
     "acceptedVariants": {
-      "fr": ["oiseau", "un oiseau", "l'oiseau", "petit oiseau"],
-      "ar": ["عصفور", "طائر", "العصفور"],
-      "ary": ["طير", "فرخ", "عصفور", "طوير"]
+      "fr": [
+        "oiseau",
+        "un oiseau",
+        "l'oiseau",
+        "petit oiseau"
+      ],
+      "ar": [
+        "عصفور",
+        "طائر",
+        "العصفور"
+      ],
+      "ary": [
+        "طير",
+        "فرخ",
+        "عصفور",
+        "طوير"
+      ]
     },
     "exampleSentence": {
       "fr": "L'oiseau vole dans le ciel bleu !",
@@ -68,8 +138,16 @@
   {
     "id": "fish",
     "category": "animals",
-    "translations": { "fr": "poisson", "ar": "سمكة", "ary": "حوتة" },
-    "phonetic": { "fr": "pwaso", "ar": "samakah", "ary": "houta" },
+    "translations": {
+      "fr": "poisson",
+      "ar": "سمكة",
+      "ary": "حوتة"
+    },
+    "phonetic": {
+      "fr": "pwaso",
+      "ar": "samakah",
+      "ary": "houta"
+    },
     "image": "/assets/words/fish.png",
     "audio": {
       "fr": "/assets/audio/fr/fish.mp3",
@@ -77,9 +155,21 @@
       "ary": "/assets/audio/ary/fish.mp3"
     },
     "acceptedVariants": {
-      "fr": ["poisson", "un poisson", "le poisson"],
-      "ar": ["سمكة", "سمك", "السمكة"],
-      "ary": ["حوتة", "حوت", "الحوتة"]
+      "fr": [
+        "poisson",
+        "un poisson",
+        "le poisson"
+      ],
+      "ar": [
+        "سمكة",
+        "سمك",
+        "السمكة"
+      ],
+      "ary": [
+        "حوتة",
+        "حوت",
+        "الحوتة"
+      ]
     },
     "exampleSentence": {
       "fr": "Le poisson nage dans l'eau claire !",
@@ -90,8 +180,16 @@
   {
     "id": "elephant",
     "category": "animals",
-    "translations": { "fr": "éléphant", "ar": "فيل", "ary": "فيل" },
-    "phonetic": { "fr": "elefan", "ar": "fil", "ary": "fil" },
+    "translations": {
+      "fr": "éléphant",
+      "ar": "فيل",
+      "ary": "فيل"
+    },
+    "phonetic": {
+      "fr": "elefan",
+      "ar": "fil",
+      "ary": "fil"
+    },
     "image": "/assets/words/elephant.png",
     "audio": {
       "fr": "/assets/audio/fr/elephant.mp3",
@@ -99,9 +197,20 @@
       "ary": "/assets/audio/ary/elephant.mp3"
     },
     "acceptedVariants": {
-      "fr": ["éléphant", "un éléphant", "elephant"],
-      "ar": ["فيل", "الفيل", "فيل كبير"],
-      "ary": ["فيل", "الفيل"]
+      "fr": [
+        "éléphant",
+        "un éléphant",
+        "elephant"
+      ],
+      "ar": [
+        "فيل",
+        "الفيل",
+        "فيل كبير"
+      ],
+      "ary": [
+        "فيل",
+        "الفيل"
+      ]
     },
     "exampleSentence": {
       "fr": "L'éléphant a une grande trompe !",
@@ -112,8 +221,16 @@
   {
     "id": "butterfly",
     "category": "animals",
-    "translations": { "fr": "papillon", "ar": "فراشة", "ary": "فرطوطو" },
-    "phonetic": { "fr": "papiyon", "ar": "farasha", "ary": "fertoutou" },
+    "translations": {
+      "fr": "papillon",
+      "ar": "فراشة",
+      "ary": "فرطوطو"
+    },
+    "phonetic": {
+      "fr": "papiyon",
+      "ar": "farasha",
+      "ary": "fertoutou"
+    },
     "image": "/assets/words/butterfly.png",
     "audio": {
       "fr": "/assets/audio/fr/butterfly.mp3",
@@ -121,9 +238,20 @@
       "ary": "/assets/audio/ary/butterfly.mp3"
     },
     "acceptedVariants": {
-      "fr": ["papillon", "un papillon", "le papillon"],
-      "ar": ["فراشة", "الفراشة"],
-      "ary": ["فرطوطو", "فراشة", "الفرطوطو"]
+      "fr": [
+        "papillon",
+        "un papillon",
+        "le papillon"
+      ],
+      "ar": [
+        "فراشة",
+        "الفراشة"
+      ],
+      "ary": [
+        "فرطوطو",
+        "فراشة",
+        "الفرطوطو"
+      ]
     },
     "exampleSentence": {
       "fr": "Le papillon a de jolies ailes colorées !",
@@ -134,8 +262,16 @@
   {
     "id": "apple",
     "category": "food",
-    "translations": { "fr": "pomme", "ar": "تفاحة", "ary": "تفاحة" },
-    "phonetic": { "fr": "pom", "ar": "tuffahah", "ary": "teffaha" },
+    "translations": {
+      "fr": "pomme",
+      "ar": "تفاحة",
+      "ary": "تفاحة"
+    },
+    "phonetic": {
+      "fr": "pom",
+      "ar": "tuffahah",
+      "ary": "teffaha"
+    },
     "image": "/assets/words/apple.png",
     "audio": {
       "fr": "/assets/audio/fr/apple.mp3",
@@ -143,9 +279,22 @@
       "ary": "/assets/audio/ary/apple.mp3"
     },
     "acceptedVariants": {
-      "fr": ["pomme", "une pomme", "la pomme", "pomme rouge"],
-      "ar": ["تفاحة", "التفاحة", "تفاح"],
-      "ary": ["تفاحة", "التفاحة", "تفاح"]
+      "fr": [
+        "pomme",
+        "une pomme",
+        "la pomme",
+        "pomme rouge"
+      ],
+      "ar": [
+        "تفاحة",
+        "التفاحة",
+        "تفاح"
+      ],
+      "ary": [
+        "تفاحة",
+        "التفاحة",
+        "تفاح"
+      ]
     },
     "exampleSentence": {
       "fr": "La pomme rouge est croquante et sucrée !",
@@ -156,8 +305,16 @@
   {
     "id": "banana",
     "category": "food",
-    "translations": { "fr": "banane", "ar": "موزة", "ary": "بنانة" },
-    "phonetic": { "fr": "banan", "ar": "mawzah", "ary": "banana" },
+    "translations": {
+      "fr": "banane",
+      "ar": "موزة",
+      "ary": "بنانة"
+    },
+    "phonetic": {
+      "fr": "banan",
+      "ar": "mawzah",
+      "ary": "banana"
+    },
     "image": "/assets/words/banana.png",
     "audio": {
       "fr": "/assets/audio/fr/banana.mp3",
@@ -165,9 +322,22 @@
       "ary": "/assets/audio/ary/banana.mp3"
     },
     "acceptedVariants": {
-      "fr": ["banane", "une banane", "la banane", "bananes"],
-      "ar": ["موزة", "موز", "الموزة"],
-      "ary": ["بنانة", "بنان", "البنانة"]
+      "fr": [
+        "banane",
+        "une banane",
+        "la banane",
+        "bananes"
+      ],
+      "ar": [
+        "موزة",
+        "موز",
+        "الموزة"
+      ],
+      "ary": [
+        "بنانة",
+        "بنان",
+        "البنانة"
+      ]
     },
     "exampleSentence": {
       "fr": "La banane jaune donne plein d'énergie !",
@@ -178,8 +348,16 @@
   {
     "id": "strawberry",
     "category": "food",
-    "translations": { "fr": "fraise", "ar": "فراولة", "ary": "فريز" },
-    "phonetic": { "fr": "frez", "ar": "farawlah", "ary": "friz" },
+    "translations": {
+      "fr": "fraise",
+      "ar": "فراولة",
+      "ary": "فريز"
+    },
+    "phonetic": {
+      "fr": "frez",
+      "ar": "farawlah",
+      "ary": "friz"
+    },
     "image": "/assets/words/strawberry.png",
     "audio": {
       "fr": "/assets/audio/fr/strawberry.mp3",
@@ -187,9 +365,21 @@
       "ary": "/assets/audio/ary/strawberry.mp3"
     },
     "acceptedVariants": {
-      "fr": ["fraise", "une fraise", "la fraise"],
-      "ar": ["فراولة", "الفراولة", "توت"],
-      "ary": ["فريز", "الفريز", "فريزة"]
+      "fr": [
+        "fraise",
+        "une fraise",
+        "la fraise"
+      ],
+      "ar": [
+        "فراولة",
+        "الفراولة",
+        "توت"
+      ],
+      "ary": [
+        "فريز",
+        "الفريز",
+        "فريزة"
+      ]
     },
     "exampleSentence": {
       "fr": "La fraise est un fruit tout rouge et délicieux !",
@@ -200,8 +390,16 @@
   {
     "id": "orange",
     "category": "food",
-    "translations": { "fr": "orange", "ar": "برتقالة", "ary": "ليمونة" },
-    "phonetic": { "fr": "oranj", "ar": "burtuqalah", "ary": "limouna" },
+    "translations": {
+      "fr": "orange",
+      "ar": "برتقالة",
+      "ary": "ليمونة"
+    },
+    "phonetic": {
+      "fr": "oranj",
+      "ar": "burtuqalah",
+      "ary": "limouna"
+    },
     "image": "/assets/words/orange.png",
     "audio": {
       "fr": "/assets/audio/fr/orange.mp3",
@@ -209,9 +407,22 @@
       "ary": "/assets/audio/ary/orange.mp3"
     },
     "acceptedVariants": {
-      "fr": ["orange", "une orange", "l'orange"],
-      "ar": ["برتقالة", "البرتقالة", "برتقال"],
-      "ary": ["ليمونة", "الليمونة", "ليمون", "برتقالة"]
+      "fr": [
+        "orange",
+        "une orange",
+        "l'orange"
+      ],
+      "ar": [
+        "برتقالة",
+        "البرتقالة",
+        "برتقال"
+      ],
+      "ary": [
+        "ليمونة",
+        "الليمونة",
+        "ليمون",
+        "برتقالة"
+      ]
     },
     "exampleSentence": {
       "fr": "L'orange est pleine de vitamine C !",
@@ -222,8 +433,16 @@
   {
     "id": "milk",
     "category": "food",
-    "translations": { "fr": "lait", "ar": "حليب", "ary": "حليب" },
-    "phonetic": { "fr": "le", "ar": "haleeb", "ary": "hlib" },
+    "translations": {
+      "fr": "lait",
+      "ar": "حليب",
+      "ary": "حليب"
+    },
+    "phonetic": {
+      "fr": "le",
+      "ar": "haleeb",
+      "ary": "hlib"
+    },
     "image": "/assets/words/milk.png",
     "audio": {
       "fr": "/assets/audio/fr/milk.mp3",
@@ -231,9 +450,20 @@
       "ary": "/assets/audio/ary/milk.mp3"
     },
     "acceptedVariants": {
-      "fr": ["lait", "du lait", "le lait"],
-      "ar": ["حليب", "الحليب", "لبن"],
-      "ary": ["حليب", "الحليب"]
+      "fr": [
+        "lait",
+        "du lait",
+        "le lait"
+      ],
+      "ar": [
+        "حليب",
+        "الحليب",
+        "لبن"
+      ],
+      "ary": [
+        "حليب",
+        "الحليب"
+      ]
     },
     "exampleSentence": {
       "fr": "Un bon verre de lait pour grandir fort !",
@@ -244,8 +474,16 @@
   {
     "id": "bread",
     "category": "food",
-    "translations": { "fr": "pain", "ar": "خبز", "ary": "خبز" },
-    "phonetic": { "fr": "pan", "ar": "khubz", "ary": "khobz" },
+    "translations": {
+      "fr": "pain",
+      "ar": "خبز",
+      "ary": "خبز"
+    },
+    "phonetic": {
+      "fr": "pan",
+      "ar": "khubz",
+      "ary": "khobz"
+    },
     "image": "/assets/words/bread.png",
     "audio": {
       "fr": "/assets/audio/fr/bread.mp3",
@@ -253,9 +491,20 @@
       "ary": "/assets/audio/ary/bread.mp3"
     },
     "acceptedVariants": {
-      "fr": ["pain", "du pain", "le pain"],
-      "ar": ["خبز", "الخبز"],
-      "ary": ["خبز", "الخبز", "خبيزة"]
+      "fr": [
+        "pain",
+        "du pain",
+        "le pain"
+      ],
+      "ar": [
+        "خبز",
+        "الخبز"
+      ],
+      "ary": [
+        "خبز",
+        "الخبز",
+        "خبيزة"
+      ]
     },
     "exampleSentence": {
       "fr": "Le pain frais sent tellement bon !",
@@ -266,8 +515,16 @@
   {
     "id": "book",
     "category": "objects",
-    "translations": { "fr": "livre", "ar": "كتاب", "ary": "كتّاب" },
-    "phonetic": { "fr": "leevr", "ar": "kitab", "ary": "ktab" },
+    "translations": {
+      "fr": "livre",
+      "ar": "كتاب",
+      "ary": "كتّاب"
+    },
+    "phonetic": {
+      "fr": "leevr",
+      "ar": "kitab",
+      "ary": "ktab"
+    },
     "image": "/assets/words/book.png",
     "audio": {
       "fr": "/assets/audio/fr/book.mp3",
@@ -275,9 +532,20 @@
       "ary": "/assets/audio/ary/book.mp3"
     },
     "acceptedVariants": {
-      "fr": ["livre", "un livre", "le livre"],
-      "ar": ["كتاب", "الكتاب"],
-      "ary": ["كتاب", "الكتاب", "كتيب"]
+      "fr": [
+        "livre",
+        "un livre",
+        "le livre"
+      ],
+      "ar": [
+        "كتاب",
+        "الكتاب"
+      ],
+      "ary": [
+        "كتاب",
+        "الكتاب",
+        "كتيب"
+      ]
     },
     "exampleSentence": {
       "fr": "Le livre nous raconte de belles histoires !",
@@ -288,8 +556,16 @@
   {
     "id": "ball",
     "category": "objects",
-    "translations": { "fr": "ballon", "ar": "كرة", "ary": "كورة" },
-    "phonetic": { "fr": "balon", "ar": "kurah", "ary": "koura" },
+    "translations": {
+      "fr": "ballon",
+      "ar": "كرة",
+      "ary": "كورة"
+    },
+    "phonetic": {
+      "fr": "balon",
+      "ar": "kurah",
+      "ary": "koura"
+    },
     "image": "/assets/words/ball.png",
     "audio": {
       "fr": "/assets/audio/fr/ball.mp3",
@@ -297,9 +573,21 @@
       "ary": "/assets/audio/ary/ball.mp3"
     },
     "acceptedVariants": {
-      "fr": ["ballon", "balle", "un ballon", "le ballon"],
-      "ar": ["كرة", "الكرة"],
-      "ary": ["كورة", "الكورة", "كوييرة"]
+      "fr": [
+        "ballon",
+        "balle",
+        "un ballon",
+        "le ballon"
+      ],
+      "ar": [
+        "كرة",
+        "الكرة"
+      ],
+      "ary": [
+        "كورة",
+        "الكورة",
+        "كوييرة"
+      ]
     },
     "exampleSentence": {
       "fr": "Le ballon rebondit dans le jardin !",
@@ -310,8 +598,16 @@
   {
     "id": "bed",
     "category": "objects",
-    "translations": { "fr": "lit", "ar": "سرير", "ary": "ناموسية" },
-    "phonetic": { "fr": "lee", "ar": "sareer", "ary": "namoussiya" },
+    "translations": {
+      "fr": "lit",
+      "ar": "سرير",
+      "ary": "ناموسية"
+    },
+    "phonetic": {
+      "fr": "lee",
+      "ar": "sareer",
+      "ary": "namoussiya"
+    },
     "image": "/assets/words/bed.png",
     "audio": {
       "fr": "/assets/audio/fr/bed.mp3",
@@ -319,9 +615,22 @@
       "ary": "/assets/audio/ary/bed.mp3"
     },
     "acceptedVariants": {
-      "fr": ["lit", "un lit", "le lit"],
-      "ar": ["سرير", "السرير", "فراش"],
-      "ary": ["ناموسية", "الناموسية", "فراش", "السرير"]
+      "fr": [
+        "lit",
+        "un lit",
+        "le lit"
+      ],
+      "ar": [
+        "سرير",
+        "السرير",
+        "فراش"
+      ],
+      "ary": [
+        "ناموسية",
+        "الناموسية",
+        "فراش",
+        "السرير"
+      ]
     },
     "exampleSentence": {
       "fr": "Mon lit doux pour faire de beaux rêves !",
@@ -332,8 +641,16 @@
   {
     "id": "hat",
     "category": "objects",
-    "translations": { "fr": "chapeau", "ar": "قبعة", "ary": "طاقية" },
-    "phonetic": { "fr": "shapo", "ar": "qubba'ah", "ary": "taqiya" },
+    "translations": {
+      "fr": "chapeau",
+      "ar": "قبعة",
+      "ary": "طاقية"
+    },
+    "phonetic": {
+      "fr": "shapo",
+      "ar": "qubba'ah",
+      "ary": "taqiya"
+    },
     "image": "/assets/words/hat.png",
     "audio": {
       "fr": "/assets/audio/fr/hat.mp3",
@@ -341,9 +658,21 @@
       "ary": "/assets/audio/ary/hat.mp3"
     },
     "acceptedVariants": {
-      "fr": ["chapeau", "un chapeau", "le chapeau"],
-      "ar": ["قبعة", "القبعة"],
-      "ary": ["طاقية", "الطاقية", "شابو", "قبعة"]
+      "fr": [
+        "chapeau",
+        "un chapeau",
+        "le chapeau"
+      ],
+      "ar": [
+        "قبعة",
+        "القبعة"
+      ],
+      "ary": [
+        "طاقية",
+        "الطاقية",
+        "شابو",
+        "قبعة"
+      ]
     },
     "exampleSentence": {
       "fr": "Le chapeau protège du soleil !",
@@ -354,8 +683,16 @@
   {
     "id": "key",
     "category": "objects",
-    "translations": { "fr": "clé", "ar": "مفتاح", "ary": "ساروت" },
-    "phonetic": { "fr": "kle", "ar": "miftah", "ary": "sarout" },
+    "translations": {
+      "fr": "clé",
+      "ar": "مفتاح",
+      "ary": "ساروت"
+    },
+    "phonetic": {
+      "fr": "kle",
+      "ar": "miftah",
+      "ary": "sarout"
+    },
     "image": "/assets/words/key.png",
     "audio": {
       "fr": "/assets/audio/fr/key.mp3",
@@ -363,9 +700,21 @@
       "ary": "/assets/audio/ary/key.mp3"
     },
     "acceptedVariants": {
-      "fr": ["clé", "une clé", "la clé", "clef"],
-      "ar": ["مفتاح", "المفتاح"],
-      "ary": ["ساروت", "الساروت", "مفتاح"]
+      "fr": [
+        "clé",
+        "une clé",
+        "la clé",
+        "clef"
+      ],
+      "ar": [
+        "مفتاح",
+        "المفتاح"
+      ],
+      "ary": [
+        "ساروت",
+        "الساروت",
+        "مفتاح"
+      ]
     },
     "exampleSentence": {
       "fr": "La clé ouvre la porte de la maison !",
@@ -376,8 +725,16 @@
   {
     "id": "clock",
     "category": "objects",
-    "translations": { "fr": "montre", "ar": "ساعة", "ary": "مكانة" },
-    "phonetic": { "fr": "montr", "ar": "sa'ah", "ary": "magana" },
+    "translations": {
+      "fr": "montre",
+      "ar": "ساعة",
+      "ary": "مكانة"
+    },
+    "phonetic": {
+      "fr": "montr",
+      "ar": "sa'ah",
+      "ary": "magana"
+    },
     "image": "/assets/words/clock.png",
     "audio": {
       "fr": "/assets/audio/fr/clock.mp3",
@@ -385,9 +742,22 @@
       "ary": "/assets/audio/ary/clock.mp3"
     },
     "acceptedVariants": {
-      "fr": ["montre", "une montre", "la montre", "horloge"],
-      "ar": ["ساعة", "الساعة"],
-      "ary": ["مكانة", "المكانة", "ساعة", "الساعة"]
+      "fr": [
+        "montre",
+        "une montre",
+        "la montre",
+        "horloge"
+      ],
+      "ar": [
+        "ساعة",
+        "الساعة"
+      ],
+      "ary": [
+        "مكانة",
+        "المكانة",
+        "ساعة",
+        "الساعة"
+      ]
     },
     "exampleSentence": {
       "fr": "La montre fait tic-tac pour donner l'heure !",
@@ -398,8 +768,16 @@
   {
     "id": "eye",
     "category": "body",
-    "translations": { "fr": "œil", "ar": "عين", "ary": "عين" },
-    "phonetic": { "fr": "euy", "ar": "'ayn", "ary": "3ayn" },
+    "translations": {
+      "fr": "œil",
+      "ar": "عين",
+      "ary": "عين"
+    },
+    "phonetic": {
+      "fr": "euy",
+      "ar": "'ayn",
+      "ary": "3ayn"
+    },
     "image": "/assets/words/eye.png",
     "audio": {
       "fr": "/assets/audio/fr/eye.mp3",
@@ -407,9 +785,22 @@
       "ary": "/assets/audio/ary/eye.mp3"
     },
     "acceptedVariants": {
-      "fr": ["œil", "un œil", "yeux", "l'œil"],
-      "ar": ["عين", "العين", "عيون"],
-      "ary": ["عين", "العين", "عينين"]
+      "fr": [
+        "œil",
+        "un œil",
+        "yeux",
+        "l'œil"
+      ],
+      "ar": [
+        "عين",
+        "العين",
+        "عيون"
+      ],
+      "ary": [
+        "عين",
+        "العين",
+        "عينين"
+      ]
     },
     "exampleSentence": {
       "fr": "Avec mon œil, je regarde tout ce qui brille !",
@@ -420,8 +811,16 @@
   {
     "id": "hand",
     "category": "body",
-    "translations": { "fr": "main", "ar": "يد", "ary": "يد" },
-    "phonetic": { "fr": "man", "ar": "yad", "ary": "yedd" },
+    "translations": {
+      "fr": "main",
+      "ar": "يد",
+      "ary": "يد"
+    },
+    "phonetic": {
+      "fr": "man",
+      "ar": "yad",
+      "ary": "yedd"
+    },
     "image": "/assets/words/hand.png",
     "audio": {
       "fr": "/assets/audio/fr/hand.mp3",
@@ -429,9 +828,23 @@
       "ary": "/assets/audio/ary/hand.mp3"
     },
     "acceptedVariants": {
-      "fr": ["main", "une main", "la main", "mains"],
-      "ar": ["يد", "اليد", "كف"],
-      "ary": ["يد", "اليد", "يدين", "يديات"]
+      "fr": [
+        "main",
+        "une main",
+        "la main",
+        "mains"
+      ],
+      "ar": [
+        "يد",
+        "اليد",
+        "كف"
+      ],
+      "ary": [
+        "يد",
+        "اليد",
+        "يدين",
+        "يديات"
+      ]
     },
     "exampleSentence": {
       "fr": "Je bats des mains quand je suis content !",
@@ -442,8 +855,16 @@
   {
     "id": "foot",
     "category": "body",
-    "translations": { "fr": "pied", "ar": "قدم", "ary": "رجل" },
-    "phonetic": { "fr": "pye", "ar": "qadam", "ary": "rjel" },
+    "translations": {
+      "fr": "pied",
+      "ar": "قدم",
+      "ary": "رجل"
+    },
+    "phonetic": {
+      "fr": "pye",
+      "ar": "qadam",
+      "ary": "rjel"
+    },
     "image": "/assets/words/foot.png",
     "audio": {
       "fr": "/assets/audio/fr/foot.mp3",
@@ -451,9 +872,22 @@
       "ary": "/assets/audio/ary/foot.mp3"
     },
     "acceptedVariants": {
-      "fr": ["pied", "un pied", "le pied"],
-      "ar": ["قدم", "القدم", "رجل"],
-      "ary": ["رجل", "الرجل", "رجلين", "قدم"]
+      "fr": [
+        "pied",
+        "un pied",
+        "le pied"
+      ],
+      "ar": [
+        "قدم",
+        "القدم",
+        "رجل"
+      ],
+      "ary": [
+        "رجل",
+        "الرجل",
+        "رجلين",
+        "قدم"
+      ]
     },
     "exampleSentence": {
       "fr": "Avec mes deux pieds, je marche et je cours !",
@@ -464,8 +898,16 @@
   {
     "id": "nose",
     "category": "body",
-    "translations": { "fr": "nez", "ar": "أنف", "ary": "نيف" },
-    "phonetic": { "fr": "ne", "ar": "anf", "ary": "nif" },
+    "translations": {
+      "fr": "nez",
+      "ar": "أنف",
+      "ary": "نيف"
+    },
+    "phonetic": {
+      "fr": "ne",
+      "ar": "anf",
+      "ary": "nif"
+    },
     "image": "/assets/words/nose.png",
     "audio": {
       "fr": "/assets/audio/fr/nose.mp3",
@@ -473,9 +915,20 @@
       "ary": "/assets/audio/ary/nose.mp3"
     },
     "acceptedVariants": {
-      "fr": ["nez", "le nez", "un nez"],
-      "ar": ["أنف", "الأنف"],
-      "ary": ["نيف", "النيف", "أنف"]
+      "fr": [
+        "nez",
+        "le nez",
+        "un nez"
+      ],
+      "ar": [
+        "أنف",
+        "الأنف"
+      ],
+      "ary": [
+        "نيف",
+        "النيف",
+        "أنف"
+      ]
     },
     "exampleSentence": {
       "fr": "Mon nez sent le parfum des fleurs !",
@@ -486,8 +939,16 @@
   {
     "id": "ear",
     "category": "body",
-    "translations": { "fr": "oreille", "ar": "أذن", "ary": "ودن" },
-    "phonetic": { "fr": "orey", "ar": "udhun", "ary": "wden" },
+    "translations": {
+      "fr": "oreille",
+      "ar": "أذن",
+      "ary": "ودن"
+    },
+    "phonetic": {
+      "fr": "orey",
+      "ar": "udhun",
+      "ary": "wden"
+    },
     "image": "/assets/words/ear.png",
     "audio": {
       "fr": "/assets/audio/fr/ear.mp3",
@@ -495,9 +956,22 @@
       "ary": "/assets/audio/ary/ear.mp3"
     },
     "acceptedVariants": {
-      "fr": ["oreille", "une oreille", "l'oreille"],
-      "ar": ["أذن", "الأذن", "آذان"],
-      "ary": ["ودن", "الودن", "ودنين", "أذن"]
+      "fr": [
+        "oreille",
+        "une oreille",
+        "l'oreille"
+      ],
+      "ar": [
+        "أذن",
+        "الأذن",
+        "آذان"
+      ],
+      "ary": [
+        "ودن",
+        "الودن",
+        "ودنين",
+        "أذن"
+      ]
     },
     "exampleSentence": {
       "fr": "Mon oreille écoute la jolie chanson !",
@@ -508,8 +982,16 @@
   {
     "id": "mouth",
     "category": "body",
-    "translations": { "fr": "bouche", "ar": "فم", "ary": "فم" },
-    "phonetic": { "fr": "boosh", "ar": "fam", "ary": "fom" },
+    "translations": {
+      "fr": "bouche",
+      "ar": "فم",
+      "ary": "فم"
+    },
+    "phonetic": {
+      "fr": "boosh",
+      "ar": "fam",
+      "ary": "fom"
+    },
     "image": "/assets/words/mouth.png",
     "audio": {
       "fr": "/assets/audio/fr/mouth.mp3",
@@ -517,9 +999,20 @@
       "ary": "/assets/audio/ary/mouth.mp3"
     },
     "acceptedVariants": {
-      "fr": ["bouche", "une bouche", "la bouche"],
-      "ar": ["فم", "الفم"],
-      "ary": ["فم", "الفم", "فيم"]
+      "fr": [
+        "bouche",
+        "une bouche",
+        "la bouche"
+      ],
+      "ar": [
+        "فم",
+        "الفم"
+      ],
+      "ary": [
+        "فم",
+        "الفم",
+        "فيم"
+      ]
     },
     "exampleSentence": {
       "fr": "Avec ma bouche, je souris à tout le monde !",
@@ -530,8 +1023,16 @@
   {
     "id": "car",
     "category": "vehicles",
-    "translations": { "fr": "voiture", "ar": "سيارة", "ary": "طوموبيل" },
-    "phonetic": { "fr": "vwatur", "ar": "sayyarah", "ary": "tomobile" },
+    "translations": {
+      "fr": "voiture",
+      "ar": "سيارة",
+      "ary": "طوموبيل"
+    },
+    "phonetic": {
+      "fr": "vwatur",
+      "ar": "sayyarah",
+      "ary": "tomobile"
+    },
     "image": "/assets/words/car.png",
     "audio": {
       "fr": "/assets/audio/fr/car.mp3",
@@ -539,9 +1040,22 @@
       "ary": "/assets/audio/ary/car.mp3"
     },
     "acceptedVariants": {
-      "fr": ["voiture", "une voiture", "la voiture", "auto"],
-      "ar": ["سيارة", "السيارة"],
-      "ary": ["طوموبيل", "الطوموبيل", "سيارة", "السيارة"]
+      "fr": [
+        "voiture",
+        "une voiture",
+        "la voiture",
+        "auto"
+      ],
+      "ar": [
+        "سيارة",
+        "السيارة"
+      ],
+      "ary": [
+        "طوموبيل",
+        "الطوموبيل",
+        "سيارة",
+        "السيارة"
+      ]
     },
     "exampleSentence": {
       "fr": "La voiture roule sur la route : tut tut !",
@@ -552,8 +1066,16 @@
   {
     "id": "bicycle",
     "category": "vehicles",
-    "translations": { "fr": "vélo", "ar": "دراجة", "ary": "بيكالا" },
-    "phonetic": { "fr": "velo", "ar": "darrajah", "ary": "bikala" },
+    "translations": {
+      "fr": "vélo",
+      "ar": "دراجة",
+      "ary": "بيكالا"
+    },
+    "phonetic": {
+      "fr": "velo",
+      "ar": "darrajah",
+      "ary": "bikala"
+    },
     "image": "/assets/words/bicycle.png",
     "audio": {
       "fr": "/assets/audio/fr/bicycle.mp3",
@@ -561,9 +1083,23 @@
       "ary": "/assets/audio/ary/bicycle.mp3"
     },
     "acceptedVariants": {
-      "fr": ["vélo", "un vélo", "le vélo", "bicyclette"],
-      "ar": ["دراجة", "الدراجة", "دراجة هوائية"],
-      "ary": ["بيكالا", "البيكالا", "دراجة", "بسيكليت"]
+      "fr": [
+        "vélo",
+        "un vélo",
+        "le vélo",
+        "bicyclette"
+      ],
+      "ar": [
+        "دراجة",
+        "الدراجة",
+        "دراجة هوائية"
+      ],
+      "ary": [
+        "بيكالا",
+        "البيكالا",
+        "دراجة",
+        "بسيكليت"
+      ]
     },
     "exampleSentence": {
       "fr": "Je pédale sur mon vélo dans le parc !",
@@ -574,8 +1110,16 @@
   {
     "id": "airplane",
     "category": "vehicles",
-    "translations": { "fr": "avion", "ar": "طائرة", "ary": "طيارة" },
-    "phonetic": { "fr": "avyon", "ar": "ta'irah", "ary": "tayara" },
+    "translations": {
+      "fr": "avion",
+      "ar": "طائرة",
+      "ary": "طيارة"
+    },
+    "phonetic": {
+      "fr": "avyon",
+      "ar": "ta'irah",
+      "ary": "tayara"
+    },
     "image": "/assets/words/airplane.png",
     "audio": {
       "fr": "/assets/audio/fr/airplane.mp3",
@@ -583,9 +1127,20 @@
       "ary": "/assets/audio/ary/airplane.mp3"
     },
     "acceptedVariants": {
-      "fr": ["avion", "un avion", "l'avion"],
-      "ar": ["طائرة", "الطائرة"],
-      "ary": ["طيارة", "الطيارة", "طائرة"]
+      "fr": [
+        "avion",
+        "un avion",
+        "l'avion"
+      ],
+      "ar": [
+        "طائرة",
+        "الطائرة"
+      ],
+      "ary": [
+        "طيارة",
+        "الطيارة",
+        "طائرة"
+      ]
     },
     "exampleSentence": {
       "fr": "L'avion vole très haut au-dessus des nuages !",
@@ -596,8 +1151,16 @@
   {
     "id": "train",
     "category": "vehicles",
-    "translations": { "fr": "train", "ar": "قطار", "ary": "تران" },
-    "phonetic": { "fr": "tran", "ar": "qitar", "ary": "tran" },
+    "translations": {
+      "fr": "train",
+      "ar": "قطار",
+      "ary": "تران"
+    },
+    "phonetic": {
+      "fr": "tran",
+      "ar": "qitar",
+      "ary": "tran"
+    },
     "image": "/assets/words/train.png",
     "audio": {
       "fr": "/assets/audio/fr/train.mp3",
@@ -605,9 +1168,21 @@
       "ary": "/assets/audio/ary/train.mp3"
     },
     "acceptedVariants": {
-      "fr": ["train", "un train", "le train"],
-      "ar": ["قطار", "القطار"],
-      "ary": ["تران", "التران", "قطار", "القطار"]
+      "fr": [
+        "train",
+        "un train",
+        "le train"
+      ],
+      "ar": [
+        "قطار",
+        "القطار"
+      ],
+      "ary": [
+        "تران",
+        "التران",
+        "قطار",
+        "القطار"
+      ]
     },
     "exampleSentence": {
       "fr": "Tchou-tchou ! Le train avance sur les rails !",
@@ -618,8 +1193,16 @@
   {
     "id": "boat",
     "category": "vehicles",
-    "translations": { "fr": "bateau", "ar": "سفينة", "ary": "فلوكة" },
-    "phonetic": { "fr": "bato", "ar": "safeenah", "ary": "flouka" },
+    "translations": {
+      "fr": "bateau",
+      "ar": "سفينة",
+      "ary": "فلوكة"
+    },
+    "phonetic": {
+      "fr": "bato",
+      "ar": "safeenah",
+      "ary": "flouka"
+    },
     "image": "/assets/words/boat.png",
     "audio": {
       "fr": "/assets/audio/fr/boat.mp3",
@@ -627,9 +1210,24 @@
       "ary": "/assets/audio/ary/boat.mp3"
     },
     "acceptedVariants": {
-      "fr": ["bateau", "un bateau", "le bateau", "navire"],
-      "ar": ["سفينة", "السفينة", "قارب"],
-      "ary": ["فلوكة", "الفلوكة", "باكبوك", "سفينة", "قارب"]
+      "fr": [
+        "bateau",
+        "un bateau",
+        "le bateau",
+        "navire"
+      ],
+      "ar": [
+        "سفينة",
+        "السفينة",
+        "قارب"
+      ],
+      "ary": [
+        "فلوكة",
+        "الفلوكة",
+        "باكبوك",
+        "سفينة",
+        "قارب"
+      ]
     },
     "exampleSentence": {
       "fr": "Le bateau flotte doucement sur l'eau bleue !",
@@ -640,8 +1238,16 @@
   {
     "id": "bus",
     "category": "vehicles",
-    "translations": { "fr": "bus", "ar": "حافلة", "ary": "طوبيس" },
-    "phonetic": { "fr": "bus", "ar": "hafilah", "ary": "tobis" },
+    "translations": {
+      "fr": "bus",
+      "ar": "حافلة",
+      "ary": "طوبيس"
+    },
+    "phonetic": {
+      "fr": "bus",
+      "ar": "hafilah",
+      "ary": "tobis"
+    },
     "image": "/assets/words/bus.png",
     "audio": {
       "fr": "/assets/audio/fr/bus.mp3",
@@ -649,9 +1255,23 @@
       "ary": "/assets/audio/ary/bus.mp3"
     },
     "acceptedVariants": {
-      "fr": ["bus", "un bus", "le bus", "autobus"],
-      "ar": ["حافلة", "الحافلة", "باص"],
-      "ary": ["طوبيس", "الطوبيس", "حافلة", "باص"]
+      "fr": [
+        "bus",
+        "un bus",
+        "le bus",
+        "autobus"
+      ],
+      "ar": [
+        "حافلة",
+        "الحافلة",
+        "باص"
+      ],
+      "ary": [
+        "طوبيس",
+        "الطوبيس",
+        "حافلة",
+        "باص"
+      ]
     },
     "exampleSentence": {
       "fr": "Le grand bus emmène tous les amis à l'école !",
@@ -662,8 +1282,16 @@
   {
     "id": "jump",
     "category": "actions",
-    "translations": { "fr": "sauter", "ar": "يقفز", "ary": "ينقز" },
-    "phonetic": { "fr": "sote", "ar": "yaqfiz", "ary": "ynqez" },
+    "translations": {
+      "fr": "sauter",
+      "ar": "يقفز",
+      "ary": "ينقز"
+    },
+    "phonetic": {
+      "fr": "sote",
+      "ar": "yaqfiz",
+      "ary": "ynqez"
+    },
     "image": "/assets/words/jump.png",
     "audio": {
       "fr": "/assets/audio/fr/jump.mp3",
@@ -671,9 +1299,22 @@
       "ary": "/assets/audio/ary/jump.mp3"
     },
     "acceptedVariants": {
-      "fr": ["sauter", "saute", "un saut", "saut"],
-      "ar": ["يقفز", "قفز", "طفر"],
-      "ary": ["ينقز", "نقز", "تنقاز"]
+      "fr": [
+        "sauter",
+        "saute",
+        "un saut",
+        "saut"
+      ],
+      "ar": [
+        "يقفز",
+        "قفز",
+        "طفر"
+      ],
+      "ary": [
+        "ينقز",
+        "نقز",
+        "تنقاز"
+      ]
     },
     "exampleSentence": {
       "fr": "Imrane saute haut comme un petit kangourou !",
@@ -684,8 +1325,16 @@
   {
     "id": "run",
     "category": "actions",
-    "translations": { "fr": "courir", "ar": "يجري", "ary": "يجري" },
-    "phonetic": { "fr": "kooreer", "ar": "yajree", "ary": "yejri" },
+    "translations": {
+      "fr": "courir",
+      "ar": "يجري",
+      "ary": "يجري"
+    },
+    "phonetic": {
+      "fr": "kooreer",
+      "ar": "yajree",
+      "ary": "yejri"
+    },
     "image": "/assets/words/run.png",
     "audio": {
       "fr": "/assets/audio/fr/run.mp3",
@@ -693,9 +1342,21 @@
       "ary": "/assets/audio/ary/run.mp3"
     },
     "acceptedVariants": {
-      "fr": ["courir", "cours", "course"],
-      "ar": ["يجري", "يركض", "ركض"],
-      "ary": ["يجري", "جري", "كيجري"]
+      "fr": [
+        "courir",
+        "cours",
+        "course"
+      ],
+      "ar": [
+        "يجري",
+        "يركض",
+        "ركض"
+      ],
+      "ary": [
+        "يجري",
+        "جري",
+        "كيجري"
+      ]
     },
     "exampleSentence": {
       "fr": "Courir vite dans l'herbe verte !",
@@ -706,8 +1367,16 @@
   {
     "id": "sleep",
     "category": "actions",
-    "translations": { "fr": "dormir", "ar": "ينام", "ary": "ينعس" },
-    "phonetic": { "fr": "dormeer", "ar": "yanam", "ary": "yn3es" },
+    "translations": {
+      "fr": "dormir",
+      "ar": "ينام",
+      "ary": "ينعس"
+    },
+    "phonetic": {
+      "fr": "dormeer",
+      "ar": "yanam",
+      "ary": "yn3es"
+    },
     "image": "/assets/words/sleep.png",
     "audio": {
       "fr": "/assets/audio/fr/sleep.mp3",
@@ -715,9 +1384,22 @@
       "ary": "/assets/audio/ary/sleep.mp3"
     },
     "acceptedVariants": {
-      "fr": ["dormir", "dort", "dodo"],
-      "ar": ["ينام", "نوم", "نعاس"],
-      "ary": ["ينعس", "نعاس", "نعس", "يدير ديدو"]
+      "fr": [
+        "dormir",
+        "dort",
+        "dodo"
+      ],
+      "ar": [
+        "ينام",
+        "نوم",
+        "نعاس"
+      ],
+      "ary": [
+        "ينعس",
+        "نعاس",
+        "نعس",
+        "يدير ديدو"
+      ]
     },
     "exampleSentence": {
       "fr": "Dormir paisiblement pour se reposer !",
@@ -728,8 +1410,16 @@
   {
     "id": "eat",
     "category": "actions",
-    "translations": { "fr": "manger", "ar": "يأكل", "ary": "ياكل" },
-    "phonetic": { "fr": "manje", "ar": "ya'kul", "ary": "yakol" },
+    "translations": {
+      "fr": "manger",
+      "ar": "يأكل",
+      "ary": "ياكل"
+    },
+    "phonetic": {
+      "fr": "manje",
+      "ar": "ya'kul",
+      "ary": "yakol"
+    },
     "image": "/assets/words/eat.png",
     "audio": {
       "fr": "/assets/audio/fr/eat.mp3",
@@ -737,9 +1427,21 @@
       "ary": "/assets/audio/ary/eat.mp3"
     },
     "acceptedVariants": {
-      "fr": ["manger", "mange", "repas"],
-      "ar": ["يأكل", "أكل", "يطعم"],
-      "ary": ["ياكل", "ماكلة", "كلا"]
+      "fr": [
+        "manger",
+        "mange",
+        "repas"
+      ],
+      "ar": [
+        "يأكل",
+        "أكل",
+        "يطعم"
+      ],
+      "ary": [
+        "ياكل",
+        "ماكلة",
+        "كلا"
+      ]
     },
     "exampleSentence": {
       "fr": "Manger de bonnes choses pour être fort !",
@@ -750,8 +1452,16 @@
   {
     "id": "drink",
     "category": "actions",
-    "translations": { "fr": "boire", "ar": "يشرب", "ary": "يشرب" },
-    "phonetic": { "fr": "bwar", "ar": "yashrab", "ary": "ychreb" },
+    "translations": {
+      "fr": "boire",
+      "ar": "يشرب",
+      "ary": "يشرب"
+    },
+    "phonetic": {
+      "fr": "bwar",
+      "ar": "yashrab",
+      "ary": "ychreb"
+    },
     "image": "/assets/words/drink.png",
     "audio": {
       "fr": "/assets/audio/fr/drink.mp3",
@@ -759,9 +1469,20 @@
       "ary": "/assets/audio/ary/drink.mp3"
     },
     "acceptedVariants": {
-      "fr": ["boire", "bois", "boisson"],
-      "ar": ["يشرب", "شرب"],
-      "ary": ["يشرب", "شرب", "شريبة"]
+      "fr": [
+        "boire",
+        "bois",
+        "boisson"
+      ],
+      "ar": [
+        "يشرب",
+        "شرب"
+      ],
+      "ary": [
+        "يشرب",
+        "شرب",
+        "شريبة"
+      ]
     },
     "exampleSentence": {
       "fr": "Boire de l'eau fraîche pour rester en forme !",
@@ -772,8 +1493,16 @@
   {
     "id": "laugh",
     "category": "actions",
-    "translations": { "fr": "rire", "ar": "يضحك", "ary": "يضحك" },
-    "phonetic": { "fr": "reer", "ar": "yadhak", "ary": "ydhek" },
+    "translations": {
+      "fr": "rire",
+      "ar": "يضحك",
+      "ary": "يضحك"
+    },
+    "phonetic": {
+      "fr": "reer",
+      "ar": "yadhak",
+      "ary": "ydhek"
+    },
     "image": "/assets/words/laugh.png",
     "audio": {
       "fr": "/assets/audio/fr/laugh.mp3",
@@ -781,14 +1510,1984 @@
       "ary": "/assets/audio/ary/laugh.mp3"
     },
     "acceptedVariants": {
-      "fr": ["rire", "rigoler", "sourire"],
-      "ar": ["يضحك", "ضحك", "يبتسم"],
-      "ary": ["يضحك", "ضحكة", "ضحيكة"]
+      "fr": [
+        "rire",
+        "rigoler",
+        "sourire"
+      ],
+      "ar": [
+        "يضحك",
+        "ضحك",
+        "يبتسم"
+      ],
+      "ary": [
+        "يضحك",
+        "ضحكة",
+        "ضحيكة"
+      ]
     },
     "exampleSentence": {
       "fr": "Rire aux éclats avec le petit lion !",
       "ar": "الضحك والمرح مع صديقنا الأسد الصغير!",
       "ary": "الضحيكة والنشاط مع خونا السبيع الزوين!"
+    }
+  },
+  {
+    "id": "num_1",
+    "category": "numbers",
+    "translations": {
+      "fr": "1 • Un",
+      "ar": "١ • واحد",
+      "ary": "1 • واحد"
+    },
+    "phonetic": {
+      "fr": "un",
+      "ar": "waahid",
+      "ary": "wahed"
+    },
+    "image": "/assets/words/num_1.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_1.mp3",
+      "ar": "/assets/audio/ar/num_1.mp3",
+      "ary": "/assets/audio/ary/num_1.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "1",
+        "un",
+        "le un",
+        "premier"
+      ],
+      "ar": [
+        "1",
+        "١",
+        "واحد"
+      ],
+      "ary": [
+        "1",
+        "واحد"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "1 comme un lionceau courageux !",
+      "ar": "واحد كشبل صغير شجاع!",
+      "ary": "واحد بحال سبيع صغير شجاع!"
+    }
+  },
+  {
+    "id": "num_2",
+    "category": "numbers",
+    "translations": {
+      "fr": "2 • Deux",
+      "ar": "٢ • اثنان",
+      "ary": "2 • جوج"
+    },
+    "phonetic": {
+      "fr": "deu",
+      "ar": "ithnaan",
+      "ary": "jouj"
+    },
+    "image": "/assets/words/num_2.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_2.mp3",
+      "ar": "/assets/audio/ar/num_2.mp3",
+      "ary": "/assets/audio/ary/num_2.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "2",
+        "deux",
+        "le deux"
+      ],
+      "ar": [
+        "2",
+        "٢",
+        "اثنان",
+        "اثنين"
+      ],
+      "ary": [
+        "2",
+        "جوج"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "2 comme nos deux yeux qui brillent !",
+      "ar": "اثنان مثل عينينا الجميلتين!",
+      "ary": "جوج بحال عويناتنا الزوينين!"
+    }
+  },
+  {
+    "id": "num_3",
+    "category": "numbers",
+    "translations": {
+      "fr": "3 • Trois",
+      "ar": "٣ • ثلاثة",
+      "ary": "3 • تلاتة"
+    },
+    "phonetic": {
+      "fr": "trwa",
+      "ar": "thalaatha",
+      "ary": "tlata"
+    },
+    "image": "/assets/words/num_3.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_3.mp3",
+      "ar": "/assets/audio/ar/num_3.mp3",
+      "ary": "/assets/audio/ary/num_3.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "3",
+        "trois"
+      ],
+      "ar": [
+        "3",
+        "٣",
+        "ثلاثة",
+        "تلاتة"
+      ],
+      "ary": [
+        "3",
+        "تلاتة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "3 comme trois petites étoiles magiques !",
+      "ar": "ثلاثة مثل ثلاث نجمات مضيئة!",
+      "ary": "تلاتة بحال تلاتة د النجمات!"
+    }
+  },
+  {
+    "id": "num_4",
+    "category": "numbers",
+    "translations": {
+      "fr": "4 • Quatre",
+      "ar": "٤ • أربعة",
+      "ary": "4 • ربعة"
+    },
+    "phonetic": {
+      "fr": "katr",
+      "ar": "arba'a",
+      "ary": "reb'a"
+    },
+    "image": "/assets/words/num_4.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_4.mp3",
+      "ar": "/assets/audio/ar/num_4.mp3",
+      "ary": "/assets/audio/ary/num_4.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "4",
+        "quatre"
+      ],
+      "ar": [
+        "4",
+        "٤",
+        "أربعة",
+        "ربعة"
+      ],
+      "ary": [
+        "4",
+        "ربعة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "4 comme les 4 pattes du Petit Lion !",
+      "ar": "أربعة مثل قوائم الأسد الصغير!",
+      "ary": "ربعة بحال رجيلات السبيع!"
+    }
+  },
+  {
+    "id": "num_5",
+    "category": "numbers",
+    "translations": {
+      "fr": "5 • Cinq",
+      "ar": "٥ • خمسة",
+      "ary": "5 • خمسة"
+    },
+    "phonetic": {
+      "fr": "sank",
+      "ar": "khamsa",
+      "ary": "khamsa"
+    },
+    "image": "/assets/words/num_5.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_5.mp3",
+      "ar": "/assets/audio/ar/num_5.mp3",
+      "ary": "/assets/audio/ary/num_5.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "5",
+        "cinq"
+      ],
+      "ar": [
+        "5",
+        "٥",
+        "خمسة"
+      ],
+      "ary": [
+        "5",
+        "خمسة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "5 comme les 5 doigts de la main !",
+      "ar": "خمسة مثل أصابع اليد الواحدة!",
+      "ary": "خمسة بحال صبيعات اليد!"
+    }
+  },
+  {
+    "id": "num_6",
+    "category": "numbers",
+    "translations": {
+      "fr": "6 • Six",
+      "ar": "٦ • ستة",
+      "ary": "6 • ستة"
+    },
+    "phonetic": {
+      "fr": "sees",
+      "ar": "sitta",
+      "ary": "setta"
+    },
+    "image": "/assets/words/num_6.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_6.mp3",
+      "ar": "/assets/audio/ar/num_6.mp3",
+      "ary": "/assets/audio/ary/num_6.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "6",
+        "six"
+      ],
+      "ar": [
+        "6",
+        "٦",
+        "ستة"
+      ],
+      "ary": [
+        "6",
+        "ستة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "6 comme six beaux papillons colorés !",
+      "ar": "ستة مثل ست فراشات ملونة!",
+      "ary": "ستة بحال ستة د الفراشات!"
+    }
+  },
+  {
+    "id": "num_7",
+    "category": "numbers",
+    "translations": {
+      "fr": "7 • Sept",
+      "ar": "٧ • سبعة",
+      "ary": "7 • سبعة"
+    },
+    "phonetic": {
+      "fr": "set",
+      "ar": "sab'a",
+      "ary": "seb'a"
+    },
+    "image": "/assets/words/num_7.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_7.mp3",
+      "ar": "/assets/audio/ar/num_7.mp3",
+      "ary": "/assets/audio/ary/num_7.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "7",
+        "sept"
+      ],
+      "ar": [
+        "7",
+        "٧",
+        "سبعة"
+      ],
+      "ary": [
+        "7",
+        "سبعة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "7 comme les 7 couleurs de l'arc-en-ciel !",
+      "ar": "سبعة مثل ألوان قوس قزح البديعة!",
+      "ary": "سبعة بحال لوان قوس قزح!"
+    }
+  },
+  {
+    "id": "num_8",
+    "category": "numbers",
+    "translations": {
+      "fr": "8 • Huit",
+      "ar": "٨ • ثمانية",
+      "ary": "8 • تمنية"
+    },
+    "phonetic": {
+      "fr": "weet",
+      "ar": "thamaaniya",
+      "ary": "tmanya"
+    },
+    "image": "/assets/words/num_8.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_8.mp3",
+      "ar": "/assets/audio/ar/num_8.mp3",
+      "ary": "/assets/audio/ary/num_8.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "8",
+        "huit"
+      ],
+      "ar": [
+        "8",
+        "٨",
+        "ثمانية",
+        "تمنية"
+      ],
+      "ary": [
+        "8",
+        "تمنية"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "8 comme huit notes de musique joyeuses !",
+      "ar": "ثمانية مثل نغمات الموسيقى الجميلة!",
+      "ary": "تمنية بحال نغمات الموسيقى!"
+    }
+  },
+  {
+    "id": "num_9",
+    "category": "numbers",
+    "translations": {
+      "fr": "9 • Neuf",
+      "ar": "٩ • تسعة",
+      "ary": "9 • تسعود"
+    },
+    "phonetic": {
+      "fr": "nuf",
+      "ar": "tis'a",
+      "ary": "tes'ood"
+    },
+    "image": "/assets/words/num_9.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_9.mp3",
+      "ar": "/assets/audio/ar/num_9.mp3",
+      "ary": "/assets/audio/ary/num_9.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "9",
+        "neuf"
+      ],
+      "ar": [
+        "9",
+        "٩",
+        "تسعة"
+      ],
+      "ary": [
+        "9",
+        "تسعود",
+        "تسعة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "9 comme neuf ballons qui s'envolent !",
+      "ar": "تسعة مثل بالونات تطير في السماء!",
+      "ary": "تسعود بحال نفيخات كيطيرو!"
+    }
+  },
+  {
+    "id": "num_10",
+    "category": "numbers",
+    "translations": {
+      "fr": "10 • Dix",
+      "ar": "١٠ • عشرة",
+      "ary": "10 • عشرة"
+    },
+    "phonetic": {
+      "fr": "dees",
+      "ar": "'ashara",
+      "ary": "'ashra"
+    },
+    "image": "/assets/words/num_10.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_10.mp3",
+      "ar": "/assets/audio/ar/num_10.mp3",
+      "ary": "/assets/audio/ary/num_10.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "10",
+        "dix"
+      ],
+      "ar": [
+        "10",
+        "١٠",
+        "عشرة"
+      ],
+      "ary": [
+        "10",
+        "عشرة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "10 comme nos 10 doigts pour applaudir Imrane !",
+      "ar": "عشرة لنصفق جميعاً للبطل عمران!",
+      "ary": "عشرة باش نصفقو لعمران!"
+    }
+  },
+  {
+    "id": "num_11",
+    "category": "numbers",
+    "translations": {
+      "fr": "11 • Onze",
+      "ar": "١١ • أحد عشر",
+      "ary": "11 • حداش"
+    },
+    "phonetic": {
+      "fr": "onz",
+      "ar": "ahada 'ashar",
+      "ary": "h'dash"
+    },
+    "image": "/assets/words/num_11.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_11.mp3",
+      "ar": "/assets/audio/ar/num_11.mp3",
+      "ary": "/assets/audio/ary/num_11.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "11",
+        "onze"
+      ],
+      "ar": [
+        "11",
+        "١١",
+        "أحد عشر",
+        "حداش"
+      ],
+      "ary": [
+        "11",
+        "حداش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "11 c'est 10 plus 1 !",
+      "ar": "أحد عشر خطوة نحو القمة!",
+      "ary": "حداش هي عشرة وزيد واحد!"
+    }
+  },
+  {
+    "id": "num_12",
+    "category": "numbers",
+    "translations": {
+      "fr": "12 • Douze",
+      "ar": "١٢ • اثنا عشر",
+      "ary": "12 • طناش"
+    },
+    "phonetic": {
+      "fr": "dooz",
+      "ar": "ithna 'ashar",
+      "ary": "tnash"
+    },
+    "image": "/assets/words/num_12.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_12.mp3",
+      "ar": "/assets/audio/ar/num_12.mp3",
+      "ary": "/assets/audio/ary/num_12.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "12",
+        "douze"
+      ],
+      "ar": [
+        "12",
+        "١٢",
+        "اثنا عشر",
+        "طناش"
+      ],
+      "ary": [
+        "12",
+        "طناش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "12 comme les douze heures de l'horloge !",
+      "ar": "اثنا عشر مثل ساعات الساعة!",
+      "ary": "طناش بحال سوايع المگانة!"
+    }
+  },
+  {
+    "id": "num_13",
+    "category": "numbers",
+    "translations": {
+      "fr": "13 • Treize",
+      "ar": "١٣ • ثلاثة عشر",
+      "ary": "13 • تلطاش"
+    },
+    "phonetic": {
+      "fr": "trez",
+      "ar": "thalaathata 'ashar",
+      "ary": "tlattash"
+    },
+    "image": "/assets/words/num_13.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_13.mp3",
+      "ar": "/assets/audio/ar/num_13.mp3",
+      "ary": "/assets/audio/ary/num_13.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "13",
+        "treize"
+      ],
+      "ar": [
+        "13",
+        "١٣",
+        "ثلاثة عشر"
+      ],
+      "ary": [
+        "13",
+        "تلطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "13 c'est super, on continue !",
+      "ar": "ثلاثة عشر، أحسنت يا بطل!",
+      "ary": "تلطاش، تبارك الله عليك!"
+    }
+  },
+  {
+    "id": "num_14",
+    "category": "numbers",
+    "translations": {
+      "fr": "14 • Quatorze",
+      "ar": "١٤ • أربعة عشر",
+      "ary": "14 • ربعطاش"
+    },
+    "phonetic": {
+      "fr": "katorz",
+      "ar": "arba'ata 'ashar",
+      "ary": "reba'tash"
+    },
+    "image": "/assets/words/num_14.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_14.mp3",
+      "ar": "/assets/audio/ar/num_14.mp3",
+      "ary": "/assets/audio/ary/num_14.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "14",
+        "quatorze"
+      ],
+      "ar": [
+        "14",
+        "١٤",
+        "أربعة عشر"
+      ],
+      "ary": [
+        "14",
+        "ربعطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "14 étoiles qui brillent dans le ciel !",
+      "ar": "أربعة عشر نجمة تضيء السماء!",
+      "ary": "ربعطاش د النجمات منورين!"
+    }
+  },
+  {
+    "id": "num_15",
+    "category": "numbers",
+    "translations": {
+      "fr": "15 • Quinze",
+      "ar": "١٥ • خمسة عشر",
+      "ary": "15 • خمسطاش"
+    },
+    "phonetic": {
+      "fr": "kanz",
+      "ar": "khamsata 'ashar",
+      "ary": "khemstash"
+    },
+    "image": "/assets/words/num_15.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_15.mp3",
+      "ar": "/assets/audio/ar/num_15.mp3",
+      "ary": "/assets/audio/ary/num_15.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "15",
+        "quinze"
+      ],
+      "ar": [
+        "15",
+        "١٥",
+        "خمسة عشر"
+      ],
+      "ary": [
+        "15",
+        "خمسطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "15 pas de danse avec le Petit Lion !",
+      "ar": "خمسة عشر خطوة رقص مع الأسد!",
+      "ary": "خمسطاش نشاط وفرحة مع السبيع!"
+    }
+  },
+  {
+    "id": "num_16",
+    "category": "numbers",
+    "translations": {
+      "fr": "16 • Seize",
+      "ar": "١٦ • ستة عشر",
+      "ary": "16 • سطاش"
+    },
+    "phonetic": {
+      "fr": "sez",
+      "ar": "sittata 'ashar",
+      "ary": "settash"
+    },
+    "image": "/assets/words/num_16.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_16.mp3",
+      "ar": "/assets/audio/ar/num_16.mp3",
+      "ary": "/assets/audio/ary/num_16.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "16",
+        "seize"
+      ],
+      "ar": [
+        "16",
+        "١٦",
+        "ستة عشر"
+      ],
+      "ary": [
+        "16",
+        "سطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "16 c'est magnifique Imrane !",
+      "ar": "ستة عشر، ممتاز يا عمران!",
+      "ary": "سطاش، برافو عليك عمران!"
+    }
+  },
+  {
+    "id": "num_17",
+    "category": "numbers",
+    "translations": {
+      "fr": "17 • Dix-sept",
+      "ar": "١٧ • سبعة عشر",
+      "ary": "17 • سبعطاش"
+    },
+    "phonetic": {
+      "fr": "dees-set",
+      "ar": "sab'ata 'ashar",
+      "ary": "sbe'tash"
+    },
+    "image": "/assets/words/num_17.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_17.mp3",
+      "ar": "/assets/audio/ar/num_17.mp3",
+      "ary": "/assets/audio/ary/num_17.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "17",
+        "dix-sept",
+        "dix sept"
+      ],
+      "ar": [
+        "17",
+        "١٧",
+        "سبعة عشر"
+      ],
+      "ary": [
+        "17",
+        "سبعطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "17 bravo champion !",
+      "ar": "سبعة عشر خطوة نحو النجاح!",
+      "ary": "سبعطاش خطوة للنجاح!"
+    }
+  },
+  {
+    "id": "num_18",
+    "category": "numbers",
+    "translations": {
+      "fr": "18 • Dix-huit",
+      "ar": "١٨ • ثمانية عشر",
+      "ary": "18 • تمنطاش"
+    },
+    "phonetic": {
+      "fr": "dees-weet",
+      "ar": "thamaaniyata 'ashar",
+      "ary": "tmentash"
+    },
+    "image": "/assets/words/num_18.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_18.mp3",
+      "ar": "/assets/audio/ar/num_18.mp3",
+      "ary": "/assets/audio/ary/num_18.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "18",
+        "dix-huit",
+        "dix huit"
+      ],
+      "ar": [
+        "18",
+        "١٨",
+        "ثمانية عشر"
+      ],
+      "ary": [
+        "18",
+        "تمنطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "18 bientôt le sommet !",
+      "ar": "ثمانية عشر، قربنا من النهاية!",
+      "ary": "تمنطاش، قربنا نوصلو!"
+    }
+  },
+  {
+    "id": "num_19",
+    "category": "numbers",
+    "translations": {
+      "fr": "19 • Dix-neuf",
+      "ar": "١٩ • تسعة عشر",
+      "ary": "19 • تسعطاش"
+    },
+    "phonetic": {
+      "fr": "dees-nuf",
+      "ar": "tis'ata 'ashar",
+      "ary": "tsa'tash"
+    },
+    "image": "/assets/words/num_19.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_19.mp3",
+      "ar": "/assets/audio/ar/num_19.mp3",
+      "ary": "/assets/audio/ary/num_19.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "19",
+        "dix-neuf",
+        "dix neuf"
+      ],
+      "ar": [
+        "19",
+        "١٩",
+        "تسعة عشر"
+      ],
+      "ary": [
+        "19",
+        "تسعطاش"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "19 encore un petit effort !",
+      "ar": "تسعة عشر، بقيت خطوة واحدة!",
+      "ary": "تسعطاش، بقات لينا خطوة!"
+    }
+  },
+  {
+    "id": "num_20",
+    "category": "numbers",
+    "translations": {
+      "fr": "20 • Vingt",
+      "ar": "٢٠ • عشرون",
+      "ary": "20 • عشرين"
+    },
+    "phonetic": {
+      "fr": "van",
+      "ar": "'ishroon",
+      "ary": "'ishreen"
+    },
+    "image": "/assets/words/num_20.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/num_20.mp3",
+      "ar": "/assets/audio/ar/num_20.mp3",
+      "ary": "/assets/audio/ary/num_20.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "20",
+        "vingt"
+      ],
+      "ar": [
+        "20",
+        "٢٠",
+        "عشرون",
+        "عشرين"
+      ],
+      "ary": [
+        "20",
+        "عشرين"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "20 sur 20 ! Un grand bravo à Imrane ! 🎉",
+      "ar": "عشرون من عشرين! بطل الأرقام عمران! 🏆",
+      "ary": "عشرين على عشرين! بطل الأرقام عمران! 🏆"
+    }
+  },
+  {
+    "id": "letter_a",
+    "category": "letters",
+    "translations": {
+      "fr": "A a",
+      "ar": "A a",
+      "ary": "A a"
+    },
+    "phonetic": {
+      "fr": "ah",
+      "ar": "alif / a",
+      "ary": "a"
+    },
+    "image": "/assets/words/letter_a.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_a.mp3",
+      "ar": "/assets/audio/ar/letter_a.mp3",
+      "ary": "/assets/audio/ary/letter_a.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "a",
+        "A",
+        "lettre a",
+        "la lettre a",
+        "ah"
+      ],
+      "ar": [
+        "a",
+        "A",
+        "حرف a"
+      ],
+      "ary": [
+        "a",
+        "A",
+        "الحرف a"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "A comme Avion !",
+      "ar": "A كما في Avion (طائرة) !",
+      "ary": "A بحال Avion !"
+    }
+  },
+  {
+    "id": "letter_b",
+    "category": "letters",
+    "translations": {
+      "fr": "B b",
+      "ar": "B b",
+      "ary": "B b"
+    },
+    "phonetic": {
+      "fr": "bé",
+      "ar": "baa / b",
+      "ary": "b"
+    },
+    "image": "/assets/words/letter_b.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_b.mp3",
+      "ar": "/assets/audio/ar/letter_b.mp3",
+      "ary": "/assets/audio/ary/letter_b.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "b",
+        "B",
+        "lettre b",
+        "la lettre b",
+        "bé"
+      ],
+      "ar": [
+        "b",
+        "B",
+        "حرف b"
+      ],
+      "ary": [
+        "b",
+        "B",
+        "الحرف b"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "B comme Ballon !",
+      "ar": "B كما في Ballon (كرة) !",
+      "ary": "B بحال Ballon !"
+    }
+  },
+  {
+    "id": "letter_c",
+    "category": "letters",
+    "translations": {
+      "fr": "C c",
+      "ar": "C c",
+      "ary": "C c"
+    },
+    "phonetic": {
+      "fr": "sé",
+      "ar": "c",
+      "ary": "c"
+    },
+    "image": "/assets/words/letter_c.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_c.mp3",
+      "ar": "/assets/audio/ar/letter_c.mp3",
+      "ary": "/assets/audio/ary/letter_c.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "c",
+        "C",
+        "lettre c",
+        "la lettre c",
+        "sé"
+      ],
+      "ar": [
+        "c",
+        "C",
+        "حرف c"
+      ],
+      "ary": [
+        "c",
+        "C",
+        "الحرف c"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "C comme Chat !",
+      "ar": "C كما في Chat (قطة) !",
+      "ary": "C بحال Chat !"
+    }
+  },
+  {
+    "id": "letter_d",
+    "category": "letters",
+    "translations": {
+      "fr": "D d",
+      "ar": "D d",
+      "ary": "D d"
+    },
+    "phonetic": {
+      "fr": "dé",
+      "ar": "dal / d",
+      "ary": "d"
+    },
+    "image": "/assets/words/letter_d.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_d.mp3",
+      "ar": "/assets/audio/ar/letter_d.mp3",
+      "ary": "/assets/audio/ary/letter_d.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "d",
+        "D",
+        "lettre d",
+        "la lettre d",
+        "dé"
+      ],
+      "ar": [
+        "d",
+        "D",
+        "حرف d"
+      ],
+      "ary": [
+        "d",
+        "D",
+        "الحرف d"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "D comme Dauphin !",
+      "ar": "D كما في Dauphin (دلفين) !",
+      "ary": "D بحال Dauphin !"
+    }
+  },
+  {
+    "id": "letter_e",
+    "category": "letters",
+    "translations": {
+      "fr": "E e",
+      "ar": "E e",
+      "ary": "E e"
+    },
+    "phonetic": {
+      "fr": "e",
+      "ar": "e",
+      "ary": "e"
+    },
+    "image": "/assets/words/letter_e.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_e.mp3",
+      "ar": "/assets/audio/ar/letter_e.mp3",
+      "ary": "/assets/audio/ary/letter_e.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "e",
+        "E",
+        "lettre e",
+        "la lettre e",
+        "e"
+      ],
+      "ar": [
+        "e",
+        "E",
+        "حرف e"
+      ],
+      "ary": [
+        "e",
+        "E",
+        "الحرف e"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "E comme Éléphant !",
+      "ar": "E كما في Éléphant (فيل) !",
+      "ary": "E بحال Éléphant !"
+    }
+  },
+  {
+    "id": "letter_f",
+    "category": "letters",
+    "translations": {
+      "fr": "F f",
+      "ar": "F f",
+      "ary": "F f"
+    },
+    "phonetic": {
+      "fr": "èf",
+      "ar": "faa / f",
+      "ary": "f"
+    },
+    "image": "/assets/words/letter_f.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_f.mp3",
+      "ar": "/assets/audio/ar/letter_f.mp3",
+      "ary": "/assets/audio/ary/letter_f.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "f",
+        "F",
+        "lettre f",
+        "la lettre f",
+        "èf"
+      ],
+      "ar": [
+        "f",
+        "F",
+        "حرف f"
+      ],
+      "ary": [
+        "f",
+        "F",
+        "الحرف f"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "F comme Fleur !",
+      "ar": "F كما في Fleur (وردة) !",
+      "ary": "F بحال Fleur !"
+    }
+  },
+  {
+    "id": "letter_g",
+    "category": "letters",
+    "translations": {
+      "fr": "G g",
+      "ar": "G g",
+      "ary": "G g"
+    },
+    "phonetic": {
+      "fr": "jé",
+      "ar": "g",
+      "ary": "g"
+    },
+    "image": "/assets/words/letter_g.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_g.mp3",
+      "ar": "/assets/audio/ar/letter_g.mp3",
+      "ary": "/assets/audio/ary/letter_g.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "g",
+        "G",
+        "lettre g",
+        "la lettre g",
+        "jé"
+      ],
+      "ar": [
+        "g",
+        "G",
+        "حرف g"
+      ],
+      "ary": [
+        "g",
+        "G",
+        "الحرف g"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "G comme Girafe !",
+      "ar": "G كما في Girafe (زرافة) !",
+      "ary": "G بحال Girafe !"
+    }
+  },
+  {
+    "id": "letter_h",
+    "category": "letters",
+    "translations": {
+      "fr": "H h",
+      "ar": "H h",
+      "ary": "H h"
+    },
+    "phonetic": {
+      "fr": "ash",
+      "ar": "h",
+      "ary": "h"
+    },
+    "image": "/assets/words/letter_h.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_h.mp3",
+      "ar": "/assets/audio/ar/letter_h.mp3",
+      "ary": "/assets/audio/ary/letter_h.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "h",
+        "H",
+        "lettre h",
+        "la lettre h",
+        "ash"
+      ],
+      "ar": [
+        "h",
+        "H",
+        "حرف h"
+      ],
+      "ary": [
+        "h",
+        "H",
+        "الحرف h"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "H comme Hérisson !",
+      "ar": "H كما في Hérisson (قنفذ) !",
+      "ary": "H بحال Hérisson !"
+    }
+  },
+  {
+    "id": "letter_i",
+    "category": "letters",
+    "translations": {
+      "fr": "I i",
+      "ar": "I i",
+      "ary": "I i"
+    },
+    "phonetic": {
+      "fr": "ee",
+      "ar": "i",
+      "ary": "i"
+    },
+    "image": "/assets/words/letter_i.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_i.mp3",
+      "ar": "/assets/audio/ar/letter_i.mp3",
+      "ary": "/assets/audio/ary/letter_i.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "i",
+        "I",
+        "lettre i",
+        "la lettre i",
+        "ee"
+      ],
+      "ar": [
+        "i",
+        "I",
+        "حرف i"
+      ],
+      "ary": [
+        "i",
+        "I",
+        "الحرف i"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "I comme Imrane !",
+      "ar": "I كما في Imrane (عمران البطل) !",
+      "ary": "I بحال Imrane !"
+    }
+  },
+  {
+    "id": "letter_j",
+    "category": "letters",
+    "translations": {
+      "fr": "J j",
+      "ar": "J j",
+      "ary": "J j"
+    },
+    "phonetic": {
+      "fr": "jee",
+      "ar": "j",
+      "ary": "j"
+    },
+    "image": "/assets/words/letter_j.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_j.mp3",
+      "ar": "/assets/audio/ar/letter_j.mp3",
+      "ary": "/assets/audio/ary/letter_j.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "j",
+        "J",
+        "lettre j",
+        "la lettre j",
+        "jee"
+      ],
+      "ar": [
+        "j",
+        "J",
+        "حرف j"
+      ],
+      "ary": [
+        "j",
+        "J",
+        "الحرف j"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "J comme Jus !",
+      "ar": "J كما في Jus (عصير) !",
+      "ary": "J بحال Jus !"
+    }
+  },
+  {
+    "id": "letter_k",
+    "category": "letters",
+    "translations": {
+      "fr": "K k",
+      "ar": "K k",
+      "ary": "K k"
+    },
+    "phonetic": {
+      "fr": "ka",
+      "ar": "kaaf / k",
+      "ary": "k"
+    },
+    "image": "/assets/words/letter_k.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_k.mp3",
+      "ar": "/assets/audio/ar/letter_k.mp3",
+      "ary": "/assets/audio/ary/letter_k.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "k",
+        "K",
+        "lettre k",
+        "la lettre k",
+        "ka"
+      ],
+      "ar": [
+        "k",
+        "K",
+        "حرف k"
+      ],
+      "ary": [
+        "k",
+        "K",
+        "الحرف k"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "K comme Koala !",
+      "ar": "K كما في Koala (كوالا) !",
+      "ary": "K بحال Koala !"
+    }
+  },
+  {
+    "id": "letter_l",
+    "category": "letters",
+    "translations": {
+      "fr": "L l",
+      "ar": "L l",
+      "ary": "L l"
+    },
+    "phonetic": {
+      "fr": "èl",
+      "ar": "laam / l",
+      "ary": "l"
+    },
+    "image": "/assets/words/letter_l.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_l.mp3",
+      "ar": "/assets/audio/ar/letter_l.mp3",
+      "ary": "/assets/audio/ary/letter_l.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "l",
+        "L",
+        "lettre l",
+        "la lettre l",
+        "èl"
+      ],
+      "ar": [
+        "l",
+        "L",
+        "حرف l"
+      ],
+      "ary": [
+        "l",
+        "L",
+        "الحرف l"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "L comme Lion !",
+      "ar": "L كما في Lion (أسد) !",
+      "ary": "L بحال Lion !"
+    }
+  },
+  {
+    "id": "letter_m",
+    "category": "letters",
+    "translations": {
+      "fr": "M m",
+      "ar": "M m",
+      "ary": "M m"
+    },
+    "phonetic": {
+      "fr": "èm",
+      "ar": "meem / m",
+      "ary": "m"
+    },
+    "image": "/assets/words/letter_m.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_m.mp3",
+      "ar": "/assets/audio/ar/letter_m.mp3",
+      "ary": "/assets/audio/ary/letter_m.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "m",
+        "M",
+        "lettre m",
+        "la lettre m",
+        "èm"
+      ],
+      "ar": [
+        "m",
+        "M",
+        "حرف m"
+      ],
+      "ary": [
+        "m",
+        "M",
+        "الحرف m"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "M comme Maison !",
+      "ar": "M كما في Maison (بيت) !",
+      "ary": "M بحال Maison !"
+    }
+  },
+  {
+    "id": "letter_n",
+    "category": "letters",
+    "translations": {
+      "fr": "N n",
+      "ar": "N n",
+      "ary": "N n"
+    },
+    "phonetic": {
+      "fr": "èn",
+      "ar": "noon / n",
+      "ary": "n"
+    },
+    "image": "/assets/words/letter_n.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_n.mp3",
+      "ar": "/assets/audio/ar/letter_n.mp3",
+      "ary": "/assets/audio/ary/letter_n.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "n",
+        "N",
+        "lettre n",
+        "la lettre n",
+        "èn"
+      ],
+      "ar": [
+        "n",
+        "N",
+        "حرف n"
+      ],
+      "ary": [
+        "n",
+        "N",
+        "الحرف n"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "N comme Nuage !",
+      "ar": "N كما في Nuage (سحابة) !",
+      "ary": "N بحال Nuage !"
+    }
+  },
+  {
+    "id": "letter_o",
+    "category": "letters",
+    "translations": {
+      "fr": "O o",
+      "ar": "O o",
+      "ary": "O o"
+    },
+    "phonetic": {
+      "fr": "o",
+      "ar": "o",
+      "ary": "o"
+    },
+    "image": "/assets/words/letter_o.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_o.mp3",
+      "ar": "/assets/audio/ar/letter_o.mp3",
+      "ary": "/assets/audio/ary/letter_o.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "o",
+        "O",
+        "lettre o",
+        "la lettre o",
+        "o"
+      ],
+      "ar": [
+        "o",
+        "O",
+        "حرف o"
+      ],
+      "ary": [
+        "o",
+        "O",
+        "الحرف o"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "O comme Orange !",
+      "ar": "O كما في Orange (برتقالة) !",
+      "ary": "O بحال Orange !"
+    }
+  },
+  {
+    "id": "letter_p",
+    "category": "letters",
+    "translations": {
+      "fr": "P p",
+      "ar": "P p",
+      "ary": "P p"
+    },
+    "phonetic": {
+      "fr": "pé",
+      "ar": "p",
+      "ary": "p"
+    },
+    "image": "/assets/words/letter_p.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_p.mp3",
+      "ar": "/assets/audio/ar/letter_p.mp3",
+      "ary": "/assets/audio/ary/letter_p.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "p",
+        "P",
+        "lettre p",
+        "la lettre p",
+        "pé"
+      ],
+      "ar": [
+        "p",
+        "P",
+        "حرف p"
+      ],
+      "ary": [
+        "p",
+        "P",
+        "الحرف p"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "P comme Pomme !",
+      "ar": "P كما في Pomme (تفاحة) !",
+      "ary": "P بحال Pomme !"
+    }
+  },
+  {
+    "id": "letter_q",
+    "category": "letters",
+    "translations": {
+      "fr": "Q q",
+      "ar": "Q q",
+      "ary": "Q q"
+    },
+    "phonetic": {
+      "fr": "ku",
+      "ar": "q",
+      "ary": "q"
+    },
+    "image": "/assets/words/letter_q.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_q.mp3",
+      "ar": "/assets/audio/ar/letter_q.mp3",
+      "ary": "/assets/audio/ary/letter_q.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "q",
+        "Q",
+        "lettre q",
+        "la lettre q",
+        "ku"
+      ],
+      "ar": [
+        "q",
+        "Q",
+        "حرف q"
+      ],
+      "ary": [
+        "q",
+        "Q",
+        "الحرف q"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Q comme Quatre !",
+      "ar": "Q كما في Quatre (أربعة) !",
+      "ary": "Q بحال Quatre !"
+    }
+  },
+  {
+    "id": "letter_r",
+    "category": "letters",
+    "translations": {
+      "fr": "R r",
+      "ar": "R r",
+      "ary": "R r"
+    },
+    "phonetic": {
+      "fr": "èr",
+      "ar": "raa / r",
+      "ary": "r"
+    },
+    "image": "/assets/words/letter_r.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_r.mp3",
+      "ar": "/assets/audio/ar/letter_r.mp3",
+      "ary": "/assets/audio/ary/letter_r.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "r",
+        "R",
+        "lettre r",
+        "la lettre r",
+        "èr"
+      ],
+      "ar": [
+        "r",
+        "R",
+        "حرف r"
+      ],
+      "ary": [
+        "r",
+        "R",
+        "الحرف r"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "R comme Robot !",
+      "ar": "R كما في Robot (روبوت) !",
+      "ary": "R بحال Robot !"
+    }
+  },
+  {
+    "id": "letter_s",
+    "category": "letters",
+    "translations": {
+      "fr": "S s",
+      "ar": "S s",
+      "ary": "S s"
+    },
+    "phonetic": {
+      "fr": "ès",
+      "ar": "seen / s",
+      "ary": "s"
+    },
+    "image": "/assets/words/letter_s.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_s.mp3",
+      "ar": "/assets/audio/ar/letter_s.mp3",
+      "ary": "/assets/audio/ary/letter_s.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "s",
+        "S",
+        "lettre s",
+        "la lettre s",
+        "ès"
+      ],
+      "ar": [
+        "s",
+        "S",
+        "حرف s"
+      ],
+      "ary": [
+        "s",
+        "S",
+        "الحرف s"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "S comme Soleil !",
+      "ar": "S كما في Soleil (شمس) !",
+      "ary": "S بحال Soleil !"
+    }
+  },
+  {
+    "id": "letter_t",
+    "category": "letters",
+    "translations": {
+      "fr": "T t",
+      "ar": "T t",
+      "ary": "T t"
+    },
+    "phonetic": {
+      "fr": "té",
+      "ar": "taa / t",
+      "ary": "t"
+    },
+    "image": "/assets/words/letter_t.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_t.mp3",
+      "ar": "/assets/audio/ar/letter_t.mp3",
+      "ary": "/assets/audio/ary/letter_t.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "t",
+        "T",
+        "lettre t",
+        "la lettre t",
+        "té"
+      ],
+      "ar": [
+        "t",
+        "T",
+        "حرف t"
+      ],
+      "ary": [
+        "t",
+        "T",
+        "الحرف t"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "T comme Train !",
+      "ar": "T كما في Train (قطار) !",
+      "ary": "T بحال Train !"
+    }
+  },
+  {
+    "id": "letter_u",
+    "category": "letters",
+    "translations": {
+      "fr": "U u",
+      "ar": "U u",
+      "ary": "U u"
+    },
+    "phonetic": {
+      "fr": "u",
+      "ar": "u",
+      "ary": "u"
+    },
+    "image": "/assets/words/letter_u.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_u.mp3",
+      "ar": "/assets/audio/ar/letter_u.mp3",
+      "ary": "/assets/audio/ary/letter_u.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "u",
+        "U",
+        "lettre u",
+        "la lettre u",
+        "u"
+      ],
+      "ar": [
+        "u",
+        "U",
+        "حرف u"
+      ],
+      "ary": [
+        "u",
+        "U",
+        "الحرف u"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "U comme Uniforme !",
+      "ar": "U كما في Uniforme (زي مدرسي) !",
+      "ary": "U بحال Uniforme !"
+    }
+  },
+  {
+    "id": "letter_v",
+    "category": "letters",
+    "translations": {
+      "fr": "V v",
+      "ar": "V v",
+      "ary": "V v"
+    },
+    "phonetic": {
+      "fr": "vé",
+      "ar": "v",
+      "ary": "v"
+    },
+    "image": "/assets/words/letter_v.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_v.mp3",
+      "ar": "/assets/audio/ar/letter_v.mp3",
+      "ary": "/assets/audio/ary/letter_v.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "v",
+        "V",
+        "lettre v",
+        "la lettre v",
+        "vé"
+      ],
+      "ar": [
+        "v",
+        "V",
+        "حرف v"
+      ],
+      "ary": [
+        "v",
+        "V",
+        "الحرف v"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "V comme Voiture !",
+      "ar": "V كما في Voiture (سيارة) !",
+      "ary": "V بحال Voiture !"
+    }
+  },
+  {
+    "id": "letter_w",
+    "category": "letters",
+    "translations": {
+      "fr": "W w",
+      "ar": "W w",
+      "ary": "W w"
+    },
+    "phonetic": {
+      "fr": "double-vé",
+      "ar": "w",
+      "ary": "w"
+    },
+    "image": "/assets/words/letter_w.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_w.mp3",
+      "ar": "/assets/audio/ar/letter_w.mp3",
+      "ary": "/assets/audio/ary/letter_w.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "w",
+        "W",
+        "lettre w",
+        "la lettre w",
+        "double-vé"
+      ],
+      "ar": [
+        "w",
+        "W",
+        "حرف w"
+      ],
+      "ary": [
+        "w",
+        "W",
+        "الحرف w"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "W comme Wagon !",
+      "ar": "W كما في Wagon (عربة قطار) !",
+      "ary": "W بحال Wagon !"
+    }
+  },
+  {
+    "id": "letter_x",
+    "category": "letters",
+    "translations": {
+      "fr": "X x",
+      "ar": "X x",
+      "ary": "X x"
+    },
+    "phonetic": {
+      "fr": "iks",
+      "ar": "x",
+      "ary": "x"
+    },
+    "image": "/assets/words/letter_x.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_x.mp3",
+      "ar": "/assets/audio/ar/letter_x.mp3",
+      "ary": "/assets/audio/ary/letter_x.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "x",
+        "X",
+        "lettre x",
+        "la lettre x",
+        "iks"
+      ],
+      "ar": [
+        "x",
+        "X",
+        "حرف x"
+      ],
+      "ary": [
+        "x",
+        "X",
+        "الحرف x"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "X comme Xylophone !",
+      "ar": "X كما في Xylophone (آلة موسيقية) !",
+      "ary": "X بحال Xylophone !"
+    }
+  },
+  {
+    "id": "letter_y",
+    "category": "letters",
+    "translations": {
+      "fr": "Y y",
+      "ar": "Y y",
+      "ary": "Y y"
+    },
+    "phonetic": {
+      "fr": "i-grèk",
+      "ar": "y",
+      "ary": "y"
+    },
+    "image": "/assets/words/letter_y.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_y.mp3",
+      "ar": "/assets/audio/ar/letter_y.mp3",
+      "ary": "/assets/audio/ary/letter_y.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "y",
+        "Y",
+        "lettre y",
+        "la lettre y",
+        "i-grèk"
+      ],
+      "ar": [
+        "y",
+        "Y",
+        "حرف y"
+      ],
+      "ary": [
+        "y",
+        "Y",
+        "الحرف y"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Y comme Yogourt !",
+      "ar": "Y كما في Yogourt (ياغورت) !",
+      "ary": "Y بحال Yogourt !"
+    }
+  },
+  {
+    "id": "letter_z",
+    "category": "letters",
+    "translations": {
+      "fr": "Z z",
+      "ar": "Z z",
+      "ary": "Z z"
+    },
+    "phonetic": {
+      "fr": "zèd",
+      "ar": "z",
+      "ary": "z"
+    },
+    "image": "/assets/words/letter_z.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/letter_z.mp3",
+      "ar": "/assets/audio/ar/letter_z.mp3",
+      "ary": "/assets/audio/ary/letter_z.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "z",
+        "Z",
+        "lettre z",
+        "la lettre z",
+        "zèd"
+      ],
+      "ar": [
+        "z",
+        "Z",
+        "حرف z"
+      ],
+      "ary": [
+        "z",
+        "Z",
+        "الحرف z"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Z comme Zèbre !",
+      "ar": "Z كما في Zèbre (حمار وحشي) !",
+      "ary": "Z بحال Zèbre !"
     }
   }
 ]

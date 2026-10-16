@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="letbg_F" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FF7675"/>
+      <stop offset="100%" stop-color="#D63031"/>
+    </radialGradient>
+    <filter id="letshadow_F" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background Bubble -->
+  <rect x="15" y="15" width="170" height="170" rx="48" fill="url(#letbg_F)" stroke="#B71540" stroke-width="6" filter="url(#letshadow_F)"/>
+
+  <!-- Top shine -->
+  <ellipse cx="100" cy="45" rx="55" ry="16" fill="#FFF" opacity="0.35"/>
+
+  <!-- Decorative Sparkles -->
+  <polygon points="45,35 48,43 56,45 48,47 45,55 42,47 34,45 42,43" fill="#FFEAA7"/>
+  <circle cx="156" cy="48" r="6" fill="#FFF" opacity="0.85"/>
+  <circle cx="45" cy="155" r="5" fill="#FFEAA7" opacity="0.85"/>
+  <polygon points="155,145 157,151 163,153 157,155 155,161 153,155 147,153 153,151" fill="#FFF"/>
+
+  <!-- Letter Pair 3D Shadow -->
+  <g opacity="0.4" transform="translate(0, 4)">
+    <text x="80" y="125" font-family="'Fredoka', 'Arial Rounded MT Bold', sans-serif" font-size="86" font-weight="900" text-anchor="middle" fill="#B71540">F</text>
+    <text x="135" y="125" font-family="'Fredoka', 'Arial Rounded MT Bold', sans-serif" font-size="64" font-weight="900" text-anchor="middle" fill="#B71540">f</text>
+  </g>
+
+  <!-- Letter Pair Main -->
+  <text x="80" y="125" font-family="'Fredoka', 'Arial Rounded MT Bold', sans-serif" font-size="86" font-weight="900" text-anchor="middle" fill="#FFFFFF">F</text>
+  <text x="135" y="125" font-family="'Fredoka', 'Arial Rounded MT Bold', sans-serif" font-size="64" font-weight="900" text-anchor="middle" fill="#FFEAA7">f</text>
+
+  <!-- Base little star -->
+  <circle cx="100" cy="158" r="4" fill="#FFFFFF" opacity="0.9"/>
+</svg>

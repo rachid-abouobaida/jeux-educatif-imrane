@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Word, AppLanguage, UserPreferences } from '../../types';
+import { Word, AppLanguage, UserPreferences, WordCategory } from '../../types';
 import { translations } from '../../i18n/translations';
 import { useGameController } from './useGameController';
 import { LionCharacter } from '../../components/LionCharacter';
@@ -38,8 +38,18 @@ export const GameScreen: React.FC<GameScreenProps> = ({
   const t = translations[lang];
   const isRtl = lang === 'ar' || lang === 'ary';
 
+  // Category selection (Default: All or specific category)
+  const [selectedCategory, setSelectedCategory] = useState<WordCategory | 'all'>('all');
+
+  // Filter words according to chosen category
+  const filteredWords = useMemo(() => {
+    if (selectedCategory === 'all') return words;
+    const subset = words.filter((w) => w.category === selectedCategory);
+    return subset.length > 0 ? subset : words;
+  }, [words, selectedCategory]);
+
   const { state, actions } = useGameController({
-    words,
+    words: filteredWords,
     lang,
     preferences,
     onStarAwarded: onStarGained,
@@ -57,11 +67,69 @@ export const GameScreen: React.FC<GameScreenProps> = ({
   } = state;
 
   const isFirstWord = currentWordIndex === 0;
-  const progressPercent = Math.round(((currentWordIndex + 1) / words.length) * 100);
+  const progressPercent = Math.round(((currentWordIndex + 1) / filteredWords.length) * 100);
 
   // Direction-aware navigation arrows
   const PrevIcon = isRtl ? ArrowRight : ArrowLeft;
   const NextIcon = isRtl ? ArrowLeft : ArrowRight;
+
+  // Category filter items configuration
+  const categoryItems: Array<{ id: WordCategory | 'all'; icon: string; label: string; count: number }> = [
+    {
+      id: 'all',
+      icon: '🌟',
+      label: lang === 'fr' ? 'Tous' : lang === 'ar' ? 'الكل' : 'كلشي',
+      count: words.length,
+    },
+    {
+      id: 'numbers',
+      icon: '🔢',
+      label: t.categories.numbers,
+      count: words.filter((w) => w.category === 'numbers').length,
+    },
+    {
+      id: 'letters',
+      icon: '🔤',
+      label: t.categories.letters,
+      count: words.filter((w) => w.category === 'letters').length,
+    },
+    {
+      id: 'animals',
+      icon: '🦁',
+      label: t.categories.animals,
+      count: words.filter((w) => w.category === 'animals').length,
+    },
+    {
+      id: 'food',
+      icon: '🍎',
+      label: t.categories.food,
+      count: words.filter((w) => w.category === 'food').length,
+    },
+    {
+      id: 'vehicles',
+      icon: '🚗',
+      label: t.categories.vehicles,
+      count: words.filter((w) => w.category === 'vehicles').length,
+    },
+    {
+      id: 'objects',
+      icon: '🧸',
+      label: t.categories.objects,
+      count: words.filter((w) => w.category === 'objects').length,
+    },
+    {
+      id: 'body',
+      icon: '🖐️',
+      label: t.categories.body,
+      count: words.filter((w) => w.category === 'body').length,
+    },
+    {
+      id: 'actions',
+      icon: '🏃',
+      label: t.categories.actions,
+      count: words.filter((w) => w.category === 'actions').length,
+    },
+  ];
 
   return (
     <div
@@ -76,64 +144,95 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         />
       )}
 
-      {/* 1. TOP BAR: Stable, Non-intrusive Navigation & Stats */}
-      <header className="flex items-center justify-between gap-2 sm:gap-4 bg-white/95 backdrop-blur-md rounded-3xl px-4 py-3 sm:px-6 sm:py-3.5 shadow-lg border-2 border-amber-200/90 w-full z-20">
-        {/* Back to Home Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onBackHome}
-          className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 sm:px-4 sm:py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-950 rounded-2xl font-black text-sm sm:text-base transition-colors shadow-sm cursor-pointer"
-          aria-label={t.backHome}
-        >
-          <Home className="w-5 h-5 text-amber-800" />
-          <span className="hidden sm:inline font-rounded">{t.backHome}</span>
-        </motion.button>
+      {/* 1. TOP BAR: Stable Navigation & Stats */}
+      <header className="flex flex-col gap-2.5 bg-white/95 backdrop-blur-md rounded-3xl p-3 sm:px-6 sm:py-3.5 shadow-lg border-2 border-amber-200/90 w-full z-20">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 w-full">
+          {/* Back to Home Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onBackHome}
+            className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 sm:px-4 sm:py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-950 rounded-2xl font-black text-sm sm:text-base transition-colors shadow-sm cursor-pointer"
+            aria-label={t.backHome}
+          >
+            <Home className="w-5 h-5 text-amber-800" />
+            <span className="hidden sm:inline font-rounded">{t.backHome}</span>
+          </motion.button>
 
-        {/* Word Progress Indicator with Visual Mini-Bar */}
-        <div className="flex flex-col items-center justify-center min-w-[120px] sm:min-w-[160px]">
-          <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-amber-950 font-black text-sm sm:text-base">
-            <span>{currentWordIndex + 1}</span>
-            <span className="text-amber-400">/</span>
-            <span>{words.length}</span>
+          {/* Word Progress Indicator with Visual Mini-Bar */}
+          <div className="flex flex-col items-center justify-center min-w-[120px] sm:min-w-[160px]">
+            <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-amber-950 font-black text-sm sm:text-base">
+              <span>{currentWordIndex + 1}</span>
+              <span className="text-amber-400">/</span>
+              <span>{filteredWords.length}</span>
+            </div>
+            {/* Mini progress bar */}
+            <div className="w-24 sm:w-36 h-2 bg-amber-100 rounded-full overflow-hidden mt-1 border border-amber-200/70">
+              <motion.div
+                className="h-full bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"
+                initial={false}
+                animate={{ width: `${progressPercent}%` }}
+                transition={{ duration: 0.4 }}
+              />
+            </div>
           </div>
-          {/* Mini progress bar */}
-          <div className="w-24 sm:w-36 h-2 bg-amber-100 rounded-full overflow-hidden mt-1 border border-amber-200/70">
-            <motion.div
-              className="h-full bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"
-              initial={false}
-              animate={{ width: `${progressPercent}%` }}
-              transition={{ duration: 0.4 }}
-            />
+
+          {/* Speech Speed Setting & Stars counter */}
+          <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
+            {/* Speech Speed Control */}
+            <div
+              className="hidden sm:flex items-center space-x-1.5 rtl:space-x-reverse bg-amber-50/90 border border-amber-200 px-3 py-1.5 rounded-2xl shadow-sm text-xs font-bold text-amber-950"
+              title="Vitesse de la voix du Petit Lion"
+            >
+              <span className="text-sm select-none" title="Ralenti">🐢</span>
+              <input
+                type="range"
+                min="0.55"
+                max="1.00"
+                step="0.05"
+                value={preferences.speechSpeed || 0.75}
+                onChange={(e) => onUpdateSpeechSpeed?.(parseFloat(e.target.value))}
+                className="w-14 sm:w-20 accent-amber-500 cursor-pointer"
+                aria-label="Vitesse de prononciation"
+              />
+              <span className="text-sm select-none" title="Normal">🐇</span>
+            </div>
+
+            {/* Stars Counter */}
+            <div className="flex items-center space-x-1.5 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl font-black text-sm sm:text-base shadow-md border border-white/50">
+              <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white text-white" />
+              <span>+{sessionStarsGained}</span>
+            </div>
           </div>
         </div>
 
-        {/* Speech Speed Setting & Stars counter */}
-        <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
-          {/* Speech Speed Control */}
-          <div
-            className="hidden sm:flex items-center space-x-1.5 rtl:space-x-reverse bg-amber-50/90 border border-amber-200 px-3 py-1.5 rounded-2xl shadow-sm text-xs font-bold text-amber-950"
-            title="Vitesse de la voix du Petit Lion"
-          >
-            <span className="text-sm select-none" title="Ralenti">🐢</span>
-            <input
-              type="range"
-              min="0.55"
-              max="1.00"
-              step="0.05"
-              value={preferences.speechSpeed || 0.75}
-              onChange={(e) => onUpdateSpeechSpeed?.(parseFloat(e.target.value))}
-              className="w-14 sm:w-20 accent-amber-500 cursor-pointer"
-              aria-label="Vitesse de prononciation"
-            />
-            <span className="text-sm select-none" title="Normal">🐇</span>
-          </div>
-
-          {/* Stars Counter */}
-          <div className="flex items-center space-x-1.5 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl font-black text-sm sm:text-base shadow-md border border-white/50">
-            <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white text-white" />
-            <span>+{sessionStarsGained}</span>
-          </div>
+        {/* Categories Horizontal Tactile Selector */}
+        <div className="flex items-center space-x-2 rtl:space-x-reverse overflow-x-auto pt-1 pb-0.5 scrollbar-none w-full">
+          {categoryItems.map((item) => {
+            const isActive = selectedCategory === item.id;
+            return (
+              <motion.button
+                key={item.id}
+                whileTap={{ scale: 0.94 }}
+                onClick={() => setSelectedCategory(item.id)}
+                className={`flex-shrink-0 flex items-center space-x-1.5 rtl:space-x-reverse px-3 py-1.5 rounded-full font-black text-xs sm:text-sm transition-all cursor-pointer border ${
+                  isActive
+                    ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-white border-amber-300 shadow-md ring-2 ring-amber-200'
+                    : 'bg-amber-50/80 text-amber-950 hover:bg-amber-100 border-amber-200'
+                }`}
+              >
+                <span className="text-sm select-none">{item.icon}</span>
+                <span className="font-rounded font-extrabold">{item.label}</span>
+                <span
+                  className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
+                    isActive ? 'bg-white/30 text-white' : 'bg-amber-200/70 text-amber-900'
+                  }`}
+                >
+                  {item.count}
+                </span>
+              </motion.button>
+            );
+          })}
         </div>
       </header>
 

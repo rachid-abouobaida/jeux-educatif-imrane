@@ -275,11 +275,18 @@ export const useGameController = ({
     };
   }, [stopAudio]);
 
+  // Reset index when words list changes (e.g. category switch)
+  useEffect(() => {
+    setCurrentWordIndex(0);
+    setGameState('idle');
+    setLionState('idle');
+  }, [words]);
+
   // When word changes, play it
   useEffect(() => {
     playCurrentWord(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWordIndex, lang]);
+  }, [currentWordIndex, lang, words]);
 
   return {
     state: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Word, AppLanguage } from '../types';
 import { Volume2, Sparkles } from 'lucide-react';
@@ -20,6 +20,10 @@ export const WordCard: React.FC<WordCardProps> = ({
   isRtl = false,
 }) => {
   const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    setImgError(false);
+  }, [word.id, word.image]);
 
   const wordText = word.translations[lang];
   const phonetic = word.phonetic?.[lang];
