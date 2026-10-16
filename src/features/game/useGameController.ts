@@ -33,7 +33,8 @@ export const useGameController = ({
   const autoAdvanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { speakWord, playSuccess, playEncourage, stop: stopAudio } = useAudio(
     preferences.volume,
-    preferences.soundEffectsEnabled
+    preferences.soundEffectsEnabled,
+    preferences.speechSpeed || 0.75
   );
 
   const currentWord = words[currentWordIndex] || words[0];

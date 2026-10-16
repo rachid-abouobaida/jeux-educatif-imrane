@@ -48,6 +48,12 @@ export const App: React.FC = () => {
     setProgress(getStoredProgress());
   };
 
+  const handleUpdateSpeechSpeed = (newSpeed: number) => {
+    const updated = { ...preferences, speechSpeed: newSpeed };
+    setPreferences(updated);
+    savePreferences(updated);
+  };
+
   return (
     <div
       className="relative min-h-screen font-rounded select-none overflow-x-hidden"
@@ -188,6 +194,7 @@ export const App: React.FC = () => {
               words={words}
               lang={currentLanguage}
               preferences={preferences}
+              onUpdateSpeechSpeed={handleUpdateSpeechSpeed}
               onBackHome={() => {
                 setActiveScreen('home');
                 refreshProgress();
@@ -212,6 +219,7 @@ export const App: React.FC = () => {
               lang={currentLanguage}
               volume={preferences.volume}
               soundEffectsEnabled={preferences.soundEffectsEnabled}
+              speechSpeed={preferences.speechSpeed}
               onBackHome={() => {
                 setActiveScreen('home');
                 refreshProgress();

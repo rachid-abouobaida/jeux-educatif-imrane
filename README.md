@@ -21,6 +21,7 @@ Accompagné par son ami le **Petit Lion**, Imrane découvre les mots en s'amusan
 
 3. **Jeu Principal « Écouter et Répéter » :**
    - Machine à états finis (`idle` ➔ `speaking` ➔ `listening` ➔ `success` / `retry`).
+   - **Prononciation claire et ralentie (0.75x)** : spécialement calibrée pour permettre à un enfant de 4 ans d'entendre chaque syllabe, consonne et phonème distinctement sans précipitation.
    - Présentation du mot avec voix audio et illustration grand format.
    - Écoute active avec onde sonore visuelle et limiteur de durée (6–8 s).
    - Reconnaissance vocale Web Speech API (`fr-FR`, `ar-SA`, `ar-MA`) avec tolérance réglable.

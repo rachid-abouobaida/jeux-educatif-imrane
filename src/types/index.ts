@@ -45,6 +45,7 @@ export interface UserPreferences {
   soundEffectsEnabled: boolean;
   volume: number;
   maxRetries: number;
+  speechSpeed: number; // e.g. 0.75 for clear preschool pronunciation
 }
 
 export interface UserProgress {

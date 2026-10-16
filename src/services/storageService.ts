@@ -11,6 +11,7 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
   soundEffectsEnabled: true,
   volume: 0.85,
   maxRetries: 2,
+  speechSpeed: 0.75,
 };
 
 export const DEFAULT_PROGRESS: UserProgress = {

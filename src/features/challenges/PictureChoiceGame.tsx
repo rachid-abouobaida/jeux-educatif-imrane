@@ -13,6 +13,7 @@ interface PictureChoiceGameProps {
   lang: AppLanguage;
   volume?: number;
   soundEffectsEnabled?: boolean;
+  speechSpeed?: number;
   onBackHome: () => void;
   onStarGained?: () => void;
 }
@@ -27,6 +28,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
   lang,
   volume = 0.85,
   soundEffectsEnabled = true,
+  speechSpeed = 0.75,
   onBackHome,
   onStarGained,
 }) => {
@@ -41,7 +43,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
   const [isSuccess, setIsSuccess] = useState(false);
   const [starsWon, setStarsWon] = useState(0);
 
-  const { speakWord, playSuccess, playEncourage } = useAudio(volume, soundEffectsEnabled);
+  const { speakWord, playSuccess, playEncourage } = useAudio(volume, soundEffectsEnabled, speechSpeed);
 
   // Generate 8 balanced challenge rounds
   useEffect(() => {

@@ -14,6 +14,7 @@ interface GameScreenProps {
   words: Word[];
   lang: AppLanguage;
   preferences: UserPreferences;
+  onUpdateSpeechSpeed?: (speed: number) => void;
   onBackHome: () => void;
   onStarGained?: () => void;
 }
@@ -22,6 +23,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
   words,
   lang,
   preferences,
+  onUpdateSpeechSpeed,
   onBackHome,
   onStarGained,
 }) => {
@@ -60,22 +62,44 @@ export const GameScreen: React.FC<GameScreenProps> = ({
       )}
 
       {/* Top Navigation Bar */}
-      <header className="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-3xl p-3 sm:p-4 shadow-lg border-2 border-amber-200">
+      <header className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 bg-white/85 backdrop-blur-md rounded-3xl p-3 sm:p-4 shadow-lg border-2 border-amber-200">
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           onClick={onBackHome}
-          className="flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-2xl font-bold text-sm sm:text-base transition-colors"
+          className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-2xl font-bold text-sm sm:text-base transition-colors"
         >
           <Home className="w-5 h-5" />
           <span className="hidden sm:inline">{t.backHome}</span>
         </motion.button>
 
         {/* Word Progress Indicator */}
-        <div className="flex items-center space-x-2 bg-amber-50 px-4 py-1.5 rounded-2xl border border-amber-200 text-amber-900 font-extrabold text-sm sm:text-base">
+        <div className="flex items-center space-x-2 bg-amber-50 px-3.5 py-1.5 rounded-2xl border border-amber-200 text-amber-900 font-extrabold text-sm sm:text-base">
           <span>{currentWordIndex + 1}</span>
           <span className="text-amber-400">/</span>
           <span>{words.length}</span>
+        </div>
+
+        {/* Speech Speed Slider on Interface */}
+        <div
+          className="flex items-center space-x-1.5 sm:space-x-2 rtl:space-x-reverse bg-amber-50/90 border border-amber-200 px-3 py-1.5 rounded-2xl shadow-sm text-xs font-bold text-amber-950"
+          title="Vitesse de prononciation (Ralenti pour apprendre)"
+        >
+          <span className="text-sm select-none" title="Ralenti">🐢</span>
+          <input
+            type="range"
+            min="0.55"
+            max="1.00"
+            step="0.05"
+            value={preferences.speechSpeed || 0.75}
+            onChange={(e) => onUpdateSpeechSpeed?.(parseFloat(e.target.value))}
+            className="w-16 sm:w-24 accent-amber-500 cursor-pointer"
+            aria-label="Vitesse de prononciation"
+          />
+          <span className="text-sm select-none" title="Normal">🐇</span>
+          <span className="font-extrabold text-amber-900 min-w-[2.2rem] text-center">
+            {(preferences.speechSpeed || 0.75).toFixed(2)}x
+          </span>
         </div>
 
         {/* Stars Counter */}

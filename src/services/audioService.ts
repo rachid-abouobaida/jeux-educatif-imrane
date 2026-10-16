@@ -184,14 +184,15 @@ const getVoiceForLanguage = (lang: AppLanguage): SpeechSynthesisVoice | null => 
 };
 
 /**
- * Speaks text using Web Speech API synthesis with child-friendly pitch and pacing
+ * Speaks text using Web Speech API synthesis with clear articulation and gentle slowdown for preschool learners
  */
 export const speakWithVoice = (
   text: string,
   lang: AppLanguage,
   volume = 1.0,
   onStart?: () => void,
-  onEnd?: () => void
+  onEnd?: () => void,
+  speed = 0.75
 ): Promise<void> => {
   return new Promise((resolve) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
@@ -207,9 +208,10 @@ export const speakWithVoice = (
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.volume = Math.max(0, Math.min(1, volume));
-      // Friendly, cheerful pitch for baby lion
-      utterance.pitch = 1.25;
-      utterance.rate = 0.90; // slightly deliberate for young ears
+      // Natural, warm, clear pitch (not overly high/distorted)
+      utterance.pitch = 1.05;
+      // Gentle slowdown (0.75x) for crystal-clear phoneme articulation for a 4yo
+      utterance.rate = Math.max(0.65, Math.min(1.0, speed));
 
       const voice = getVoiceForLanguage(lang);
       if (voice) {
@@ -242,7 +244,7 @@ export const speakWithVoice = (
 };
 
 /**
- * Attempts to play recorded audio file, falling back to speech synthesis if missing
+ * Attempts to play recorded audio file (at child-friendly speed), falling back to clear speech synthesis
  */
 export const playWordAudio = async (
   audioPath: string,
@@ -250,7 +252,8 @@ export const playWordAudio = async (
   lang: AppLanguage,
   volume = 1.0,
   onStart?: () => void,
-  onEnd?: () => void
+  onEnd?: () => void,
+  speed = 0.75
 ): Promise<void> => {
   stopAllAudio();
 
@@ -259,6 +262,12 @@ export const playWordAudio = async (
     const audio = new Audio(audioPath);
     currentAudioElement = audio;
     audio.volume = Math.max(0, Math.min(1, volume));
+    // Apply deliberate gentle playback rate for preschool comprehension
+    try {
+      audio.playbackRate = Math.max(0.70, Math.min(1.0, speed));
+    } catch {
+      // ignore
+    }
 
     let resolved = false;
     const cleanup = () => {
@@ -300,7 +309,7 @@ export const playWordAudio = async (
 
   const fileSucceeded = await tryFile;
   if (!fileSucceeded) {
-    // Graceful fallback to speech synthesis
-    await speakWithVoice(wordText, lang, volume, onStart, onEnd);
+    // Graceful fallback to speech synthesis with slowed down clear articulation
+    await speakWithVoice(wordText, lang, volume, onStart, onEnd, speed);
   }
 };

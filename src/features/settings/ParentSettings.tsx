@@ -245,6 +245,63 @@ export const ParentSettings: React.FC<ParentSettingsProps> = ({
               />
             </div>
 
+            {/* Pronunciation Speed (Ralenti pédagogique pour l'enfant de 4 ans) */}
+            <div>
+              <div className="flex justify-between items-center mb-1.5">
+                <label className="text-sm font-bold text-slate-700 flex items-center space-x-1.5 rtl:space-x-reverse">
+                  <span>Vitesse de lecture (Ralenti)</span>
+                </label>
+                <span className="text-xs font-extrabold text-teal-800 bg-teal-100 px-2.5 py-0.5 rounded-full">
+                  {(localPrefs.speechSpeed || 0.75).toFixed(2)}x
+                </span>
+              </div>
+
+              {/* Slider */}
+              <div className="flex items-center space-x-3 rtl:space-x-reverse my-2">
+                <span className="text-lg select-none" title="Très lent">🐢</span>
+                <input
+                  type="range"
+                  min="0.55"
+                  max="1.00"
+                  step="0.05"
+                  value={localPrefs.speechSpeed || 0.75}
+                  onChange={(e) =>
+                    setLocalPrefs({
+                      ...localPrefs,
+                      speechSpeed: parseFloat(e.target.value),
+                    })
+                  }
+                  className="w-full accent-teal-500 cursor-pointer"
+                />
+                <span className="text-lg select-none" title="Normal">🐇</span>
+              </div>
+
+              {/* Preset buttons */}
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                {[
+                  { speed: 0.65, label: '0.65x Très lent' },
+                  { speed: 0.75, label: '0.75x Recommandé' },
+                  { speed: 0.90, label: '0.90x Normal' },
+                ].map(({ speed, label }) => (
+                  <button
+                    key={speed}
+                    type="button"
+                    onClick={() => setLocalPrefs({ ...localPrefs, speechSpeed: speed })}
+                    className={`py-1.5 px-2 rounded-xl font-bold text-xs transition-all border-2 ${
+                      Math.abs((localPrefs.speechSpeed || 0.75) - speed) < 0.02
+                        ? 'bg-teal-500 text-white border-teal-600 shadow-md'
+                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-slate-500 mt-1.5">
+                La prononciation ralentie et articulée aide Imrane à bien distinguer les syllabes et sons du mot.
+              </p>
+            </div>
+
             {/* Max Retries */}
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-1">

@@ -9,7 +9,11 @@ import {
   stopAllAudio,
 } from '../services/audioService';
 
-export const useAudio = (volume = 0.85, soundEffectsEnabled = true) => {
+export const useAudio = (
+  volume = 0.85,
+  soundEffectsEnabled = true,
+  speechSpeed = 0.75
+) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const speakWord = useCallback(
@@ -18,10 +22,12 @@ export const useAudio = (volume = 0.85, soundEffectsEnabled = true) => {
       wordText: string,
       lang: AppLanguage,
       onStart?: () => void,
-      onEnd?: () => void
+      onEnd?: () => void,
+      customSpeed?: number
     ) => {
       setIsPlaying(true);
       onStart?.();
+      const effectiveSpeed = customSpeed ?? speechSpeed;
       try {
         await playWordAudio(
           audioPath,
@@ -34,7 +40,8 @@ export const useAudio = (volume = 0.85, soundEffectsEnabled = true) => {
           () => {
             setIsPlaying(false);
             onEnd?.();
-          }
+          },
+          effectiveSpeed
         );
       } catch (err) {
         console.warn('Word audio playback error', err);
@@ -42,7 +49,7 @@ export const useAudio = (volume = 0.85, soundEffectsEnabled = true) => {
         onEnd?.();
       }
     },
-    [volume]
+    [volume, speechSpeed]
   );
 
   const playSuccess = useCallback(() => {
