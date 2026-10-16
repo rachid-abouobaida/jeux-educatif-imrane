@@ -186,6 +186,32 @@ const getVoiceForLanguage = (lang: AppLanguage): SpeechSynthesisVoice | null => 
 /**
  * Speaks text using Web Speech API synthesis with clear articulation and gentle slowdown for preschool learners
  */
+/**
+ * Clean text for voice synthesis to prevent double reading (e.g., "1 • Un" -> "Un", "A a" -> "A")
+ */
+export const cleanSpokenText = (text: string): string => {
+  if (!text) return '';
+  let cleaned = text.trim();
+  // Strip out "•" bullets (e.g. "1 • Un" -> "Un")
+  if (cleaned.includes('•')) {
+    const parts = cleaned.split('•').map((s) => s.trim()).filter(Boolean);
+    cleaned = parts[parts.length - 1] || cleaned;
+  }
+  // Strip out "X - Word" (e.g. "1 - Un" -> "Un")
+  if (/^\d+\s*[-:]\s*/.test(cleaned)) {
+    cleaned = cleaned.replace(/^\d+\s*[-:]\s*/, '').trim();
+  }
+  // Remove duplicate letters like "A a" -> "A"
+  const letterMatch = cleaned.match(/^([A-Za-z])\s+\1$/i);
+  if (letterMatch) {
+    cleaned = letterMatch[1];
+  }
+  return cleaned;
+};
+
+/**
+ * Speak with Web Speech Synthesis API
+ */
 export const speakWithVoice = (
   text: string,
   lang: AppLanguage,
@@ -206,7 +232,8 @@ export const speakWithVoice = (
 
     try {
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
+      const cleanedText = cleanSpokenText(text);
+      const utterance = new SpeechSynthesisUtterance(cleanedText);
       utterance.volume = Math.max(0, Math.min(1, volume));
       // Natural, warm, clear pitch (not overly high/distorted)
       utterance.pitch = 1.05;

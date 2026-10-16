@@ -12,6 +12,7 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
   volume: 0.85,
   maxRetries: 2,
   speechSpeed: 0.75,
+  wordRepeatIntervalSeconds: 4,
 };
 
 export const DEFAULT_PROGRESS: UserProgress = {

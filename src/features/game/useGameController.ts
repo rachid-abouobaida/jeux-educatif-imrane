@@ -31,6 +31,13 @@ export const useGameController = ({
   const [isSessionFinished, setIsSessionFinished] = useState<boolean>(false);
 
   const autoAdvanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const repeatTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const gameStateRef = useRef(gameState);
+  gameStateRef.current = gameState;
+  const isSessionFinishedRef = useRef(isSessionFinished);
+  isSessionFinishedRef.current = isSessionFinished;
+
   const { speakWord, playSuccess, playEncourage, stop: stopAudio } = useAudio(
     preferences.volume,
     preferences.soundEffectsEnabled,
@@ -47,11 +54,46 @@ export const useGameController = ({
   };
 
   /**
-   * Reads the current word with lion animation
+   * Clear the automatic 4-second word repetition timer
+   */
+  const clearRepeatTimer = useCallback(() => {
+    if (repeatTimerRef.current) {
+      clearTimeout(repeatTimerRef.current);
+      repeatTimerRef.current = null;
+    }
+  }, []);
+
+  /**
+   * Schedule the next word repetition (default 4 seconds)
+   */
+  const scheduleRepeat = useCallback(
+    (delayMs?: number) => {
+      clearRepeatTimer();
+      const repeatIntervalSec = preferences.wordRepeatIntervalSeconds ?? 4;
+      if (repeatIntervalSec <= 0) return;
+
+      const delay = delayMs ?? repeatIntervalSec * 1000;
+      repeatTimerRef.current = setTimeout(() => {
+        if (
+          gameStateRef.current === 'success' ||
+          gameStateRef.current === 'completed' ||
+          isSessionFinishedRef.current
+        ) {
+          return;
+        }
+        playCurrentWordRef.current?.(true);
+      }, delay);
+    },
+    [clearRepeatTimer, preferences.wordRepeatIntervalSeconds]
+  );
+
+  /**
+   * Reads the current word with lion animation and schedules 4s repetition
    */
   const playCurrentWord = useCallback(
     async (andThenListen = true) => {
       if (!currentWord) return;
+      clearRepeatTimer();
       stopAudio();
       stopListening();
       setIsListening(false);
@@ -71,23 +113,36 @@ export const useGameController = ({
         },
         () => {
           // Finished playing
+          if (
+            gameStateRef.current === 'success' ||
+            gameStateRef.current === 'completed' ||
+            isSessionFinishedRef.current
+          ) {
+            return;
+          }
+
           if (andThenListen && preferences.speechRecognitionEnabled) {
             setGameState('listening');
             setLionState('listening');
             setFeedbackText(t.repeatInvitation(wordText));
-            // Trigger repeat listening
             listenForRepetition();
           } else {
             setGameState('idle');
             setLionState('idle');
             setFeedbackText(t.presentationText(wordText));
           }
+
+          // Schedule automatic repetition after 4 seconds
+          scheduleRepeat();
         }
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentWord, lang, preferences.speechRecognitionEnabled, preferences.volume, t]
+    [currentWord, lang, preferences.speechRecognitionEnabled, preferences.volume, scheduleRepeat, stopAudio, t]
   );
+
+  const playCurrentWordRef = useRef(playCurrentWord);
+  playCurrentWordRef.current = playCurrentWord;
 
   /**
    * Starts listening to Imrane's voice repetition
@@ -102,7 +157,7 @@ export const useGameController = ({
 
     startListening({
       lang,
-      timeoutSeconds: 7,
+      timeoutSeconds: 5,
       onStart: () => {
         setIsListening(true);
       },
@@ -112,9 +167,10 @@ export const useGameController = ({
       },
       onError: (err) => {
         setIsListening(false);
-        console.debug('Speech recognition ended with notice:', err);
-        // On error or no speech, provide gentle guidance
-        handleMismatchOrRetry(err === 'no-speech' ? '' : '...');
+        console.debug('Speech recognition notice:', err);
+        if (err !== 'no-speech') {
+          handleMismatchOrRetry('...');
+        }
       },
       onEnd: () => {
         setIsListening(false);
@@ -152,6 +208,7 @@ export const useGameController = ({
    * Success handler: lion is happy, award star, confetti
    */
   const handleSuccess = useCallback(() => {
+    clearRepeatTimer();
     stopListening();
     setIsListening(false);
     setGameState('success');
@@ -177,7 +234,7 @@ export const useGameController = ({
       }, 2600);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWord, onStarAwarded, playSuccess, preferences.autoAdvance, t.successMessages]);
+  }, [clearRepeatTimer, currentWord, onStarAwarded, playSuccess, preferences.autoAdvance, t.successMessages]);
 
   /**
    * Friendly encouragement if mismatch: never scold
@@ -195,24 +252,28 @@ export const useGameController = ({
         setLionState('encouraging');
         setFeedbackText(getRandomPhrase(t.encouragementMessages));
         playEncourage();
+        // Repeat word shortly after encouragement so the child can try again
+        scheduleRepeat(2000);
       }
     },
-    [handleSuccess, playEncourage, preferences.maxRetries, retriesCount, t.encouragementMessages]
+    [handleSuccess, playEncourage, preferences.maxRetries, retriesCount, scheduleRepeat, t.encouragementMessages]
   );
 
   /**
    * Manual validation button (always accessible if mic is off/unavailable)
    */
   const validateManually = useCallback(() => {
+    clearRepeatTimer();
     stopListening();
     setIsListening(false);
     handleSuccess();
-  }, [handleSuccess]);
+  }, [clearRepeatTimer, handleSuccess]);
 
   /**
    * Advance to the next word
    */
   const nextWord = useCallback(() => {
+    clearRepeatTimer();
     if (autoAdvanceTimerRef.current) {
       clearTimeout(autoAdvanceTimerRef.current);
       autoAdvanceTimerRef.current = null;
@@ -234,13 +295,14 @@ export const useGameController = ({
       setGameState('idle');
       setLionState('idle');
     }
-  }, [currentWordIndex, stopAudio, t.sessionCompletedTitle, words.length]);
+  }, [clearRepeatTimer, currentWordIndex, stopAudio, t.sessionCompletedTitle, words.length]);
 
   /**
    * Go to previous word
    */
   const previousWord = useCallback(() => {
     if (currentWordIndex > 0) {
+      clearRepeatTimer();
       stopAudio();
       stopListening();
       setIsListening(false);
@@ -250,12 +312,13 @@ export const useGameController = ({
       setGameState('idle');
       setLionState('idle');
     }
-  }, [currentWordIndex, stopAudio]);
+  }, [clearRepeatTimer, currentWordIndex, stopAudio]);
 
   /**
    * Restart session from beginning
    */
   const restartSession = useCallback(() => {
+    clearRepeatTimer();
     stopAudio();
     stopListening();
     setCurrentWordIndex(0);
@@ -264,29 +327,33 @@ export const useGameController = ({
     setIsSessionFinished(false);
     setGameState('idle');
     setLionState('idle');
-  }, [stopAudio]);
+  }, [clearRepeatTimer, stopAudio]);
 
   // Clean up timers on unmount
   useEffect(() => {
     return () => {
+      clearRepeatTimer();
       if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
       stopAudio();
       stopListening();
     };
-  }, [stopAudio]);
+  }, [clearRepeatTimer, stopAudio]);
 
   // Reset index when words list changes (e.g. category switch)
   useEffect(() => {
+    clearRepeatTimer();
     setCurrentWordIndex(0);
     setGameState('idle');
     setLionState('idle');
-  }, [words]);
+  }, [clearRepeatTimer, words]);
 
-  // When word changes, play it
+  // When current word or language changes, play it exactly once and start repetition cycle
+  const currentWordId = currentWord ? currentWord.id : null;
   useEffect(() => {
+    clearRepeatTimer();
     playCurrentWord(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWordIndex, lang, words]);
+  }, [currentWordId, lang]);
 
   return {
     state: {

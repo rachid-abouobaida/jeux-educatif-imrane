@@ -1536,9 +1536,9 @@
     "id": "num_1",
     "category": "numbers",
     "translations": {
-      "fr": "1 • Un",
-      "ar": "١ • واحد",
-      "ary": "1 • واحد"
+      "fr": "Un",
+      "ar": "واحد",
+      "ary": "واحد"
     },
     "phonetic": {
       "fr": "un",
@@ -1578,9 +1578,9 @@
     "id": "num_2",
     "category": "numbers",
     "translations": {
-      "fr": "2 • Deux",
-      "ar": "٢ • اثنان",
-      "ary": "2 • جوج"
+      "fr": "Deux",
+      "ar": "اثنان",
+      "ary": "جوج"
     },
     "phonetic": {
       "fr": "deu",
@@ -1620,9 +1620,9 @@
     "id": "num_3",
     "category": "numbers",
     "translations": {
-      "fr": "3 • Trois",
-      "ar": "٣ • ثلاثة",
-      "ary": "3 • تلاتة"
+      "fr": "Trois",
+      "ar": "ثلاثة",
+      "ary": "تلاتة"
     },
     "phonetic": {
       "fr": "trwa",
@@ -1661,9 +1661,9 @@
     "id": "num_4",
     "category": "numbers",
     "translations": {
-      "fr": "4 • Quatre",
-      "ar": "٤ • أربعة",
-      "ary": "4 • ربعة"
+      "fr": "Quatre",
+      "ar": "أربعة",
+      "ary": "ربعة"
     },
     "phonetic": {
       "fr": "katr",
@@ -1702,9 +1702,9 @@
     "id": "num_5",
     "category": "numbers",
     "translations": {
-      "fr": "5 • Cinq",
-      "ar": "٥ • خمسة",
-      "ary": "5 • خمسة"
+      "fr": "Cinq",
+      "ar": "خمسة",
+      "ary": "خمسة"
     },
     "phonetic": {
       "fr": "sank",
@@ -1742,9 +1742,9 @@
     "id": "num_6",
     "category": "numbers",
     "translations": {
-      "fr": "6 • Six",
-      "ar": "٦ • ستة",
-      "ary": "6 • ستة"
+      "fr": "Six",
+      "ar": "ستة",
+      "ary": "ستة"
     },
     "phonetic": {
       "fr": "sees",
@@ -1782,9 +1782,9 @@
     "id": "num_7",
     "category": "numbers",
     "translations": {
-      "fr": "7 • Sept",
-      "ar": "٧ • سبعة",
-      "ary": "7 • سبعة"
+      "fr": "Sept",
+      "ar": "سبعة",
+      "ary": "سبعة"
     },
     "phonetic": {
       "fr": "set",
@@ -1822,9 +1822,9 @@
     "id": "num_8",
     "category": "numbers",
     "translations": {
-      "fr": "8 • Huit",
-      "ar": "٨ • ثمانية",
-      "ary": "8 • تمنية"
+      "fr": "Huit",
+      "ar": "ثمانية",
+      "ary": "تمنية"
     },
     "phonetic": {
       "fr": "weet",
@@ -1863,9 +1863,9 @@
     "id": "num_9",
     "category": "numbers",
     "translations": {
-      "fr": "9 • Neuf",
-      "ar": "٩ • تسعة",
-      "ary": "9 • تسعود"
+      "fr": "Neuf",
+      "ar": "تسعة",
+      "ary": "تسعود"
     },
     "phonetic": {
       "fr": "nuf",
@@ -1904,9 +1904,9 @@
     "id": "num_10",
     "category": "numbers",
     "translations": {
-      "fr": "10 • Dix",
-      "ar": "١٠ • عشرة",
-      "ary": "10 • عشرة"
+      "fr": "Dix",
+      "ar": "عشرة",
+      "ary": "عشرة"
     },
     "phonetic": {
       "fr": "dees",
@@ -1944,9 +1944,9 @@
     "id": "num_11",
     "category": "numbers",
     "translations": {
-      "fr": "11 • Onze",
-      "ar": "١١ • أحد عشر",
-      "ary": "11 • حداش"
+      "fr": "Onze",
+      "ar": "أحد عشر",
+      "ary": "حداش"
     },
     "phonetic": {
       "fr": "onz",
@@ -1985,9 +1985,9 @@
     "id": "num_12",
     "category": "numbers",
     "translations": {
-      "fr": "12 • Douze",
-      "ar": "١٢ • اثنا عشر",
-      "ary": "12 • طناش"
+      "fr": "Douze",
+      "ar": "اثنا عشر",
+      "ary": "طناش"
     },
     "phonetic": {
       "fr": "dooz",
@@ -2026,9 +2026,9 @@
     "id": "num_13",
     "category": "numbers",
     "translations": {
-      "fr": "13 • Treize",
-      "ar": "١٣ • ثلاثة عشر",
-      "ary": "13 • تلطاش"
+      "fr": "Treize",
+      "ar": "ثلاثة عشر",
+      "ary": "تلطاش"
     },
     "phonetic": {
       "fr": "trez",
@@ -2066,9 +2066,9 @@
     "id": "num_14",
     "category": "numbers",
     "translations": {
-      "fr": "14 • Quatorze",
-      "ar": "١٤ • أربعة عشر",
-      "ary": "14 • ربعطاش"
+      "fr": "Quatorze",
+      "ar": "أربعة عشر",
+      "ary": "ربعطاش"
     },
     "phonetic": {
       "fr": "katorz",
@@ -2106,9 +2106,9 @@
     "id": "num_15",
     "category": "numbers",
     "translations": {
-      "fr": "15 • Quinze",
-      "ar": "١٥ • خمسة عشر",
-      "ary": "15 • خمسطاش"
+      "fr": "Quinze",
+      "ar": "خمسة عشر",
+      "ary": "خمسطاش"
     },
     "phonetic": {
       "fr": "kanz",
@@ -2146,9 +2146,9 @@
     "id": "num_16",
     "category": "numbers",
     "translations": {
-      "fr": "16 • Seize",
-      "ar": "١٦ • ستة عشر",
-      "ary": "16 • سطاش"
+      "fr": "Seize",
+      "ar": "ستة عشر",
+      "ary": "سطاش"
     },
     "phonetic": {
       "fr": "sez",
@@ -2186,9 +2186,9 @@
     "id": "num_17",
     "category": "numbers",
     "translations": {
-      "fr": "17 • Dix-sept",
-      "ar": "١٧ • سبعة عشر",
-      "ary": "17 • سبعطاش"
+      "fr": "Dix-sept",
+      "ar": "سبعة عشر",
+      "ary": "سبعطاش"
     },
     "phonetic": {
       "fr": "dees-set",
@@ -2227,9 +2227,9 @@
     "id": "num_18",
     "category": "numbers",
     "translations": {
-      "fr": "18 • Dix-huit",
-      "ar": "١٨ • ثمانية عشر",
-      "ary": "18 • تمنطاش"
+      "fr": "Dix-huit",
+      "ar": "ثمانية عشر",
+      "ary": "تمنطاش"
     },
     "phonetic": {
       "fr": "dees-weet",
@@ -2268,9 +2268,9 @@
     "id": "num_19",
     "category": "numbers",
     "translations": {
-      "fr": "19 • Dix-neuf",
-      "ar": "١٩ • تسعة عشر",
-      "ary": "19 • تسعطاش"
+      "fr": "Dix-neuf",
+      "ar": "تسعة عشر",
+      "ary": "تسعطاش"
     },
     "phonetic": {
       "fr": "dees-nuf",
@@ -2309,9 +2309,9 @@
     "id": "num_20",
     "category": "numbers",
     "translations": {
-      "fr": "20 • Vingt",
-      "ar": "٢٠ • عشرون",
-      "ary": "20 • عشرين"
+      "fr": "Vingt",
+      "ar": "عشرون",
+      "ary": "عشرين"
     },
     "phonetic": {
       "fr": "van",
@@ -2350,13 +2350,13 @@
     "id": "letter_a",
     "category": "letters",
     "translations": {
-      "fr": "A a",
-      "ar": "A a",
-      "ary": "A a"
+      "fr": "A",
+      "ar": "A",
+      "ary": "A"
     },
     "phonetic": {
       "fr": "ah",
-      "ar": "alif / a",
+      "ar": "alif",
       "ary": "a"
     },
     "image": "/assets/words/letter_a.svg",
@@ -2394,13 +2394,13 @@
     "id": "letter_b",
     "category": "letters",
     "translations": {
-      "fr": "B b",
-      "ar": "B b",
-      "ary": "B b"
+      "fr": "B",
+      "ar": "B",
+      "ary": "B"
     },
     "phonetic": {
       "fr": "bé",
-      "ar": "baa / b",
+      "ar": "baa",
       "ary": "b"
     },
     "image": "/assets/words/letter_b.svg",
@@ -2438,9 +2438,9 @@
     "id": "letter_c",
     "category": "letters",
     "translations": {
-      "fr": "C c",
-      "ar": "C c",
-      "ary": "C c"
+      "fr": "C",
+      "ar": "C",
+      "ary": "C"
     },
     "phonetic": {
       "fr": "sé",
@@ -2482,13 +2482,13 @@
     "id": "letter_d",
     "category": "letters",
     "translations": {
-      "fr": "D d",
-      "ar": "D d",
-      "ary": "D d"
+      "fr": "D",
+      "ar": "D",
+      "ary": "D"
     },
     "phonetic": {
       "fr": "dé",
-      "ar": "dal / d",
+      "ar": "dal",
       "ary": "d"
     },
     "image": "/assets/words/letter_d.svg",
@@ -2526,9 +2526,9 @@
     "id": "letter_e",
     "category": "letters",
     "translations": {
-      "fr": "E e",
-      "ar": "E e",
-      "ary": "E e"
+      "fr": "E",
+      "ar": "E",
+      "ary": "E"
     },
     "phonetic": {
       "fr": "e",
@@ -2570,13 +2570,13 @@
     "id": "letter_f",
     "category": "letters",
     "translations": {
-      "fr": "F f",
-      "ar": "F f",
-      "ary": "F f"
+      "fr": "F",
+      "ar": "F",
+      "ary": "F"
     },
     "phonetic": {
       "fr": "èf",
-      "ar": "faa / f",
+      "ar": "faa",
       "ary": "f"
     },
     "image": "/assets/words/letter_f.svg",
@@ -2614,9 +2614,9 @@
     "id": "letter_g",
     "category": "letters",
     "translations": {
-      "fr": "G g",
-      "ar": "G g",
-      "ary": "G g"
+      "fr": "G",
+      "ar": "G",
+      "ary": "G"
     },
     "phonetic": {
       "fr": "jé",
@@ -2658,9 +2658,9 @@
     "id": "letter_h",
     "category": "letters",
     "translations": {
-      "fr": "H h",
-      "ar": "H h",
-      "ary": "H h"
+      "fr": "H",
+      "ar": "H",
+      "ary": "H"
     },
     "phonetic": {
       "fr": "ash",
@@ -2702,9 +2702,9 @@
     "id": "letter_i",
     "category": "letters",
     "translations": {
-      "fr": "I i",
-      "ar": "I i",
-      "ary": "I i"
+      "fr": "I",
+      "ar": "I",
+      "ary": "I"
     },
     "phonetic": {
       "fr": "ee",
@@ -2746,9 +2746,9 @@
     "id": "letter_j",
     "category": "letters",
     "translations": {
-      "fr": "J j",
-      "ar": "J j",
-      "ary": "J j"
+      "fr": "J",
+      "ar": "J",
+      "ary": "J"
     },
     "phonetic": {
       "fr": "jee",
@@ -2790,13 +2790,13 @@
     "id": "letter_k",
     "category": "letters",
     "translations": {
-      "fr": "K k",
-      "ar": "K k",
-      "ary": "K k"
+      "fr": "K",
+      "ar": "K",
+      "ary": "K"
     },
     "phonetic": {
       "fr": "ka",
-      "ar": "kaaf / k",
+      "ar": "kaaf",
       "ary": "k"
     },
     "image": "/assets/words/letter_k.svg",
@@ -2834,13 +2834,13 @@
     "id": "letter_l",
     "category": "letters",
     "translations": {
-      "fr": "L l",
-      "ar": "L l",
-      "ary": "L l"
+      "fr": "L",
+      "ar": "L",
+      "ary": "L"
     },
     "phonetic": {
       "fr": "èl",
-      "ar": "laam / l",
+      "ar": "laam",
       "ary": "l"
     },
     "image": "/assets/words/letter_l.svg",
@@ -2878,13 +2878,13 @@
     "id": "letter_m",
     "category": "letters",
     "translations": {
-      "fr": "M m",
-      "ar": "M m",
-      "ary": "M m"
+      "fr": "M",
+      "ar": "M",
+      "ary": "M"
     },
     "phonetic": {
       "fr": "èm",
-      "ar": "meem / m",
+      "ar": "meem",
       "ary": "m"
     },
     "image": "/assets/words/letter_m.svg",
@@ -2922,13 +2922,13 @@
     "id": "letter_n",
     "category": "letters",
     "translations": {
-      "fr": "N n",
-      "ar": "N n",
-      "ary": "N n"
+      "fr": "N",
+      "ar": "N",
+      "ary": "N"
     },
     "phonetic": {
       "fr": "èn",
-      "ar": "noon / n",
+      "ar": "noon",
       "ary": "n"
     },
     "image": "/assets/words/letter_n.svg",
@@ -2966,9 +2966,9 @@
     "id": "letter_o",
     "category": "letters",
     "translations": {
-      "fr": "O o",
-      "ar": "O o",
-      "ary": "O o"
+      "fr": "O",
+      "ar": "O",
+      "ary": "O"
     },
     "phonetic": {
       "fr": "o",
@@ -3010,9 +3010,9 @@
     "id": "letter_p",
     "category": "letters",
     "translations": {
-      "fr": "P p",
-      "ar": "P p",
-      "ary": "P p"
+      "fr": "P",
+      "ar": "P",
+      "ary": "P"
     },
     "phonetic": {
       "fr": "pé",
@@ -3054,9 +3054,9 @@
     "id": "letter_q",
     "category": "letters",
     "translations": {
-      "fr": "Q q",
-      "ar": "Q q",
-      "ary": "Q q"
+      "fr": "Q",
+      "ar": "Q",
+      "ary": "Q"
     },
     "phonetic": {
       "fr": "ku",
@@ -3098,13 +3098,13 @@
     "id": "letter_r",
     "category": "letters",
     "translations": {
-      "fr": "R r",
-      "ar": "R r",
-      "ary": "R r"
+      "fr": "R",
+      "ar": "R",
+      "ary": "R"
     },
     "phonetic": {
       "fr": "èr",
-      "ar": "raa / r",
+      "ar": "raa",
       "ary": "r"
     },
     "image": "/assets/words/letter_r.svg",
@@ -3142,13 +3142,13 @@
     "id": "letter_s",
     "category": "letters",
     "translations": {
-      "fr": "S s",
-      "ar": "S s",
-      "ary": "S s"
+      "fr": "S",
+      "ar": "S",
+      "ary": "S"
     },
     "phonetic": {
       "fr": "ès",
-      "ar": "seen / s",
+      "ar": "seen",
       "ary": "s"
     },
     "image": "/assets/words/letter_s.svg",
@@ -3186,13 +3186,13 @@
     "id": "letter_t",
     "category": "letters",
     "translations": {
-      "fr": "T t",
-      "ar": "T t",
-      "ary": "T t"
+      "fr": "T",
+      "ar": "T",
+      "ary": "T"
     },
     "phonetic": {
       "fr": "té",
-      "ar": "taa / t",
+      "ar": "taa",
       "ary": "t"
     },
     "image": "/assets/words/letter_t.svg",
@@ -3230,9 +3230,9 @@
     "id": "letter_u",
     "category": "letters",
     "translations": {
-      "fr": "U u",
-      "ar": "U u",
-      "ary": "U u"
+      "fr": "U",
+      "ar": "U",
+      "ary": "U"
     },
     "phonetic": {
       "fr": "u",
@@ -3274,9 +3274,9 @@
     "id": "letter_v",
     "category": "letters",
     "translations": {
-      "fr": "V v",
-      "ar": "V v",
-      "ary": "V v"
+      "fr": "V",
+      "ar": "V",
+      "ary": "V"
     },
     "phonetic": {
       "fr": "vé",
@@ -3318,9 +3318,9 @@
     "id": "letter_w",
     "category": "letters",
     "translations": {
-      "fr": "W w",
-      "ar": "W w",
-      "ary": "W w"
+      "fr": "W",
+      "ar": "W",
+      "ary": "W"
     },
     "phonetic": {
       "fr": "double-vé",
@@ -3362,9 +3362,9 @@
     "id": "letter_x",
     "category": "letters",
     "translations": {
-      "fr": "X x",
-      "ar": "X x",
-      "ary": "X x"
+      "fr": "X",
+      "ar": "X",
+      "ary": "X"
     },
     "phonetic": {
       "fr": "iks",
@@ -3406,9 +3406,9 @@
     "id": "letter_y",
     "category": "letters",
     "translations": {
-      "fr": "Y y",
-      "ar": "Y y",
-      "ary": "Y y"
+      "fr": "Y",
+      "ar": "Y",
+      "ary": "Y"
     },
     "phonetic": {
       "fr": "i-grèk",
@@ -3450,9 +3450,9 @@
     "id": "letter_z",
     "category": "letters",
     "translations": {
-      "fr": "Z z",
-      "ar": "Z z",
-      "ary": "Z z"
+      "fr": "Z",
+      "ar": "Z",
+      "ary": "Z"
     },
     "phonetic": {
       "fr": "zèd",

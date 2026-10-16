@@ -221,6 +221,46 @@ export const ParentSettings: React.FC<ParentSettingsProps> = ({
               />
             </div>
 
+            {/* Automatic Word Repetition Interval */}
+            <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="text-sm font-bold text-slate-800">
+                  Répétition audio automatique
+                </span>
+                <span className="text-xs font-extrabold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-full">
+                  {(localPrefs.wordRepeatIntervalSeconds ?? 4) === 0
+                    ? 'Désactivée'
+                    : `Toutes les ${localPrefs.wordRepeatIntervalSeconds ?? 4}s`}
+                </span>
+              </div>
+              <div className="grid grid-cols-4 gap-1.5 mt-2">
+                {[
+                  { sec: 4, label: '4s (Actif)' },
+                  { sec: 6, label: '6s' },
+                  { sec: 8, label: '8s' },
+                  { sec: 0, label: 'Arrêt' },
+                ].map(({ sec, label }) => (
+                  <button
+                    key={sec}
+                    type="button"
+                    onClick={() =>
+                      setLocalPrefs({ ...localPrefs, wordRepeatIntervalSeconds: sec })
+                    }
+                    className={`py-1.5 px-2 rounded-xl font-bold text-xs transition-all border-2 ${
+                      (localPrefs.wordRepeatIntervalSeconds ?? 4) === sec
+                        ? 'bg-amber-500 text-white border-amber-600 shadow-sm'
+                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-slate-500 mt-1.5">
+                Répète le mot toutes les 4 secondes pour immerger Imrane et l'encourager à répéter.
+              </p>
+            </div>
+
             {/* Volume */}
             <div>
               <div className="flex justify-between items-center mb-1">

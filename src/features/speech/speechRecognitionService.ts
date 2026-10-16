@@ -44,6 +44,7 @@ interface IWindowSpeechRecognition extends Window {
 
 let activeRecognition: ISpeechRecognitionInstance | null = null;
 let listenTimeoutTimer: ReturnType<typeof setTimeout> | null = null;
+let isStoppingExplicitly = false;
 
 export const isSpeechRecognitionSupported = (): boolean => {
   if (typeof window === 'undefined') return false;
@@ -77,6 +78,7 @@ export const getRecognitionLocale = (lang: AppLanguage): string => {
  */
 export const startListening = (options: StartListeningOptions): void => {
   stopListening();
+  isStoppingExplicitly = false;
 
   if (!isSpeechRecognitionSupported()) {
     options.onError('unavailable');
@@ -102,8 +104,6 @@ export const startListening = (options: StartListeningOptions): void => {
     recognition.interimResults = false;
     recognition.maxAlternatives = 3;
 
-    let receivedResult = false;
-
     recognition.onstart = () => {
       options.onStart?.();
       const timeoutMs = (options.timeoutSeconds || 6) * 1000;
@@ -119,7 +119,6 @@ export const startListening = (options: StartListeningOptions): void => {
     };
 
     recognition.onresult = (event: ISpeechRecognitionEvent) => {
-      receivedResult = true;
       if (listenTimeoutTimer) {
         clearTimeout(listenTimeoutTimer);
         listenTimeoutTimer = null;
@@ -141,6 +140,10 @@ export const startListening = (options: StartListeningOptions): void => {
         listenTimeoutTimer = null;
       }
 
+      if (isStoppingExplicitly || event.error === 'aborted') {
+        return;
+      }
+
       if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
         options.onError('permission');
       } else if (event.error === 'no-speech') {
@@ -155,11 +158,11 @@ export const startListening = (options: StartListeningOptions): void => {
         clearTimeout(listenTimeoutTimer);
         listenTimeoutTimer = null;
       }
-      if (!receivedResult) {
-        // Recognition ended without results
-      }
       activeRecognition = null;
-      options.onEnd();
+      if (!isStoppingExplicitly) {
+        options.onEnd();
+      }
+      isStoppingExplicitly = false;
     };
 
     recognition.start();
@@ -174,6 +177,7 @@ export const startListening = (options: StartListeningOptions): void => {
  * Stop any active listening session cleanly
  */
 export const stopListening = (): void => {
+  isStoppingExplicitly = true;
   if (listenTimeoutTimer) {
     clearTimeout(listenTimeoutTimer);
     listenTimeoutTimer = null;
@@ -186,4 +190,7 @@ export const stopListening = (): void => {
     }
     activeRecognition = null;
   }
+  setTimeout(() => {
+    isStoppingExplicitly = false;
+  }, 100);
 };

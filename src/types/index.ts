@@ -48,6 +48,7 @@ export interface UserPreferences {
   volume: number;
   maxRetries: number;
   speechSpeed: number; // e.g. 0.75 for clear preschool pronunciation
+  wordRepeatIntervalSeconds?: number; // e.g. 4 seconds repetition for immersive learning
 }
 
 export interface UserProgress {
