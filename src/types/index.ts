@@ -1,0 +1,66 @@
+export type AppLanguage = 'fr' | 'ar' | 'ary';
+
+export type DifficultyLevel = 'easy' | 'medium' | 'hard';
+
+export type LionState =
+  | 'idle'
+  | 'speaking'
+  | 'listening'
+  | 'happy'
+  | 'encouraging'
+  | 'thinking';
+
+export type GameState =
+  | 'idle'
+  | 'speaking'
+  | 'listening'
+  | 'success'
+  | 'retry'
+  | 'completed';
+
+export type WordCategory =
+  | 'animals'
+  | 'food'
+  | 'objects'
+  | 'body'
+  | 'vehicles'
+  | 'actions';
+
+export interface Word {
+  id: string;
+  category: WordCategory;
+  translations: Record<AppLanguage, string>;
+  phonetic?: Partial<Record<AppLanguage, string>>;
+  image: string;
+  audio: Record<AppLanguage, string>;
+  acceptedVariants: Record<AppLanguage, string[]>;
+  exampleSentence?: Record<AppLanguage, string>;
+}
+
+export interface UserPreferences {
+  defaultLanguage: AppLanguage;
+  difficultyLevel: DifficultyLevel;
+  speechRecognitionEnabled: boolean;
+  autoAdvance: boolean;
+  soundEffectsEnabled: boolean;
+  volume: number;
+  maxRetries: number;
+}
+
+export interface UserProgress {
+  stars: number;
+  discoveredWords: string[];
+  sessionsCompleted: number;
+  lastSessionDate: string;
+}
+
+export interface SpeechEvaluationResult {
+  isMatch: boolean;
+  recognizedText: string;
+  expectedWord: string;
+  score: number; // 0 to 100
+  feedbackKey: 'exact' | 'close' | 'encouraging' | 'silence' | 'error';
+  matchedVariant?: string;
+}
+
+export type ActiveScreen = 'home' | 'game' | 'challenge' | 'settings';

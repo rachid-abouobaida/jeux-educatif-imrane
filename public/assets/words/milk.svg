@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs><linearGradient id="milkg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E3F2FD"/><stop offset="100%" stop-color="#BBDEFB"/></linearGradient></defs>
+  <path d="M70 65 L80 35 L120 35 L130 65 Z" fill="#90CAF9" stroke="#1976D2" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="65" y="65" width="70" height="105" rx="10" fill="url(#milkg)" stroke="#1976D2" stroke-width="4"/>
+  <rect x="75" y="90" width="50" height="40" rx="5" fill="#2196F3"/>
+  <circle cx="100" cy="110" r="12" fill="#FFFFFF"/>
+</svg>

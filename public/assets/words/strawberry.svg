@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs><radialGradient id="strawg" cx="40%" cy="40%" r="60%"><stop offset="0%" stop-color="#FF5252"/><stop offset="100%" stop-color="#D50000"/></radialGradient></defs>
+  <path d="M100 45 C50 45 40 90 55 135 C70 180 100 185 100 185 C100 185 130 180 145 135 C160 90 150 45 100 45 Z" fill="url(#strawg)" stroke="#B71C1C" stroke-width="4"/>
+  <polygon points="100,45 80,30 90,45 60,38 85,52 100,48 115,52 140,38 110,45 120,30" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+  <ellipse cx="80" cy="80" rx="2.5" ry="4" fill="#FFF9C4"/>
+  <ellipse cx="120" cy="80" rx="2.5" ry="4" fill="#FFF9C4"/>
+  <ellipse cx="100" cy="100" rx="2.5" ry="4" fill="#FFF9C4"/>
+  <ellipse cx="75" cy="120" rx="2.5" ry="4" fill="#FFF9C4"/>
+  <ellipse cx="125" cy="120" rx="2.5" ry="4" fill="#FFF9C4"/>
+  <ellipse cx="100" cy="145" rx="2.5" ry="4" fill="#FFF9C4"/>
+</svg>

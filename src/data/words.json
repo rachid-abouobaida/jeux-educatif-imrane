@@ -1,0 +1,794 @@
+[
+  {
+    "id": "cat",
+    "category": "animals",
+    "translations": { "fr": "chat", "ar": "قطة", "ary": "مشّ" },
+    "phonetic": { "fr": "sha", "ar": "qittah", "ary": "mouch" },
+    "image": "/assets/words/cat.png",
+    "audio": {
+      "fr": "/assets/audio/fr/cat.mp3",
+      "ar": "/assets/audio/ar/cat.mp3",
+      "ary": "/assets/audio/ary/cat.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["chat", "un chat", "le chat", "chaton", "minou"],
+      "ar": ["قطة", "قط", "بسة", "هر", "هرة"],
+      "ary": ["مش", "مشة", "قط", "قطة", "موش"]
+    },
+    "exampleSentence": {
+      "fr": "Le chat fait miaou !",
+      "ar": "القطة تموء بلطف!",
+      "ary": "المش كيدير مياو!"
+    }
+  },
+  {
+    "id": "dog",
+    "category": "animals",
+    "translations": { "fr": "chien", "ar": "كلب", "ary": "كلب" },
+    "phonetic": { "fr": "shyen", "ar": "kalb", "ary": "kelb" },
+    "image": "/assets/words/dog.png",
+    "audio": {
+      "fr": "/assets/audio/fr/dog.mp3",
+      "ar": "/assets/audio/ar/dog.mp3",
+      "ary": "/assets/audio/ary/dog.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["chien", "un chien", "le chien", "chiot", "toutou"],
+      "ar": ["كلب", "كلب صغير", "الكلب"],
+      "ary": ["كلب", "الكلب", "كليب"]
+    },
+    "exampleSentence": {
+      "fr": "Le chien remue la queue !",
+      "ar": "الكلب يحرس البيت ويهز ذيله!",
+      "ary": "الكلب ضريف كيحرك قزيبتو!"
+    }
+  },
+  {
+    "id": "bird",
+    "category": "animals",
+    "translations": { "fr": "oiseau", "ar": "عصفور", "ary": "طير" },
+    "phonetic": { "fr": "wazo", "ar": "osfoor", "ary": "tiyr" },
+    "image": "/assets/words/bird.png",
+    "audio": {
+      "fr": "/assets/audio/fr/bird.mp3",
+      "ar": "/assets/audio/ar/bird.mp3",
+      "ary": "/assets/audio/ary/bird.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["oiseau", "un oiseau", "l'oiseau", "petit oiseau"],
+      "ar": ["عصفور", "طائر", "العصفور"],
+      "ary": ["طير", "فرخ", "عصفور", "طوير"]
+    },
+    "exampleSentence": {
+      "fr": "L'oiseau vole dans le ciel bleu !",
+      "ar": "العصفور يطير في السماء الزرقاء!",
+      "ary": "الطير كيطير فالسما الزوينة!"
+    }
+  },
+  {
+    "id": "fish",
+    "category": "animals",
+    "translations": { "fr": "poisson", "ar": "سمكة", "ary": "حوتة" },
+    "phonetic": { "fr": "pwaso", "ar": "samakah", "ary": "houta" },
+    "image": "/assets/words/fish.png",
+    "audio": {
+      "fr": "/assets/audio/fr/fish.mp3",
+      "ar": "/assets/audio/ar/fish.mp3",
+      "ary": "/assets/audio/ary/fish.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["poisson", "un poisson", "le poisson"],
+      "ar": ["سمكة", "سمك", "السمكة"],
+      "ary": ["حوتة", "حوت", "الحوتة"]
+    },
+    "exampleSentence": {
+      "fr": "Le poisson nage dans l'eau claire !",
+      "ar": "السمكة تسبح في الماء العذب!",
+      "ary": "الحوتة كتعوم فالما النقي!"
+    }
+  },
+  {
+    "id": "elephant",
+    "category": "animals",
+    "translations": { "fr": "éléphant", "ar": "فيل", "ary": "فيل" },
+    "phonetic": { "fr": "elefan", "ar": "fil", "ary": "fil" },
+    "image": "/assets/words/elephant.png",
+    "audio": {
+      "fr": "/assets/audio/fr/elephant.mp3",
+      "ar": "/assets/audio/ar/elephant.mp3",
+      "ary": "/assets/audio/ary/elephant.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["éléphant", "un éléphant", "elephant"],
+      "ar": ["فيل", "الفيل", "فيل كبير"],
+      "ary": ["فيل", "الفيل"]
+    },
+    "exampleSentence": {
+      "fr": "L'éléphant a une grande trompe !",
+      "ar": "الفيل له خرطوم طويل وقوي!",
+      "ary": "الفيل عندو خرطوم كبير وزوين!"
+    }
+  },
+  {
+    "id": "butterfly",
+    "category": "animals",
+    "translations": { "fr": "papillon", "ar": "فراشة", "ary": "فرطوطو" },
+    "phonetic": { "fr": "papiyon", "ar": "farasha", "ary": "fertoutou" },
+    "image": "/assets/words/butterfly.png",
+    "audio": {
+      "fr": "/assets/audio/fr/butterfly.mp3",
+      "ar": "/assets/audio/ar/butterfly.mp3",
+      "ary": "/assets/audio/ary/butterfly.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["papillon", "un papillon", "le papillon"],
+      "ar": ["فراشة", "الفراشة"],
+      "ary": ["فرطوطو", "فراشة", "الفرطوطو"]
+    },
+    "exampleSentence": {
+      "fr": "Le papillon a de jolies ailes colorées !",
+      "ar": "الفراشة تطير بين الزهور الجميلة!",
+      "ary": "الفرطوطو كيطير فوق الورد الملون!"
+    }
+  },
+  {
+    "id": "apple",
+    "category": "food",
+    "translations": { "fr": "pomme", "ar": "تفاحة", "ary": "تفاحة" },
+    "phonetic": { "fr": "pom", "ar": "tuffahah", "ary": "teffaha" },
+    "image": "/assets/words/apple.png",
+    "audio": {
+      "fr": "/assets/audio/fr/apple.mp3",
+      "ar": "/assets/audio/ar/apple.mp3",
+      "ary": "/assets/audio/ary/apple.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["pomme", "une pomme", "la pomme", "pomme rouge"],
+      "ar": ["تفاحة", "التفاحة", "تفاح"],
+      "ary": ["تفاحة", "التفاحة", "تفاح"]
+    },
+    "exampleSentence": {
+      "fr": "La pomme rouge est croquante et sucrée !",
+      "ar": "التفاحة الحمراء لذيذة ومفيدة للصحة!",
+      "ary": "التفاحة الحمرا بنينة وحلوة بزاف!"
+    }
+  },
+  {
+    "id": "banana",
+    "category": "food",
+    "translations": { "fr": "banane", "ar": "موزة", "ary": "بنانة" },
+    "phonetic": { "fr": "banan", "ar": "mawzah", "ary": "banana" },
+    "image": "/assets/words/banana.png",
+    "audio": {
+      "fr": "/assets/audio/fr/banana.mp3",
+      "ar": "/assets/audio/ar/banana.mp3",
+      "ary": "/assets/audio/ary/banana.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["banane", "une banane", "la banane", "bananes"],
+      "ar": ["موزة", "موز", "الموزة"],
+      "ary": ["بنانة", "بنان", "البنانة"]
+    },
+    "exampleSentence": {
+      "fr": "La banane jaune donne plein d'énergie !",
+      "ar": "الموزة الصفراء تعطي طاقة وحيوية!",
+      "ary": "البنانة الصفرا كتعطي القوة والنشاط!"
+    }
+  },
+  {
+    "id": "strawberry",
+    "category": "food",
+    "translations": { "fr": "fraise", "ar": "فراولة", "ary": "فريز" },
+    "phonetic": { "fr": "frez", "ar": "farawlah", "ary": "friz" },
+    "image": "/assets/words/strawberry.png",
+    "audio": {
+      "fr": "/assets/audio/fr/strawberry.mp3",
+      "ar": "/assets/audio/ar/strawberry.mp3",
+      "ary": "/assets/audio/ary/strawberry.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["fraise", "une fraise", "la fraise"],
+      "ar": ["فراولة", "الفراولة", "توت"],
+      "ary": ["فريز", "الفريز", "فريزة"]
+    },
+    "exampleSentence": {
+      "fr": "La fraise est un fruit tout rouge et délicieux !",
+      "ar": "الفراولة حمراء وحلوة المذاق!",
+      "ary": "الفريز بنين وحمر كيعجب الصغار!"
+    }
+  },
+  {
+    "id": "orange",
+    "category": "food",
+    "translations": { "fr": "orange", "ar": "برتقالة", "ary": "ليمونة" },
+    "phonetic": { "fr": "oranj", "ar": "burtuqalah", "ary": "limouna" },
+    "image": "/assets/words/orange.png",
+    "audio": {
+      "fr": "/assets/audio/fr/orange.mp3",
+      "ar": "/assets/audio/ar/orange.mp3",
+      "ary": "/assets/audio/ary/orange.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["orange", "une orange", "l'orange"],
+      "ar": ["برتقالة", "البرتقالة", "برتقال"],
+      "ary": ["ليمونة", "الليمونة", "ليمون", "برتقالة"]
+    },
+    "exampleSentence": {
+      "fr": "L'orange est pleine de vitamine C !",
+      "ar": "البرتقالة غنية بالعصير اللذيذ!",
+      "ary": "الليمونة فيها عصير زوين كينعش!"
+    }
+  },
+  {
+    "id": "milk",
+    "category": "food",
+    "translations": { "fr": "lait", "ar": "حليب", "ary": "حليب" },
+    "phonetic": { "fr": "le", "ar": "haleeb", "ary": "hlib" },
+    "image": "/assets/words/milk.png",
+    "audio": {
+      "fr": "/assets/audio/fr/milk.mp3",
+      "ar": "/assets/audio/ar/milk.mp3",
+      "ary": "/assets/audio/ary/milk.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["lait", "du lait", "le lait"],
+      "ar": ["حليب", "الحليب", "لبن"],
+      "ary": ["حليب", "الحليب"]
+    },
+    "exampleSentence": {
+      "fr": "Un bon verre de lait pour grandir fort !",
+      "ar": "كوب من الحليب يساعدك على النمو بقوة!",
+      "ary": "كاس ديال الحليب كيخليك تكبر صحيح!"
+    }
+  },
+  {
+    "id": "bread",
+    "category": "food",
+    "translations": { "fr": "pain", "ar": "خبز", "ary": "خبز" },
+    "phonetic": { "fr": "pan", "ar": "khubz", "ary": "khobz" },
+    "image": "/assets/words/bread.png",
+    "audio": {
+      "fr": "/assets/audio/fr/bread.mp3",
+      "ar": "/assets/audio/ar/bread.mp3",
+      "ary": "/assets/audio/ary/bread.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["pain", "du pain", "le pain"],
+      "ar": ["خبز", "الخبز"],
+      "ary": ["خبز", "الخبز", "خبيزة"]
+    },
+    "exampleSentence": {
+      "fr": "Le pain frais sent tellement bon !",
+      "ar": "الخبز الطازج شهي ومغذي!",
+      "ary": "الخبز سخون وريحتو زوينة بزاف!"
+    }
+  },
+  {
+    "id": "book",
+    "category": "objects",
+    "translations": { "fr": "livre", "ar": "كتاب", "ary": "كتّاب" },
+    "phonetic": { "fr": "leevr", "ar": "kitab", "ary": "ktab" },
+    "image": "/assets/words/book.png",
+    "audio": {
+      "fr": "/assets/audio/fr/book.mp3",
+      "ar": "/assets/audio/ar/book.mp3",
+      "ary": "/assets/audio/ary/book.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["livre", "un livre", "le livre"],
+      "ar": ["كتاب", "الكتاب"],
+      "ary": ["كتاب", "الكتاب", "كتيب"]
+    },
+    "exampleSentence": {
+      "fr": "Le livre nous raconte de belles histoires !",
+      "ar": "الكتاب يفتح لنا أبواب المعرفة والحكايات!",
+      "ary": "الكتاب فيه قصص زوينة كتعجبنا!"
+    }
+  },
+  {
+    "id": "ball",
+    "category": "objects",
+    "translations": { "fr": "ballon", "ar": "كرة", "ary": "كورة" },
+    "phonetic": { "fr": "balon", "ar": "kurah", "ary": "koura" },
+    "image": "/assets/words/ball.png",
+    "audio": {
+      "fr": "/assets/audio/fr/ball.mp3",
+      "ar": "/assets/audio/ar/ball.mp3",
+      "ary": "/assets/audio/ary/ball.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["ballon", "balle", "un ballon", "le ballon"],
+      "ar": ["كرة", "الكرة"],
+      "ary": ["كورة", "الكورة", "كوييرة"]
+    },
+    "exampleSentence": {
+      "fr": "Le ballon rebondit dans le jardin !",
+      "ar": "الكرة ترتد وتتدحرج بمرح في الملعب!",
+      "ary": "الكورة كتشير ونلعبو بيها فالجريدة!"
+    }
+  },
+  {
+    "id": "bed",
+    "category": "objects",
+    "translations": { "fr": "lit", "ar": "سرير", "ary": "ناموسية" },
+    "phonetic": { "fr": "lee", "ar": "sareer", "ary": "namoussiya" },
+    "image": "/assets/words/bed.png",
+    "audio": {
+      "fr": "/assets/audio/fr/bed.mp3",
+      "ar": "/assets/audio/ar/bed.mp3",
+      "ary": "/assets/audio/ary/bed.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["lit", "un lit", "le lit"],
+      "ar": ["سرير", "السرير", "فراش"],
+      "ary": ["ناموسية", "الناموسية", "فراش", "السرير"]
+    },
+    "exampleSentence": {
+      "fr": "Mon lit doux pour faire de beaux rêves !",
+      "ar": "السرير المريح لننعم بنوم هادئ!",
+      "ary": "الناموسية دافية كنعسو فيها ونحلمو زوين!"
+    }
+  },
+  {
+    "id": "hat",
+    "category": "objects",
+    "translations": { "fr": "chapeau", "ar": "قبعة", "ary": "طاقية" },
+    "phonetic": { "fr": "shapo", "ar": "qubba'ah", "ary": "taqiya" },
+    "image": "/assets/words/hat.png",
+    "audio": {
+      "fr": "/assets/audio/fr/hat.mp3",
+      "ar": "/assets/audio/ar/hat.mp3",
+      "ary": "/assets/audio/ary/hat.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["chapeau", "un chapeau", "le chapeau"],
+      "ar": ["قبعة", "القبعة"],
+      "ary": ["طاقية", "الطاقية", "شابو", "قبعة"]
+    },
+    "exampleSentence": {
+      "fr": "Le chapeau protège du soleil !",
+      "ar": "القبعة تحمي رأسنا من حرارة الشمس!",
+      "ary": "الطاقية كتحمينا من الشمش الحارة!"
+    }
+  },
+  {
+    "id": "key",
+    "category": "objects",
+    "translations": { "fr": "clé", "ar": "مفتاح", "ary": "ساروت" },
+    "phonetic": { "fr": "kle", "ar": "miftah", "ary": "sarout" },
+    "image": "/assets/words/key.png",
+    "audio": {
+      "fr": "/assets/audio/fr/key.mp3",
+      "ar": "/assets/audio/ar/key.mp3",
+      "ary": "/assets/audio/ary/key.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["clé", "une clé", "la clé", "clef"],
+      "ar": ["مفتاح", "المفتاح"],
+      "ary": ["ساروت", "الساروت", "مفتاح"]
+    },
+    "exampleSentence": {
+      "fr": "La clé ouvre la porte de la maison !",
+      "ar": "المفتاح يفتح باب البيت بأمان!",
+      "ary": "الساروت كيحل لينا باب الدار!"
+    }
+  },
+  {
+    "id": "clock",
+    "category": "objects",
+    "translations": { "fr": "montre", "ar": "ساعة", "ary": "مكانة" },
+    "phonetic": { "fr": "montr", "ar": "sa'ah", "ary": "magana" },
+    "image": "/assets/words/clock.png",
+    "audio": {
+      "fr": "/assets/audio/fr/clock.mp3",
+      "ar": "/assets/audio/ar/clock.mp3",
+      "ary": "/assets/audio/ary/clock.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["montre", "une montre", "la montre", "horloge"],
+      "ar": ["ساعة", "الساعة"],
+      "ary": ["مكانة", "المكانة", "ساعة", "الساعة"]
+    },
+    "exampleSentence": {
+      "fr": "La montre fait tic-tac pour donner l'heure !",
+      "ar": "الساعة تدق وتخبرنا بالوقت المناسب!",
+      "ary": "المكانة كتدير تك تاك وتورينا الوقت!"
+    }
+  },
+  {
+    "id": "eye",
+    "category": "body",
+    "translations": { "fr": "œil", "ar": "عين", "ary": "عين" },
+    "phonetic": { "fr": "euy", "ar": "'ayn", "ary": "3ayn" },
+    "image": "/assets/words/eye.png",
+    "audio": {
+      "fr": "/assets/audio/fr/eye.mp3",
+      "ar": "/assets/audio/ar/eye.mp3",
+      "ary": "/assets/audio/ary/eye.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["œil", "un œil", "yeux", "l'œil"],
+      "ar": ["عين", "العين", "عيون"],
+      "ary": ["عين", "العين", "عينين"]
+    },
+    "exampleSentence": {
+      "fr": "Avec mon œil, je regarde tout ce qui brille !",
+      "ar": "بالعين نرى العالم وجماله الرائع!",
+      "ary": "بالعين كنشوفو كل حاجة زوينة ضايرة بينا!"
+    }
+  },
+  {
+    "id": "hand",
+    "category": "body",
+    "translations": { "fr": "main", "ar": "يد", "ary": "يد" },
+    "phonetic": { "fr": "man", "ar": "yad", "ary": "yedd" },
+    "image": "/assets/words/hand.png",
+    "audio": {
+      "fr": "/assets/audio/fr/hand.mp3",
+      "ar": "/assets/audio/ar/hand.mp3",
+      "ary": "/assets/audio/ary/hand.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["main", "une main", "la main", "mains"],
+      "ar": ["يد", "اليد", "كف"],
+      "ary": ["يد", "اليد", "يدين", "يديات"]
+    },
+    "exampleSentence": {
+      "fr": "Je bats des mains quand je suis content !",
+      "ar": "أصفق بيدي فرحاً ونشاطاً!",
+      "ary": "كنصفق بيدي ملي كنكون فرحان بزاف!"
+    }
+  },
+  {
+    "id": "foot",
+    "category": "body",
+    "translations": { "fr": "pied", "ar": "قدم", "ary": "رجل" },
+    "phonetic": { "fr": "pye", "ar": "qadam", "ary": "rjel" },
+    "image": "/assets/words/foot.png",
+    "audio": {
+      "fr": "/assets/audio/fr/foot.mp3",
+      "ar": "/assets/audio/ar/foot.mp3",
+      "ary": "/assets/audio/ary/foot.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["pied", "un pied", "le pied"],
+      "ar": ["قدم", "القدم", "رجل"],
+      "ary": ["رجل", "الرجل", "رجلين", "قدم"]
+    },
+    "exampleSentence": {
+      "fr": "Avec mes deux pieds, je marche et je cours !",
+      "ar": "بالأقدام نمشي ونركض في كل مكان!",
+      "ary": "برجيلاتي كنتمشى ونجري ونلعب!"
+    }
+  },
+  {
+    "id": "nose",
+    "category": "body",
+    "translations": { "fr": "nez", "ar": "أنف", "ary": "نيف" },
+    "phonetic": { "fr": "ne", "ar": "anf", "ary": "nif" },
+    "image": "/assets/words/nose.png",
+    "audio": {
+      "fr": "/assets/audio/fr/nose.mp3",
+      "ar": "/assets/audio/ar/nose.mp3",
+      "ary": "/assets/audio/ary/nose.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["nez", "le nez", "un nez"],
+      "ar": ["أنف", "الأنف"],
+      "ary": ["نيف", "النيف", "أنف"]
+    },
+    "exampleSentence": {
+      "fr": "Mon nez sent le parfum des fleurs !",
+      "ar": "بالأنف نشم أطيب العطور والأزهار!",
+      "ary": "بنيفي كنشم ريحة الورد الزوينة!"
+    }
+  },
+  {
+    "id": "ear",
+    "category": "body",
+    "translations": { "fr": "oreille", "ar": "أذن", "ary": "ودن" },
+    "phonetic": { "fr": "orey", "ar": "udhun", "ary": "wden" },
+    "image": "/assets/words/ear.png",
+    "audio": {
+      "fr": "/assets/audio/fr/ear.mp3",
+      "ar": "/assets/audio/ar/ear.mp3",
+      "ary": "/assets/audio/ary/ear.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["oreille", "une oreille", "l'oreille"],
+      "ar": ["أذن", "الأذن", "آذان"],
+      "ary": ["ودن", "الودن", "ودنين", "أذن"]
+    },
+    "exampleSentence": {
+      "fr": "Mon oreille écoute la jolie chanson !",
+      "ar": "بالأذن نسمع أصوات الطيور والضحكات!",
+      "ary": "بودني كنسمع الغنية الزوينة وكلام ماما!"
+    }
+  },
+  {
+    "id": "mouth",
+    "category": "body",
+    "translations": { "fr": "bouche", "ar": "فم", "ary": "فم" },
+    "phonetic": { "fr": "boosh", "ar": "fam", "ary": "fom" },
+    "image": "/assets/words/mouth.png",
+    "audio": {
+      "fr": "/assets/audio/fr/mouth.mp3",
+      "ar": "/assets/audio/ar/mouth.mp3",
+      "ary": "/assets/audio/ary/mouth.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["bouche", "une bouche", "la bouche"],
+      "ar": ["فم", "الفم"],
+      "ary": ["فم", "الفم", "فيم"]
+    },
+    "exampleSentence": {
+      "fr": "Avec ma bouche, je souris à tout le monde !",
+      "ar": "بالفم نبتسم ونتكلم بأدب ولطف!",
+      "ary": "بفمي كنبتسم ونقول كلام زوين للحباب!"
+    }
+  },
+  {
+    "id": "car",
+    "category": "vehicles",
+    "translations": { "fr": "voiture", "ar": "سيارة", "ary": "طوموبيل" },
+    "phonetic": { "fr": "vwatur", "ar": "sayyarah", "ary": "tomobile" },
+    "image": "/assets/words/car.png",
+    "audio": {
+      "fr": "/assets/audio/fr/car.mp3",
+      "ar": "/assets/audio/ar/car.mp3",
+      "ary": "/assets/audio/ary/car.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["voiture", "une voiture", "la voiture", "auto"],
+      "ar": ["سيارة", "السيارة"],
+      "ary": ["طوموبيل", "الطوموبيل", "سيارة", "السيارة"]
+    },
+    "exampleSentence": {
+      "fr": "La voiture roule sur la route : tut tut !",
+      "ar": "السيارة تسير بهدوء: بيب بيب!",
+      "ary": "الطوموبيل كتمشي فالطريق: طيط طيط!"
+    }
+  },
+  {
+    "id": "bicycle",
+    "category": "vehicles",
+    "translations": { "fr": "vélo", "ar": "دراجة", "ary": "بيكالا" },
+    "phonetic": { "fr": "velo", "ar": "darrajah", "ary": "bikala" },
+    "image": "/assets/words/bicycle.png",
+    "audio": {
+      "fr": "/assets/audio/fr/bicycle.mp3",
+      "ar": "/assets/audio/ar/bicycle.mp3",
+      "ary": "/assets/audio/ary/bicycle.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["vélo", "un vélo", "le vélo", "bicyclette"],
+      "ar": ["دراجة", "الدراجة", "دراجة هوائية"],
+      "ary": ["بيكالا", "البيكالا", "دراجة", "بسيكليت"]
+    },
+    "exampleSentence": {
+      "fr": "Je pédale sur mon vélo dans le parc !",
+      "ar": "أركب الدراجة وأقودها بحذر في الحديقة!",
+      "ary": "كنسوق البيكالا ديالي وندير جولة فالجريدة!"
+    }
+  },
+  {
+    "id": "airplane",
+    "category": "vehicles",
+    "translations": { "fr": "avion", "ar": "طائرة", "ary": "طيارة" },
+    "phonetic": { "fr": "avyon", "ar": "ta'irah", "ary": "tayara" },
+    "image": "/assets/words/airplane.png",
+    "audio": {
+      "fr": "/assets/audio/fr/airplane.mp3",
+      "ar": "/assets/audio/ar/airplane.mp3",
+      "ary": "/assets/audio/ary/airplane.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["avion", "un avion", "l'avion"],
+      "ar": ["طائرة", "الطائرة"],
+      "ary": ["طيارة", "الطيارة", "طائرة"]
+    },
+    "exampleSentence": {
+      "fr": "L'avion vole très haut au-dessus des nuages !",
+      "ar": "الطائرة تحلق عالياً في السماء بين السحب!",
+      "ary": "الطيارة كطلع عالية فالسما فوق السحاب!"
+    }
+  },
+  {
+    "id": "train",
+    "category": "vehicles",
+    "translations": { "fr": "train", "ar": "قطار", "ary": "تران" },
+    "phonetic": { "fr": "tran", "ar": "qitar", "ary": "tran" },
+    "image": "/assets/words/train.png",
+    "audio": {
+      "fr": "/assets/audio/fr/train.mp3",
+      "ar": "/assets/audio/ar/train.mp3",
+      "ary": "/assets/audio/ary/train.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["train", "un train", "le train"],
+      "ar": ["قطار", "القطار"],
+      "ary": ["تران", "التران", "قطار", "القطار"]
+    },
+    "exampleSentence": {
+      "fr": "Tchou-tchou ! Le train avance sur les rails !",
+      "ar": "تشو تشو! القطار يسير على السكة الحديدية!",
+      "ary": "تشو تشو! التران كيجري فوق السكة!"
+    }
+  },
+  {
+    "id": "boat",
+    "category": "vehicles",
+    "translations": { "fr": "bateau", "ar": "سفينة", "ary": "فلوكة" },
+    "phonetic": { "fr": "bato", "ar": "safeenah", "ary": "flouka" },
+    "image": "/assets/words/boat.png",
+    "audio": {
+      "fr": "/assets/audio/fr/boat.mp3",
+      "ar": "/assets/audio/ar/boat.mp3",
+      "ary": "/assets/audio/ary/boat.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["bateau", "un bateau", "le bateau", "navire"],
+      "ar": ["سفينة", "السفينة", "قارب"],
+      "ary": ["فلوكة", "الفلوكة", "باكبوك", "سفينة", "قارب"]
+    },
+    "exampleSentence": {
+      "fr": "Le bateau flotte doucement sur l'eau bleue !",
+      "ar": "السفينة تمخر عباب البحر بهدوء!",
+      "ary": "الفلوكة كتعوم فوق البحر الأزرق الزوين!"
+    }
+  },
+  {
+    "id": "bus",
+    "category": "vehicles",
+    "translations": { "fr": "bus", "ar": "حافلة", "ary": "طوبيس" },
+    "phonetic": { "fr": "bus", "ar": "hafilah", "ary": "tobis" },
+    "image": "/assets/words/bus.png",
+    "audio": {
+      "fr": "/assets/audio/fr/bus.mp3",
+      "ar": "/assets/audio/ar/bus.mp3",
+      "ary": "/assets/audio/ary/bus.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["bus", "un bus", "le bus", "autobus"],
+      "ar": ["حافلة", "الحافلة", "باص"],
+      "ary": ["طوبيس", "الطوبيس", "حافلة", "باص"]
+    },
+    "exampleSentence": {
+      "fr": "Le grand bus emmène tous les amis à l'école !",
+      "ar": "الحافلة الكبيرة تأخذ الأطفال إلى المدرسة!",
+      "ary": "الطوبيس الكبير كيدي الصحاب يقراو فرحانين!"
+    }
+  },
+  {
+    "id": "jump",
+    "category": "actions",
+    "translations": { "fr": "sauter", "ar": "يقفز", "ary": "ينقز" },
+    "phonetic": { "fr": "sote", "ar": "yaqfiz", "ary": "ynqez" },
+    "image": "/assets/words/jump.png",
+    "audio": {
+      "fr": "/assets/audio/fr/jump.mp3",
+      "ar": "/assets/audio/ar/jump.mp3",
+      "ary": "/assets/audio/ary/jump.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["sauter", "saute", "un saut", "saut"],
+      "ar": ["يقفز", "قفز", "طفر"],
+      "ary": ["ينقز", "نقز", "تنقاز"]
+    },
+    "exampleSentence": {
+      "fr": "Imrane saute haut comme un petit kangourou !",
+      "ar": "عمران يقفز عالياً بخفة ونشاط!",
+      "ary": "عمران كينقز عالي بحال الغزال الفرحان!"
+    }
+  },
+  {
+    "id": "run",
+    "category": "actions",
+    "translations": { "fr": "courir", "ar": "يجري", "ary": "يجري" },
+    "phonetic": { "fr": "kooreer", "ar": "yajree", "ary": "yejri" },
+    "image": "/assets/words/run.png",
+    "audio": {
+      "fr": "/assets/audio/fr/run.mp3",
+      "ar": "/assets/audio/ar/run.mp3",
+      "ary": "/assets/audio/ary/run.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["courir", "cours", "course"],
+      "ar": ["يجري", "يركض", "ركض"],
+      "ary": ["يجري", "جري", "كيجري"]
+    },
+    "exampleSentence": {
+      "fr": "Courir vite dans l'herbe verte !",
+      "ar": "الجري السريع في الحقل الأخضر!",
+      "ary": "الجري السريع مع الصحاب فالربيع الأخضر!"
+    }
+  },
+  {
+    "id": "sleep",
+    "category": "actions",
+    "translations": { "fr": "dormir", "ar": "ينام", "ary": "ينعس" },
+    "phonetic": { "fr": "dormeer", "ar": "yanam", "ary": "yn3es" },
+    "image": "/assets/words/sleep.png",
+    "audio": {
+      "fr": "/assets/audio/fr/sleep.mp3",
+      "ar": "/assets/audio/ar/sleep.mp3",
+      "ary": "/assets/audio/ary/sleep.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["dormir", "dort", "dodo"],
+      "ar": ["ينام", "نوم", "نعاس"],
+      "ary": ["ينعس", "نعاس", "نعس", "يدير ديدو"]
+    },
+    "exampleSentence": {
+      "fr": "Dormir paisiblement pour se reposer !",
+      "ar": "النوم الهادئ يعطي راحة وطاقة جديدة!",
+      "ary": "النعاس الزوين كيريح عمران الحبيب!"
+    }
+  },
+  {
+    "id": "eat",
+    "category": "actions",
+    "translations": { "fr": "manger", "ar": "يأكل", "ary": "ياكل" },
+    "phonetic": { "fr": "manje", "ar": "ya'kul", "ary": "yakol" },
+    "image": "/assets/words/eat.png",
+    "audio": {
+      "fr": "/assets/audio/fr/eat.mp3",
+      "ar": "/assets/audio/ar/eat.mp3",
+      "ary": "/assets/audio/ary/eat.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["manger", "mange", "repas"],
+      "ar": ["يأكل", "أكل", "يطعم"],
+      "ary": ["ياكل", "ماكلة", "كلا"]
+    },
+    "exampleSentence": {
+      "fr": "Manger de bonnes choses pour être fort !",
+      "ar": "تناول الطعام الصحي يجعل جسمنا قوياً!",
+      "ary": "الماكلة الصحية واللذيذة كتكبر عمران!"
+    }
+  },
+  {
+    "id": "drink",
+    "category": "actions",
+    "translations": { "fr": "boire", "ar": "يشرب", "ary": "يشرب" },
+    "phonetic": { "fr": "bwar", "ar": "yashrab", "ary": "ychreb" },
+    "image": "/assets/words/drink.png",
+    "audio": {
+      "fr": "/assets/audio/fr/drink.mp3",
+      "ar": "/assets/audio/ar/drink.mp3",
+      "ary": "/assets/audio/ary/drink.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["boire", "bois", "boisson"],
+      "ar": ["يشرب", "شرب"],
+      "ary": ["يشرب", "شرب", "شريبة"]
+    },
+    "exampleSentence": {
+      "fr": "Boire de l'eau fraîche pour rester en forme !",
+      "ar": "شرب الماء الصافي ضروري لصحتنا!",
+      "ary": "شريب الما النقي كيصفي وينعش الجسم!"
+    }
+  },
+  {
+    "id": "laugh",
+    "category": "actions",
+    "translations": { "fr": "rire", "ar": "يضحك", "ary": "يضحك" },
+    "phonetic": { "fr": "reer", "ar": "yadhak", "ary": "ydhek" },
+    "image": "/assets/words/laugh.png",
+    "audio": {
+      "fr": "/assets/audio/fr/laugh.mp3",
+      "ar": "/assets/audio/ar/laugh.mp3",
+      "ary": "/assets/audio/ary/laugh.mp3"
+    },
+    "acceptedVariants": {
+      "fr": ["rire", "rigoler", "sourire"],
+      "ar": ["يضحك", "ضحك", "يبتسم"],
+      "ary": ["يضحك", "ضحكة", "ضحيكة"]
+    },
+    "exampleSentence": {
+      "fr": "Rire aux éclats avec le petit lion !",
+      "ar": "الضحك والمرح مع صديقنا الأسد الصغير!",
+      "ary": "الضحيكة والنشاط مع خونا السبيع الزوين!"
+    }
+  }
+]

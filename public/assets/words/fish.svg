@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs><radialGradient id="fishg" cx="40%" cy="50%" r="55%"><stop offset="0%" stop-color="#FF8A65"/><stop offset="100%" stop-color="#FF5722"/></radialGradient></defs>
+  <path d="M45 100 L15 65 L25 100 L15 135 Z" fill="#FF5722" stroke="#D84315" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="105" cy="100" rx="60" ry="42" fill="url(#fishg)" stroke="#D84315" stroke-width="4"/>
+  <path d="M105 58 Q120 40 135 58" fill="#FFAB91" stroke="#D84315" stroke-width="3"/>
+  <circle cx="135" cy="88" r="10" fill="#2A363B"/>
+  <circle cx="138" cy="85" r="3.5" fill="#FFFFFF"/>
+  <path d="M145 108 Q152 108 152 100" fill="none" stroke="#BF360C" stroke-width="3" stroke-linecap="round"/>
+  <path d="M95 85 Q80 100 95 115" fill="none" stroke="#FFCCBC" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="165" cy="75" r="5" fill="#81D4FA" opacity="0.7"/>
+  <circle cx="175" cy="60" r="8" fill="#81D4FA" opacity="0.7"/>
+</svg>

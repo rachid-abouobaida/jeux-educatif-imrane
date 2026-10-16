@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs><linearGradient id="bookg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7043"/><stop offset="100%" stop-color="#D84315"/></linearGradient></defs>
+  <path d="M35 140 Q100 120 100 160 Q100 120 165 140 L165 60 Q100 40 100 80 Q100 40 35 60 Z" fill="#FFF9C4" stroke="#D84315" stroke-width="4"/>
+  <path d="M30 145 Q100 125 100 165 Q100 125 170 145 L170 150 Q100 130 100 170 Q100 130 30 150 Z" fill="url(#bookg)"/>
+  <line x1="100" y1="80" x2="100" y2="160" stroke="#BF360C" stroke-width="3"/>
+  <line x1="50" y1="85" x2="85" y2="80" stroke="#D84315" stroke-width="3" stroke-linecap="round"/>
+  <line x1="50" y1="105" x2="85" y2="100" stroke="#D84315" stroke-width="3" stroke-linecap="round"/>
+  <line x1="115" y1="80" x2="150" y2="85" stroke="#D84315" stroke-width="3" stroke-linecap="round"/>
+  <line x1="115" y1="100" x2="150" y2="105" stroke="#D84315" stroke-width="3" stroke-linecap="round"/>
+</svg>
