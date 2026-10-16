@@ -5,10 +5,18 @@ import { translations } from '../../i18n/translations';
 import { useGameController } from './useGameController';
 import { LionCharacter } from '../../components/LionCharacter';
 import { WordCard } from '../../components/WordCard';
-import { ListeningIndicator } from '../../components/ListeningIndicator';
 import { RewardAnimation } from '../../components/RewardAnimation';
 import { BigActionButton } from '../../components/BigActionButton';
-import { Home, Volume2, Mic, ArrowRight, ArrowLeft, Star, RotateCcw } from 'lucide-react';
+import {
+  Home,
+  Volume2,
+  Mic,
+  ArrowRight,
+  ArrowLeft,
+  Star,
+  RotateCcw,
+  Sparkles,
+} from 'lucide-react';
 
 interface GameScreenProps {
   words: Word[];
@@ -48,9 +56,16 @@ export const GameScreen: React.FC<GameScreenProps> = ({
     isSessionFinished,
   } = state;
 
+  const isFirstWord = currentWordIndex === 0;
+  const progressPercent = Math.round(((currentWordIndex + 1) / words.length) * 100);
+
+  // Direction-aware navigation arrows
+  const PrevIcon = isRtl ? ArrowRight : ArrowLeft;
+  const NextIcon = isRtl ? ArrowLeft : ArrowRight;
+
   return (
     <div
-      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-6 max-w-5xl mx-auto"
+      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-5 lg:p-6 max-w-7xl mx-auto w-full select-none"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Confetti & Star Animation on Success */}
@@ -61,142 +76,166 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         />
       )}
 
-      {/* Top Navigation Bar */}
-      <header className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 bg-white/85 backdrop-blur-md rounded-3xl p-3 sm:p-4 shadow-lg border-2 border-amber-200">
+      {/* 1. TOP BAR: Stable, Non-intrusive Navigation & Stats */}
+      <header className="flex items-center justify-between gap-2 sm:gap-4 bg-white/95 backdrop-blur-md rounded-3xl px-4 py-3 sm:px-6 sm:py-3.5 shadow-lg border-2 border-amber-200/90 w-full z-20">
+        {/* Back to Home Button */}
         <motion.button
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.94 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={onBackHome}
-          className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-2xl font-bold text-sm sm:text-base transition-colors"
+          className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 sm:px-4 sm:py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-950 rounded-2xl font-black text-sm sm:text-base transition-colors shadow-sm cursor-pointer"
+          aria-label={t.backHome}
         >
-          <Home className="w-5 h-5" />
-          <span className="hidden sm:inline">{t.backHome}</span>
+          <Home className="w-5 h-5 text-amber-800" />
+          <span className="hidden sm:inline font-rounded">{t.backHome}</span>
         </motion.button>
 
-        {/* Word Progress Indicator */}
-        <div className="flex items-center space-x-2 bg-amber-50 px-3.5 py-1.5 rounded-2xl border border-amber-200 text-amber-900 font-extrabold text-sm sm:text-base">
-          <span>{currentWordIndex + 1}</span>
-          <span className="text-amber-400">/</span>
-          <span>{words.length}</span>
+        {/* Word Progress Indicator with Visual Mini-Bar */}
+        <div className="flex flex-col items-center justify-center min-w-[120px] sm:min-w-[160px]">
+          <div className="flex items-center space-x-1.5 rtl:space-x-reverse text-amber-950 font-black text-sm sm:text-base">
+            <span>{currentWordIndex + 1}</span>
+            <span className="text-amber-400">/</span>
+            <span>{words.length}</span>
+          </div>
+          {/* Mini progress bar */}
+          <div className="w-24 sm:w-36 h-2 bg-amber-100 rounded-full overflow-hidden mt-1 border border-amber-200/70">
+            <motion.div
+              className="h-full bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"
+              initial={false}
+              animate={{ width: `${progressPercent}%` }}
+              transition={{ duration: 0.4 }}
+            />
+          </div>
         </div>
 
-        {/* Speech Speed Slider on Interface */}
-        <div
-          className="flex items-center space-x-1.5 sm:space-x-2 rtl:space-x-reverse bg-amber-50/90 border border-amber-200 px-3 py-1.5 rounded-2xl shadow-sm text-xs font-bold text-amber-950"
-          title="Vitesse de prononciation (Ralenti pour apprendre)"
-        >
-          <span className="text-sm select-none" title="Ralenti">🐢</span>
-          <input
-            type="range"
-            min="0.55"
-            max="1.00"
-            step="0.05"
-            value={preferences.speechSpeed || 0.75}
-            onChange={(e) => onUpdateSpeechSpeed?.(parseFloat(e.target.value))}
-            className="w-16 sm:w-24 accent-amber-500 cursor-pointer"
-            aria-label="Vitesse de prononciation"
-          />
-          <span className="text-sm select-none" title="Normal">🐇</span>
-          <span className="font-extrabold text-amber-900 min-w-[2.2rem] text-center">
-            {(preferences.speechSpeed || 0.75).toFixed(2)}x
-          </span>
-        </div>
+        {/* Speech Speed Setting & Stars counter */}
+        <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
+          {/* Speech Speed Control */}
+          <div
+            className="hidden sm:flex items-center space-x-1.5 rtl:space-x-reverse bg-amber-50/90 border border-amber-200 px-3 py-1.5 rounded-2xl shadow-sm text-xs font-bold text-amber-950"
+            title="Vitesse de la voix du Petit Lion"
+          >
+            <span className="text-sm select-none" title="Ralenti">🐢</span>
+            <input
+              type="range"
+              min="0.55"
+              max="1.00"
+              step="0.05"
+              value={preferences.speechSpeed || 0.75}
+              onChange={(e) => onUpdateSpeechSpeed?.(parseFloat(e.target.value))}
+              className="w-14 sm:w-20 accent-amber-500 cursor-pointer"
+              aria-label="Vitesse de prononciation"
+            />
+            <span className="text-sm select-none" title="Normal">🐇</span>
+          </div>
 
-        {/* Stars Counter */}
-        <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-4 py-2 rounded-2xl font-black text-sm sm:text-base shadow-md">
-          <Star className="w-5 h-5 fill-white" />
-          <span>+{sessionStarsGained}</span>
+          {/* Stars Counter */}
+          <div className="flex items-center space-x-1.5 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl font-black text-sm sm:text-base shadow-md border border-white/50">
+            <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white text-white" />
+            <span>+{sessionStarsGained}</span>
+          </div>
         </div>
       </header>
 
-      {/* Main Play Area */}
+      {/* 2. MAIN LEARNING ARENA */}
       {!isSessionFinished ? (
-        <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-10 my-4 sm:my-6">
-          {/* Left: Animated Lion Mascot */}
-          <div className="flex flex-col items-center justify-center w-full md:w-1/2">
-            <LionCharacter
-              state={lionState}
-              size="lg"
-              isRtl={isRtl}
-              speechBubbleText={feedbackText}
-            />
+        <main className="flex-1 flex flex-col justify-center items-center my-auto py-2 sm:py-3 w-full">
+          {/* A. Friendly Lion Mascot with Speech Guidance Banner (Fixed Height - 0px layout shift) */}
+          <div className="w-full max-w-2xl h-20 sm:h-24 flex items-center justify-center px-4 mb-1">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-lg border-2 border-amber-200/90 max-w-full">
+              {/* Animated Baby Lion Avatar with Strict Dimensions & Overflow Hidden */}
+              <div
+                className="w-12 h-12 sm:w-14 sm:h-14 min-w-[48px] min-h-[48px] max-w-[56px] max-h-[56px] rounded-full overflow-hidden bg-gradient-to-tr from-amber-100 to-orange-100 border-2 border-amber-300 flex items-center justify-center flex-shrink-0 shadow-inner"
+              >
+                <img
+                  src={`/assets/lion/lion-${lionState}.png`}
+                  alt="Petit Lion"
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain filter drop-shadow-sm select-none"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
+                />
+              </div>
+
+              {/* Dynamic Speech Text with AnimatePresence */}
+              <div className="flex-1 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={feedbackText || gameState}
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.18 }}
+                    className="flex items-center space-x-2 rtl:space-x-reverse"
+                  >
+                    <span className="font-rounded font-extrabold text-sm sm:text-base lg:text-lg text-slate-800 line-clamp-1">
+                      {feedbackText || t.presentationText(currentWord.translations[lang])}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Pulse status badge */}
+              <div className="flex-shrink-0">
+                {isListening || gameState === 'listening' ? (
+                  <span className="px-3 py-1 bg-teal-100 text-teal-800 text-xs sm:text-sm font-black rounded-full border border-teal-300 animate-pulse">
+                    👂 J'écoute
+                  </span>
+                ) : gameState === 'speaking' ? (
+                  <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs sm:text-sm font-black rounded-full border border-amber-300 animate-pulse">
+                    🔊 Écoute
+                  </span>
+                ) : (
+                  <span className="px-3 py-1 bg-amber-50 text-amber-600 text-xs sm:text-sm font-black rounded-full border border-amber-200">
+                    ⭐ À toi
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
 
-          {/* Right: Word Card & Controls */}
-          <div className="flex flex-col items-center justify-center w-full md:w-1/2 space-y-5">
-            <WordCard
-              word={currentWord}
-              lang={lang}
-              onPlayAudio={actions.playCurrentWord}
-              isPlaying={gameState === 'speaking'}
-              isRtl={isRtl}
-            />
+          {/* B. Central Stage: Perfectly Centered WordCard flanked by Big Touch Navigation Arrows */}
+          <div className="w-full max-w-4xl mx-auto flex items-center justify-center gap-4 sm:gap-8 lg:gap-12 px-2 my-auto">
+            {/* Left Nav Button (Previous Word) */}
+            <div className="flex-shrink-0 flex items-center justify-center">
+              <motion.button
+                whileHover={!isFirstWord ? { scale: 1.1, x: isRtl ? 4 : -4 } : {}}
+                whileTap={!isFirstWord ? { scale: 0.92 } : {}}
+                onClick={actions.previousWord}
+                disabled={isFirstWord}
+                aria-label="Mot précédent"
+                className={`w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 rounded-full flex items-center justify-center shadow-2xl border-4 transition-all ${
+                  isFirstWord
+                    ? 'bg-white/40 border-amber-100 text-amber-300 opacity-25 cursor-not-allowed shadow-none'
+                    : 'bg-white hover:bg-amber-50 border-amber-300 text-amber-900 hover:border-amber-400 cursor-pointer shadow-amber-200/60 ring-4 ring-amber-100'
+                }`}
+              >
+                <PrevIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 stroke-[3]" />
+              </motion.button>
+            </div>
 
-            {/* Listening Indicator with Waves */}
-            <AnimatePresence>
-              {gameState === 'listening' && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  className="w-full flex justify-center"
-                >
-                  <ListeningIndicator
-                    label={t.iAmListening}
-                    isListening={isListening}
-                    onValidateManual={actions.validateManually}
-                    validateLabel={t.validateManually}
-                    isRtl={isRtl}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Tactile Action Controls */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full">
-              {/* Listen / Repeat Sound */}
-              <BigActionButton
-                label={t.repeatWord}
-                icon={<Volume2 className="w-6 h-6" />}
-                onClick={actions.playCurrentWord}
-                variant="secondary"
-                size="md"
+            {/* WordCard: Hero Learning Focal Point (Strictly Centered) */}
+            <div className="flex justify-center w-full max-w-md sm:max-w-lg lg:max-w-xl flex-shrink-0">
+              <WordCard
+                word={currentWord}
+                lang={lang}
+                onPlayAudio={actions.playCurrentWord}
+                isPlaying={gameState === 'speaking'}
                 isRtl={isRtl}
               />
+            </div>
 
-              {/* Speak / Mic Trigger (if speech enabled and not already listening) */}
-              {preferences.speechRecognitionEnabled && gameState !== 'listening' && (
-                <BigActionButton
-                  label={t.trySpeaking}
-                  icon={<Mic className="w-6 h-6" />}
-                  onClick={actions.startListeningRepeat}
-                  variant="primary"
-                  size="md"
-                  isRtl={isRtl}
-                />
-              )}
-
-              {/* Manual Success Star Button (always present so child never feels blocked) */}
-              {gameState !== 'listening' && (
-                <BigActionButton
-                  label={t.validateManually}
-                  icon={<Star className="w-6 h-6 fill-amber-100" />}
-                  onClick={actions.validateManually}
-                  variant="success"
-                  size="md"
-                  isRtl={isRtl}
-                />
-              )}
-
-              {/* Next Word Button */}
-              <BigActionButton
-                label={t.nextWord}
-                icon={isRtl ? <ArrowLeft className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
+            {/* Right Nav Button (Next Word) */}
+            <div className="flex-shrink-0 flex items-center justify-center">
+              <motion.button
+                whileHover={{ scale: 1.1, x: isRtl ? -4 : 4 }}
+                whileTap={{ scale: 0.92 }}
                 onClick={actions.nextWord}
-                variant="primary"
-                size="md"
-                isRtl={isRtl}
-              />
+                aria-label="Mot suivant"
+                className="w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 rounded-full flex items-center justify-center bg-gradient-to-tr from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 text-white shadow-2xl shadow-orange-300/70 border-4 border-white cursor-pointer transition-all ring-4 ring-orange-200"
+              >
+                <NextIcon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 stroke-[3]" />
+              </motion.button>
             </div>
           </div>
         </main>
@@ -205,7 +244,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="flex-1 flex flex-col items-center justify-center text-center p-6 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border-4 border-amber-300 my-6 max-w-xl mx-auto"
+          className="flex-1 flex flex-col items-center justify-center text-center p-6 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border-4 border-amber-300 my-4 max-w-xl mx-auto w-full select-none"
         >
           <LionCharacter state="happy" size="lg" isRtl={isRtl} />
 
@@ -217,7 +256,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
             {t.sessionCompletedDesc(words.length)}
           </p>
 
-          <div className="flex items-center space-x-3 rtl:space-x-reverse bg-amber-100 px-6 py-3 rounded-full my-6 text-amber-900 font-extrabold text-2xl shadow-inner">
+          <div className="flex items-center space-x-3 rtl:space-x-reverse bg-amber-100 px-6 py-3 rounded-full my-6 text-amber-900 font-extrabold text-2xl shadow-inner border border-amber-300/80">
             <Star className="w-8 h-8 fill-amber-400 text-amber-500" />
             <span>+{sessionStarsGained} étoiles !</span>
           </div>
@@ -243,33 +282,81 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         </motion.div>
       )}
 
-      {/* Navigation bottom arrows for easy browsing */}
+      {/* 3. FIXED BOTTOM ACTION DOCK: Absolutely Stable Trio of Tactile Actions */}
       {!isSessionFinished && (
-        <footer className="flex justify-between items-center py-2">
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={actions.previousWord}
-            disabled={currentWordIndex === 0}
-            className={`p-3 rounded-full bg-white/80 shadow border border-amber-200 text-amber-900 ${
-              currentWordIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-amber-100'
-            }`}
-          >
-            {isRtl ? <ArrowRight className="w-6 h-6" /> : <ArrowLeft className="w-6 h-6" />}
-          </motion.button>
+        <footer className="w-full max-w-4xl mx-auto pt-3 pb-2 z-20">
+          <div className="bg-white/95 backdrop-blur-md rounded-[2.2rem] p-3 sm:p-4 shadow-2xl border-4 border-amber-200/90 flex flex-wrap sm:flex-nowrap items-center justify-center gap-3 sm:gap-4 w-full">
+            {/* Action 1: Listen / Repeat Audio (Strictly Fixed Position & Size) */}
+            <motion.button
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.94 }}
+              onClick={actions.playCurrentWord}
+              className={`flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2.5 sm:space-x-3 rtl:space-x-reverse px-4 rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl lg:text-2xl text-white shadow-xl transition-all cursor-pointer border-2 border-white/80 ring-4 ${
+                gameState === 'speaking'
+                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 ring-sky-300 animate-pulse'
+                  : 'bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 shadow-sky-300/50 ring-sky-200/60'
+              }`}
+              aria-label={t.repeatWord}
+            >
+              <Volume2 className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 flex-shrink-0 ${gameState === 'speaking' ? 'animate-bounce' : ''}`} />
+              <span className="font-rounded tracking-wide truncate">{t.repeatWord}</span>
+            </motion.button>
 
-          <p className="text-xs sm:text-sm text-slate-500 font-semibold text-center">
-            {t.categories[currentWord.category]} • « Petit Lion d'Imrane »
-          </p>
+            {/* Action 2: Repeat with Mic / Listening State (Strictly Fixed Position & Size) */}
+            {preferences.speechRecognitionEnabled ? (
+              <motion.button
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.94 }}
+                onClick={
+                  isListening || gameState === 'listening'
+                    ? actions.validateManually
+                    : actions.startListeningRepeat
+                }
+                className={`relative flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2.5 sm:space-x-3 rtl:space-x-reverse px-4 rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl lg:text-2xl text-white shadow-xl transition-all cursor-pointer border-2 border-white/80 overflow-hidden ring-4 ${
+                  isListening || gameState === 'listening'
+                    ? 'bg-gradient-to-r from-teal-400 to-emerald-500 ring-teal-300 shadow-teal-300/60'
+                    : 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 shadow-amber-300/50 ring-amber-200/60'
+                }`}
+                aria-label={isListening || gameState === 'listening' ? t.iAmListening : t.trySpeaking}
+              >
+                {/* Visual pulse effect when listening */}
+                {(isListening || gameState === 'listening') && (
+                  <motion.div
+                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.7, 0.3] }}
+                    transition={{ repeat: Infinity, duration: 1.2 }}
+                    className="absolute inset-0 bg-white/25 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  />
+                )}
+                <Mic className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 flex-shrink-0 z-10 ${isListening || gameState === 'listening' ? 'animate-pulse text-yellow-200' : ''}`} />
+                <span className="font-rounded tracking-wide truncate z-10">
+                  {isListening || gameState === 'listening' ? 'J’écoute… 👂' : 'Je parle 🎤'}
+                </span>
+              </motion.button>
+            ) : (
+              /* Fallback if mic disabled in settings: keeps layout 100% stable */
+              <div
+                className="flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2 bg-amber-50 rounded-2xl sm:rounded-3xl border-2 border-dashed border-amber-300 text-amber-800 font-extrabold text-base sm:text-lg"
+              >
+                <Sparkles className="w-6 h-6 text-amber-500" />
+                <span className="font-rounded">Écoute attentive 🦁</span>
+              </div>
+            )}
 
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={actions.nextWord}
-            className="p-3 rounded-full bg-white/80 shadow border border-amber-200 text-amber-900 hover:bg-amber-100"
-          >
-            {isRtl ? <ArrowLeft className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
-          </motion.button>
+            {/* Action 3: Child Success Validation ("J'ai bien répété !") (Strictly Fixed Position & Size) */}
+            <motion.button
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.94 }}
+              onClick={actions.validateManually}
+              className="flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2.5 sm:space-x-3 rtl:space-x-reverse px-4 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl lg:text-2xl shadow-xl shadow-emerald-300/50 border-2 border-white/80 ring-4 ring-emerald-200/60 transition-all cursor-pointer"
+              aria-label={t.validateManually}
+            >
+              <Star className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 fill-amber-200 text-amber-100 flex-shrink-0" />
+              <span className="font-rounded tracking-wide truncate">{t.validateManually}</span>
+            </motion.button>
+          </div>
         </footer>
       )}
     </div>
   );
 };
+

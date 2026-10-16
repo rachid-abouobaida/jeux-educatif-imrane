@@ -306,7 +306,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
 
   return (
     <div
-      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-6 max-w-5xl mx-auto"
+      className="relative min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-10 max-w-[1440px] mx-auto w-full"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Confetti & Golden Star Celebration */}
@@ -318,33 +318,33 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
       )}
 
       {/* Header */}
-      <header className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 bg-white/85 backdrop-blur-md rounded-3xl p-3 sm:p-4 shadow-lg border-2 border-amber-200">
+      <header className="flex flex-wrap items-center justify-between gap-3 bg-white/90 backdrop-blur-md rounded-3xl p-4 sm:p-5 shadow-lg border-2 border-amber-200 w-full">
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           onClick={onBackHome}
-          className="flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-2xl font-bold text-sm sm:text-base"
+          className="flex items-center space-x-2 rtl:space-x-reverse px-4 py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-2xl font-bold text-sm sm:text-base transition-colors"
         >
           <Home className="w-5 h-5" />
           <span className="hidden sm:inline">{t.backHome}</span>
         </motion.button>
 
         {/* Title Badge */}
-        <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 px-4 py-1.5 rounded-2xl text-amber-950 font-black text-sm sm:text-base shadow-sm">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300 px-5 py-2 rounded-2xl text-amber-950 font-black text-sm sm:text-base shadow-sm">
           <span>🌅</span>
           <span>{t.routineButton}</span>
         </div>
 
         {/* Stars Won Counter */}
-        <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-4 py-2 rounded-2xl font-black text-sm sm:text-base shadow-md">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-400 to-orange-400 text-white px-5 py-2.5 rounded-2xl font-black text-sm sm:text-base shadow-md">
           <Star className="w-5 h-5 fill-white" />
           <span>+{starsWon}</span>
         </div>
       </header>
 
       {/* Routine Progress Timeline (8 Interactive Circles) */}
-      <div className="my-3 px-2">
-        <div className="flex items-center justify-between max-w-2xl mx-auto bg-white/70 backdrop-blur-sm p-3 rounded-2xl border border-amber-200 shadow-sm overflow-x-auto">
+      <div className="my-3 px-2 w-full">
+        <div className="flex items-center justify-between max-w-3xl mx-auto bg-white/80 backdrop-blur-sm p-3.5 rounded-3xl border-2 border-amber-200 shadow-md overflow-x-auto">
           {steps.map((st, idx) => {
             const isCurrent = idx === currentStepIndex;
             const isDone = completedSteps.includes(idx);
@@ -359,7 +359,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                   setIsCelebrating(false);
                   setCurrentStepIndex(idx);
                 }}
-                className={`relative flex flex-col items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full font-black text-sm sm:text-base transition-all select-none ${
+                className={`relative flex flex-col items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full font-black text-base sm:text-lg transition-all select-none cursor-pointer ${
                   isCurrent
                     ? 'bg-amber-500 text-white ring-4 ring-amber-300 scale-110 shadow-lg'
                     : isDone
@@ -378,30 +378,33 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         </div>
       </div>
 
-      {/* Main Routine Stage */}
+      {/* Main Routine Stage: Lion on Left, Large Photo Card on Right */}
       {!isFinished && currentStep ? (
-        <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-10 my-2">
-          {/* Left: Little Lion Character Companion */}
-          <div className="flex flex-col items-center justify-center w-full md:w-5/12">
+        <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-14 xl:gap-18 my-6 w-full">
+          {/* Left Column: Little Lion Character Companion (Agrandie & Majestueuse) */}
+          <div className="w-full md:w-5/12 lg:w-5/12 flex flex-col items-center justify-center relative flex-shrink-0">
+            {/* Soft ambient warm aura */}
+            <div className="absolute -inset-8 bg-gradient-to-tr from-amber-300/40 via-orange-200/30 to-yellow-200/20 rounded-full blur-3xl -z-10" />
+
             <LionCharacter
               state={lionState}
-              size="lg"
+              size="xl"
               speechBubbleText={feedbackText}
               isRtl={isRtl}
             />
           </div>
 
-          {/* Right: Imrane's Morning Photo Card & Voice Repeat Arena */}
-          <div className="flex flex-col items-center justify-center w-full md:w-7/12 space-y-4">
+          {/* Right Column: Imrane's Morning Photo Card & Voice Arena (Grande Valeur Visuelle) */}
+          <div className="w-full md:w-7/12 lg:w-7/12 flex flex-col items-center justify-center space-y-6 max-w-2xl lg:max-w-3xl">
             <motion.div
               key={currentStep.id}
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 280, damping: 22 }}
-              className="relative bg-white/95 backdrop-blur-md rounded-3xl p-4 sm:p-6 shadow-2xl border-4 border-amber-300 w-full max-w-md flex flex-col items-center text-center"
+              className="relative bg-white/95 backdrop-blur-md rounded-[2.5rem] p-6 sm:p-8 lg:p-10 shadow-2xl border-4 border-amber-300 w-full max-w-xl lg:max-w-2xl flex flex-col items-center text-center"
             >
               {/* Step Number Tag */}
-              <div className="absolute top-3.5 left-4 px-3.5 py-1 bg-amber-500 text-white rounded-full text-xs sm:text-sm font-black shadow-sm">
+              <div className="absolute top-4 left-5 px-4 py-1.5 bg-amber-500 text-white rounded-full text-xs sm:text-sm font-black shadow-sm">
                 {t.stepIndicator(currentStep.stepNumber, steps.length)}
               </div>
 
@@ -409,16 +412,16 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               <button
                 onClick={() => playCurrentStep(false)}
                 aria-label="Écouter l'étape"
-                className="absolute top-3.5 right-4 p-2.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-800 shadow-sm transition-colors"
+                className="absolute top-4 right-5 p-3 sm:p-3.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-800 shadow-md transition-colors cursor-pointer"
               >
-                <Volume2 className="w-5 h-5" />
+                <Volume2 className="w-6 h-6 sm:w-7 sm:h-7" />
               </button>
 
-              {/* Real Photo of Imrane */}
+              {/* Real Photo of Imrane (Grand & Immersif) */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03 }}
                 onClick={() => playCurrentStep(false)}
-                className="w-full max-w-xs sm:max-w-sm h-64 sm:h-72 my-2 rounded-2xl overflow-hidden border-2 border-amber-200 shadow-md cursor-pointer bg-slate-100 flex items-center justify-center"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-72 sm:h-80 lg:h-96 my-3 rounded-3xl overflow-hidden border-4 border-amber-200 shadow-xl cursor-pointer bg-slate-100 flex items-center justify-center"
               >
                 <img
                   src={currentStep.image}
@@ -429,11 +432,11 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               </motion.div>
 
               {/* Step Title & Phrase to Repeat */}
-              <div className="mt-2">
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-800 font-rounded">
+              <div className="mt-3">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-800 font-rounded drop-shadow-sm">
                   {currentStep.title[lang]}
                 </h2>
-                <p className="text-sm sm:text-base font-bold text-amber-900 mt-1 bg-amber-50 px-4 py-1.5 rounded-xl border border-amber-200 inline-block">
+                <p className="text-base sm:text-lg lg:text-xl font-bold text-amber-900 mt-2 bg-amber-50 px-5 py-2 rounded-2xl border-2 border-amber-200 inline-block shadow-sm">
                   🗣️ {lang === 'fr' ? 'Répète :' : lang === 'ary' ? 'عاود قول :' : 'ردد :'} « {currentStep.repeatSentence[lang]} »
                 </p>
               </div>
@@ -460,14 +463,14 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
             </AnimatePresence>
 
             {/* Tactile Control Buttons for Child */}
-            <div className="flex flex-wrap items-center justify-center gap-3 w-full">
+            <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 w-full">
               {/* Re-listen Button */}
               <BigActionButton
                 label={t.repeatStep}
                 icon={<Volume2 className="w-6 h-6" />}
                 onClick={() => playCurrentStep(false)}
                 variant="secondary"
-                size="md"
+                size="lg"
                 isRtl={isRtl}
               />
 
@@ -478,7 +481,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                   icon={<Mic className="w-6 h-6" />}
                   onClick={startStepListening}
                   variant="primary"
-                  size="md"
+                  size="lg"
                   isRtl={isRtl}
                 />
               )}
@@ -490,7 +493,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                   icon={<Star className="w-6 h-6 fill-amber-100" />}
                   onClick={handleStepSuccess}
                   variant="success"
-                  size="md"
+                  size="lg"
                   isRtl={isRtl}
                 />
               )}
@@ -501,7 +504,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                 icon={isRtl ? <ArrowLeft className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
                 onClick={goToNextStep}
                 variant="primary"
-                size="md"
+                size="lg"
                 isRtl={isRtl}
               />
             </div>

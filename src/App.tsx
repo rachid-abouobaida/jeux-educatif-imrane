@@ -85,10 +85,10 @@ export const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="relative z-10 min-h-screen flex flex-col justify-between p-4 sm:p-8 max-w-5xl mx-auto"
+            className="relative z-10 min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-10 max-w-[1440px] mx-auto w-full"
           >
             {/* Top Bar: Progress and Settings */}
-            <header className="flex items-center justify-between">
+            <header className="flex items-center justify-between w-full">
               {/* Badges / Rewards */}
               <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <div className="flex items-center space-x-2 rtl:space-x-reverse bg-amber-400 text-white px-4 py-2 rounded-2xl shadow-md font-black text-sm sm:text-base border-2 border-white">
@@ -120,68 +120,90 @@ export const App: React.FC = () => {
               </motion.button>
             </header>
 
-            {/* Main Welcome Hero */}
-            <main className="flex-1 flex flex-col items-center justify-center my-6 text-center space-y-6">
-              {/* Title & Subtitle */}
-              <div>
+            {/* Main Welcome Hero: Mascot on Left, Enlarged Content & Actions on Right */}
+            <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-14 xl:gap-18 my-6 w-full">
+              {/* Left Column: Petit Lion Mascot Companion */}
+              <div className="w-full md:w-5/12 lg:w-5/12 flex flex-col items-center justify-center relative flex-shrink-0">
+                {/* Soft ambient warm aura */}
+                <div className="absolute -inset-8 bg-gradient-to-tr from-amber-300/40 via-orange-200/30 to-yellow-200/20 rounded-full blur-3xl -z-10" />
+
+                <LionCharacter
+                  state="happy"
+                  size="xl"
+                  isRtl={isRtl}
+                />
+              </div>
+
+              {/* Right Column (Grand & Majestueux): Titles, Welcome Speech & Action Buttons */}
+              <div className="w-full md:w-7/12 lg:w-7/12 flex flex-col items-center md:items-start rtl:md:items-end text-center md:text-left rtl:md:text-right space-y-6">
+                {/* Imrane Champion Badge */}
                 <motion.div
                   initial={{ scale: 0.9 }}
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                  className="inline-flex items-center space-x-2 rtl:space-x-reverse px-4 py-1.5 bg-amber-200/60 rounded-full text-amber-900 font-extrabold text-xs sm:text-sm mb-3 border border-amber-300"
+                  className="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-2 bg-amber-200/80 rounded-full text-amber-950 font-extrabold text-sm sm:text-base border-2 border-amber-300 shadow-sm"
                 >
-                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <Sparkles className="w-5 h-5 text-amber-600" />
                   <span>Pour notre petit champion Imrane (عمران)</span>
                 </motion.div>
 
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-amber-950 font-rounded tracking-tight drop-shadow-sm">
-                  {t.appName}
-                </h1>
-                <p className="text-base sm:text-xl text-teal-800 font-bold mt-2 max-w-xl mx-auto">
-                  {t.appSubtitle}
-                </p>
-              </div>
+                {/* Title & Subtitle */}
+                <div className="space-y-2">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-amber-950 font-rounded tracking-tight drop-shadow-sm leading-tight">
+                    {t.appName}
+                  </h1>
+                  <p className="text-lg sm:text-2xl lg:text-3xl text-teal-800 font-bold max-w-2xl leading-snug">
+                    {t.appSubtitle}
+                  </p>
+                </div>
 
-              {/* Central Mascot with Welcome Speech Bubble */}
-              <LionCharacter
-                state="happy"
-                size="xl"
-                speechBubbleText={t.welcomeMessage}
-                isRtl={isRtl}
-              />
+                {/* Mascot Welcome Speech Bubble Card (Enlarged) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="relative bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-7 border-4 border-amber-300 shadow-xl text-slate-800 font-bold text-base sm:text-lg lg:text-xl w-full max-w-2xl lg:max-w-3xl leading-relaxed"
+                >
+                  <div className="flex items-start space-x-3.5 rtl:space-x-reverse">
+                    <span className="text-3xl select-none flex-shrink-0">💬</span>
+                    <p className="font-rounded text-slate-700">
+                      {t.welcomeMessage}
+                    </p>
+                  </div>
+                </motion.div>
 
-              {/* Main Action Buttons */}
-              <div className="flex flex-col items-center justify-center gap-3.5 w-full max-w-lg mt-2">
-                <BigActionButton
-                  label={t.playButton}
-                  icon={<Play className="w-7 h-7 fill-white" />}
-                  onClick={() => setActiveScreen('game')}
-                  variant="primary"
-                  size="xl"
-                  className="w-full shadow-2xl"
-                  isRtl={isRtl}
-                />
-
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+                {/* Main Action Buttons (Enlarged and Generous) */}
+                <div className="flex flex-col gap-4 w-full max-w-2xl lg:max-w-3xl pt-2">
                   <BigActionButton
-                    label={t.routineButton}
-                    icon={<Sun className="w-6 h-6 text-amber-100" />}
-                    onClick={() => setActiveScreen('routine')}
-                    variant="warning"
-                    size="lg"
-                    className="w-full sm:w-auto flex-1 shadow-xl"
+                    label={t.playButton}
+                    icon={<Play className="w-8 h-8 fill-white" />}
+                    onClick={() => setActiveScreen('game')}
+                    variant="primary"
+                    size="xl"
+                    className="w-full shadow-2xl py-6 text-2xl sm:text-3xl"
                     isRtl={isRtl}
                   />
 
-                  <BigActionButton
-                    label={t.challengeButton}
-                    icon={<BookOpen className="w-6 h-6" />}
-                    onClick={() => setActiveScreen('challenge')}
-                    variant="secondary"
-                    size="lg"
-                    className="w-full sm:w-auto flex-1"
-                    isRtl={isRtl}
-                  />
+                  <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
+                    <BigActionButton
+                      label={t.routineButton}
+                      icon={<Sun className="w-7 h-7 text-amber-100" />}
+                      onClick={() => setActiveScreen('routine')}
+                      variant="warning"
+                      size="xl"
+                      className="w-full sm:w-auto flex-1 shadow-xl py-5 text-xl sm:text-2xl"
+                      isRtl={isRtl}
+                    />
+
+                    <BigActionButton
+                      label={t.challengeButton}
+                      icon={<BookOpen className="w-7 h-7" />}
+                      onClick={() => setActiveScreen('challenge')}
+                      variant="secondary"
+                      size="xl"
+                      className="w-full sm:w-auto flex-1 shadow-lg py-5 text-xl sm:text-2xl"
+                      isRtl={isRtl}
+                    />
+                  </div>
                 </div>
               </div>
             </main>
