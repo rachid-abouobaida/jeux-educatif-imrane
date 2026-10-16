@@ -27,21 +27,35 @@ Accompagné par son ami le **Petit Lion**, Imrane découvre les mots en s'amusan
    - Reconnaissance vocale Web Speech API (`fr-FR`, `ar-SA`, `ar-MA`) avec tolérance réglable.
    - Bouton d'accès manuel « J'ai bien répété ! ⭐ » garantissant que l'enfant ne reste jamais bloqué si le micro est désactivé.
 
-4. **Mini-jeu Défi Visuel « Trouve le bon dessin » :**
+4. **🌅 Nouveau : « Mon Rituel du Matin » (8 étapes pédagogiques) :**
+   - Découpage haute définition des 8 étapes du rituel du matin d'Imrane (`public/assets/routine/step-1..8.png`) :
+     1. Bonjour ! (صباح الخير)
+     2. Je me lève (كنفيق)
+     3. Je me lave (كنغسل)
+     4. Je lave mon visage (كنغسل وجهي)
+     5. Je brosse mes dents (كنحك سناني)
+     6. Je mange mon petit-déjeuner (كنفطر)
+     7. Je m'habille (كنلبس حوايجي)
+     8. Je vais à l'école Les Capucines ! (كنمشي للمدرسة)
+   - Accompagnement pédagogique vocal doux et ralenti : le Petit Lion lit l'étape, guide Imrane, écoute sa répétition (ou validation tactile).
+   - Show de célébration à chaque étape (confettis, étoiles, bonds de joie du lion) et grande fête d'arrivée à l'école.
+
+5. **Mini-jeu Défi Visuel « Trouve le bon dessin » :**
    - Le lion demande : « Imrane, peux-tu trouver la banane ? »
    - 3 grandes cartes illustrées tactiles.
    - Fonctionne 100% sans micro dans les trois langues.
 
-5. **Bibliothèque de Vocabulaire Riche (36 mots) :**
+6. **Bibliothèque de Vocabulaire Riche (36 mots) :**
    - 6 catégories préscolaires : Animaux, Fruits & Aliments, Objets du quotidien, Corps humain, Moyens de transport, Actions simples.
    - Traductions authentiques vérifiées (ex: مشّ, ساروت, بيكالا, طوموبيل, طوبيس, نيف, ينعس).
    - Guide phonétique pour les parents.
    - Illustrations vectorielles SVG & PNG transparentes dédiées à chaque mot (`public/assets/words/`).
 
-6. **Espace Parents Protégé (Verrou Mathématique) :**
+7. **Espace Parents Protégé (Verrou Mathématique) :**
    - Question de sécurité pour éviter l'ouverture accidentelle par l'enfant.
    - Choix de la langue par défaut.
    - 3 niveaux de difficulté pour la tolérance vocale : Facile (recommandé 4 ans), Moyen, Difficile.
+   - Réglage de la vitesse d'élocution (slider `speechSpeed` de 0.5x à 1.2x).
    - Activation/désactivation de la reconnaissance vocale et du passage automatique.
    - Réglage du volume sonore et réinitialisation de la progression.
 

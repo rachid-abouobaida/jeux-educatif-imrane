@@ -13,8 +13,9 @@ import { LanguageSelector } from './components/LanguageSelector';
 import { BigActionButton } from './components/BigActionButton';
 import { GameScreen } from './features/game/GameScreen';
 import { PictureChoiceGame } from './features/challenges/PictureChoiceGame';
+import { MorningRoutineGame } from './features/routine/MorningRoutineGame';
 import { ParentSettings } from './features/settings/ParentSettings';
-import { Star, Award, Settings, Play, Sparkles, BookOpen } from 'lucide-react';
+import { Star, Award, Settings, Play, Sparkles, BookOpen, Sun } from 'lucide-react';
 import { playPopSound } from './services/audioService';
 
 export const App: React.FC = () => {
@@ -150,26 +151,38 @@ export const App: React.FC = () => {
               />
 
               {/* Main Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-lg mt-2">
+              <div className="flex flex-col items-center justify-center gap-3.5 w-full max-w-lg mt-2">
                 <BigActionButton
                   label={t.playButton}
                   icon={<Play className="w-7 h-7 fill-white" />}
                   onClick={() => setActiveScreen('game')}
                   variant="primary"
                   size="xl"
-                  className="w-full sm:w-auto flex-1 shadow-2xl"
+                  className="w-full shadow-2xl"
                   isRtl={isRtl}
                 />
 
-                <BigActionButton
-                  label={t.challengeButton}
-                  icon={<BookOpen className="w-6 h-6" />}
-                  onClick={() => setActiveScreen('challenge')}
-                  variant="secondary"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                  isRtl={isRtl}
-                />
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+                  <BigActionButton
+                    label={t.routineButton}
+                    icon={<Sun className="w-6 h-6 text-amber-100" />}
+                    onClick={() => setActiveScreen('routine')}
+                    variant="warning"
+                    size="lg"
+                    className="w-full sm:w-auto flex-1 shadow-xl"
+                    isRtl={isRtl}
+                  />
+
+                  <BigActionButton
+                    label={t.challengeButton}
+                    icon={<BookOpen className="w-6 h-6" />}
+                    onClick={() => setActiveScreen('challenge')}
+                    variant="secondary"
+                    size="lg"
+                    className="w-full sm:w-auto flex-1"
+                    isRtl={isRtl}
+                  />
+                </div>
               </div>
             </main>
 
@@ -220,6 +233,28 @@ export const App: React.FC = () => {
               volume={preferences.volume}
               soundEffectsEnabled={preferences.soundEffectsEnabled}
               speechSpeed={preferences.speechSpeed}
+              onBackHome={() => {
+                setActiveScreen('home');
+                refreshProgress();
+              }}
+              onStarGained={refreshProgress}
+            />
+          </motion.div>
+        )}
+
+        {/* Morning Routine Step-by-Step Screen */}
+        {activeScreen === 'routine' && (
+          <motion.div
+            key="routine"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.25 }}
+            className="relative z-10"
+          >
+            <MorningRoutineGame
+              lang={currentLanguage}
+              preferences={preferences}
               onBackHome={() => {
                 setActiveScreen('home');
                 refreshProgress();

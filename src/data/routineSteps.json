@@ -1,0 +1,242 @@
+[
+  {
+    "id": "step-1",
+    "stepNumber": 1,
+    "title": {
+      "fr": "Bonjour !",
+      "ar": "صباح الخير !",
+      "ary": "صباح الخير !"
+    },
+    "spokenPrompt": {
+      "fr": "Bonjour !",
+      "ar": "صباح الخير !",
+      "ary": "صباح الخير !"
+    },
+    "repeatSentence": {
+      "fr": "Bonjour !",
+      "ar": "صباح الخير",
+      "ary": "صباح الخير"
+    },
+    "image": "/assets/routine/step-1-bonjour.png",
+    "acceptedVariants": {
+      "fr": ["bonjour", "bonjour imrane", "salut", "coucou", "bonjour tout le monde"],
+      "ar": ["صباح الخير", "صباح النور", "مرحبا", "سلام"],
+      "ary": ["صباح الخير", "صباح النور", "سلام", "صباحو"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! ☀️",
+      "ar": "أحسنت يا عمران ! ☀️",
+      "ary": "برافو عمران ! ☀️"
+    }
+  },
+  {
+    "id": "step-2",
+    "stepNumber": 2,
+    "title": {
+      "fr": "Je me lève.",
+      "ar": "أستيقظ.",
+      "ary": "كنفيق."
+    },
+    "spokenPrompt": {
+      "fr": "Je me lève.",
+      "ar": "أستيقظ.",
+      "ary": "كنفيق."
+    },
+    "repeatSentence": {
+      "fr": "Je me lève.",
+      "ar": "أستيقظ",
+      "ary": "كنفيق"
+    },
+    "image": "/assets/routine/step-2-leve.png",
+    "acceptedVariants": {
+      "fr": ["je me leve", "me leve", "leve", "je me reveille", "debout"],
+      "ar": ["أستيقظ", "أنهض", "أنا أستيقظ", "نهضت"],
+      "ary": ["كنفيق", "كنوض", "نفيق", "فقت"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! 👣",
+      "ar": "أحسنت يا عمران ! 👣",
+      "ary": "برافو عمران ! 👣"
+    }
+  },
+  {
+    "id": "step-3",
+    "stepNumber": 3,
+    "title": {
+      "fr": "Je me lave.",
+      "ar": "أغتسل.",
+      "ary": "كنغسل."
+    },
+    "spokenPrompt": {
+      "fr": "Je me lave.",
+      "ar": "أغتسل.",
+      "ary": "كنغسل."
+    },
+    "repeatSentence": {
+      "fr": "Je me lave.",
+      "ar": "أغتسل",
+      "ary": "كنغسل"
+    },
+    "image": "/assets/routine/step-3-lave.png",
+    "acceptedVariants": {
+      "fr": ["je me lave", "me lave", "lave", "bain", "la douche", "douche"],
+      "ar": ["أغتسل", "أنا أغتسل", "أستحم", "حمام"],
+      "ary": ["كنغسل", "نغسل", "كندوش", "نعوم"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! 🛁🧼",
+      "ar": "أحسنت يا عمران ! 🛁🧼",
+      "ary": "برافو عمران ! 🛁🧼"
+    }
+  },
+  {
+    "id": "step-4",
+    "stepNumber": 4,
+    "title": {
+      "fr": "Je lave mon visage.",
+      "ar": "أغسل وجهي.",
+      "ary": "كنغسل وجهي."
+    },
+    "spokenPrompt": {
+      "fr": "Je lave mon visage.",
+      "ar": "أغسل وجهي.",
+      "ary": "كنغسل وجهي."
+    },
+    "repeatSentence": {
+      "fr": "Je lave mon visage.",
+      "ar": "أغسل وجهي",
+      "ary": "كنغسل وجهي"
+    },
+    "image": "/assets/routine/step-4-visage.png",
+    "acceptedVariants": {
+      "fr": ["je lave mon visage", "lave mon visage", "mon visage", "visage"],
+      "ar": ["أغسل وجهي", "أنا أغسل وجهي", "وجهي", "غسل الوجه"],
+      "ary": ["كنغسل وجهي", "نغسل وجهي", "وجهي", "كنمسح وجهي"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! ✨",
+      "ar": "أحسنت يا عمران ! ✨",
+      "ary": "برافو عمران ! ✨"
+    }
+  },
+  {
+    "id": "step-5",
+    "stepNumber": 5,
+    "title": {
+      "fr": "Je brosse mes dents.",
+      "ar": "أنظف أسناني.",
+      "ary": "كنحك سناني."
+    },
+    "spokenPrompt": {
+      "fr": "Je brosse mes dents.",
+      "ar": "أنظف أسناني.",
+      "ary": "كنحك سناني."
+    },
+    "repeatSentence": {
+      "fr": "Je brosse mes dents.",
+      "ar": "أنظف أسناني",
+      "ary": "كنحك سناني"
+    },
+    "image": "/assets/routine/step-5-dents.png",
+    "acceptedVariants": {
+      "fr": ["je brosse mes dents", "brosse mes dents", "mes dents", "dents", "brosser"],
+      "ar": ["أنظف أسناني", "أنا أنظف أسناني", "أسناني", "تنظيف الأسنان"],
+      "ary": ["كنحك سناني", "نحك سناني", "سناني", "كنحك سنيناتي"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! 🪥🦷",
+      "ar": "أحسنت يا عمران ! 🪥🦷",
+      "ary": "برافو عمران ! 🪥🦷"
+    }
+  },
+  {
+    "id": "step-6",
+    "stepNumber": 6,
+    "title": {
+      "fr": "Je mange.",
+      "ar": "آكل.",
+      "ary": "كناكل."
+    },
+    "spokenPrompt": {
+      "fr": "Je mange.",
+      "ar": "آكل.",
+      "ary": "كناكل."
+    },
+    "repeatSentence": {
+      "fr": "Je mange.",
+      "ar": "آكل",
+      "ary": "كناكل"
+    },
+    "image": "/assets/routine/step-6-mange.png",
+    "acceptedVariants": {
+      "fr": ["je mange", "mange", "manger", "petit dejeuner", "mon petit dejeuner", "je mange mon petit dejeuner"],
+      "ar": ["آكل", "أنا آكل", "أتناول فطوري", "فطوري"],
+      "ary": ["كناكل", "ناكل", "كنفطر", "فطور"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! 🥣🍊",
+      "ar": "أحسنت يا عمران ! 🥣🍊",
+      "ary": "برافو عمران ! 🥣🍊"
+    }
+  },
+  {
+    "id": "step-7",
+    "stepNumber": 7,
+    "title": {
+      "fr": "Je m’habille.",
+      "ar": "أرتدي ملابسي.",
+      "ary": "كنلبس حوايجي."
+    },
+    "spokenPrompt": {
+      "fr": "Je m’habille.",
+      "ar": "أرتدي ملابسي.",
+      "ary": "كنلبس حوايجي."
+    },
+    "repeatSentence": {
+      "fr": "Je m’habille.",
+      "ar": "أرتدي ملابسي",
+      "ary": "كنلبس حوايجي"
+    },
+    "image": "/assets/routine/step-7-habille.png",
+    "acceptedVariants": {
+      "fr": ["je m'habille", "je m’habille", "je m habille", "m'habille", "m’habille", "m habille", "habille", "mes habits"],
+      "ar": ["أرتدي ملابسي", "أنا أرتدي ملابسي", "ملابسي", "لبست"],
+      "ary": ["كنلبس حوايجي", "نلبس حوايجي", "حوايجي", "كنلبس حويجاتي", "لبست"]
+    },
+    "encouragement": {
+      "fr": "Bravo Imrane ! 👕👖👟",
+      "ar": "أحسنت يا عمران ! 👕👖👟",
+      "ary": "برافو عمران ! 👕👖👟"
+    }
+  },
+  {
+    "id": "step-8",
+    "stepNumber": 8,
+    "title": {
+      "fr": "Je vais à l’école !",
+      "ar": "أذهب إلى المدرسة !",
+      "ary": "كنمشي للمدرسة !"
+    },
+    "spokenPrompt": {
+      "fr": "Je vais à l’école !",
+      "ar": "أذهب إلى المدرسة !",
+      "ary": "كنمشي للمدرسة !"
+    },
+    "repeatSentence": {
+      "fr": "Je vais à l’école !",
+      "ar": "أذهب إلى المدرسة",
+      "ary": "كنمشي للمدرسة"
+    },
+    "image": "/assets/routine/step-8-ecole.png",
+    "acceptedVariants": {
+      "fr": ["je vais a l'ecole", "je vais a l’ecole", "je vais a l ecole", "a l'ecole", "l'ecole", "ecole", "les capucines"],
+      "ar": ["أذهب إلى المدرسة", "أنا أذهب إلى المدرسة", "إلى المدرسة", "المدرسة"],
+      "ary": ["كنمشي للمدرسة", "غادي للمدرسة", "المدرسة", "غادي نقرا"]
+    },
+    "encouragement": {
+      "fr": "Félicitations Imrane ! Bonne journée à l'école ! 🎒🏫🎉",
+      "ar": "مبروك يا عمران ! يوم سعيد في المدرسة ! 🎒🏫🎉",
+      "ary": "تبارك الله عليك عمران ! نهارك مبروك فالمدرسة ! 🎒🏫🎉"
+    }
+  }
+]

@@ -33,6 +33,15 @@ export interface TranslationStrings {
   wordsDiscovered: (count: number) => string;
   sessionCompletedTitle: string;
   sessionCompletedDesc: (count: number) => string;
+  routineButton: string;
+  routineSubtitle: string;
+  routineIntroAnnouncement: string;
+  stepIndicator: (current: number, total: number) => string;
+  nextStep: string;
+  repeatStep: string;
+  stepValidated: string;
+  routineCompletedTitle: string;
+  routineCompletedDesc: string;
   replaySession: string;
   difficultyLevels: {
     easy: string;
@@ -94,6 +103,16 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
     sessionCompletedTitle: "Bravo champion Imrane ! 🌟",
     sessionCompletedDesc: (count: number) =>
       `Tu as découvert et répété ${count} mots avec le Petit Lion !`,
+    routineButton: "Mon programme du matin 🌅",
+    routineSubtitle: "Les 8 étapes du matin d'Imrane",
+    routineIntroAnnouncement: "Mon programme du matin",
+    stepIndicator: (current: number, total: number) => `Étape ${current} sur ${total}`,
+    nextStep: "Étape suivante ➡️",
+    repeatStep: "Réécouter l'étape 🔊",
+    stepValidated: "Étape réussie ! ⭐",
+    routineCompletedTitle: "Bravo champion Imrane ! 🎒🏫",
+    routineCompletedDesc:
+      "Tu as accompli toutes les étapes de ton rituel du matin ! Tu es fin prêt pour l'école Les Capucines !",
     replaySession: "Rejouer une séance 🚀",
     difficultyLevels: {
       easy: "Facile (découverte & tolérance haute)",
@@ -160,6 +179,16 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
     sessionCompletedTitle: "أحسنت يا بطلنا عمران! 🌟",
     sessionCompletedDesc: (count: number) =>
       `لقد اكتشفت وكررت ${count} كلمات مع صديقك الأسد الصغير!`,
+    routineButton: "برنامجي الصباحي 🌅",
+    routineSubtitle: "المراحل الثمانية لصباح عمران المشرق",
+    routineIntroAnnouncement: "برنامجي الصباحي",
+    stepIndicator: (current: number, total: number) => `المرحلة ${current} من ${total}`,
+    nextStep: "المرحلة التالية ➡️",
+    repeatStep: "استمع للمرحلة مجدداً 🔊",
+    stepValidated: "أكملت هذه المرحلة بنجاح! ⭐",
+    routineCompletedTitle: "ألف مبروك يا بطلنا عمران! 🎒🏫",
+    routineCompletedDesc:
+      "لقد أتممت كل مراحل روتين الصباح بنجاح! أنت الآن جاهز ومستعد لمدرستك الجميلة!",
     replaySession: "جلسة جديدة 🚀",
     difficultyLevels: {
       easy: "سهل (اكتشاف ومطابقة مرنة)",
@@ -226,6 +255,16 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
     sessionCompletedTitle: "برافو عمران البطل! 🌟",
     sessionCompletedDesc: (count: number) =>
       `تعلمتي وفهمتي ${count} كلمات مع السبيع الصغير!`,
+    routineButton: "البرنامج ديالي ديال الصباح 🌅",
+    routineSubtitle: "8 ديال الحوايج كيديرهم عمران باش يمشي للمدرسة",
+    routineIntroAnnouncement: "البرنامج ديالي ديال الصباح",
+    stepIndicator: (current: number, total: number) => `الحاجة ${current} من ${total}`,
+    nextStep: "الخطوة الماجية ➡️",
+    repeatStep: "عاود سمع الخطوة 🔊",
+    stepValidated: "درت هاد الخطوة مزيان! ⭐",
+    routineCompletedTitle: "تبارك الله على عمران البطل! 🎒🏫",
+    routineCompletedDesc:
+      "درتي الروتين ديالك كامل بحال الشجعان! دابا راك مقاد وجاهز للمدرسة ديال الكابوسين!",
     replaySession: "لعب جولة خرى 🚀",
     difficultyLevels: {
       easy: "ساهل (مرن بزاف ومناسب للبداية)",

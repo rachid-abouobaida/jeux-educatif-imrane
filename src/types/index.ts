@@ -64,4 +64,15 @@ export interface SpeechEvaluationResult {
   matchedVariant?: string;
 }
 
-export type ActiveScreen = 'home' | 'game' | 'challenge' | 'settings';
+export interface RoutineStep {
+  id: string;
+  stepNumber: number;
+  title: Record<AppLanguage, string>;
+  spokenPrompt: Record<AppLanguage, string>;
+  repeatSentence: Record<AppLanguage, string>;
+  image: string;
+  acceptedVariants: Record<AppLanguage, string[]>;
+  encouragement: Record<AppLanguage, string>;
+}
+
+export type ActiveScreen = 'home' | 'game' | 'challenge' | 'routine' | 'settings';
