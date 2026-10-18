@@ -29,6 +29,7 @@ export const useGameController = ({
   const [sessionWordsLearned, setSessionWordsLearned] = useState<string[]>([]);
   const [lastEvaluation, setLastEvaluation] = useState<SpeechEvaluationResult | null>(null);
   const [isSessionFinished, setIsSessionFinished] = useState<boolean>(false);
+  const [audioLevel, setAudioLevel] = useState<number>(0);
 
   const autoAdvanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const repeatTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -38,13 +39,16 @@ export const useGameController = ({
   const isSessionFinishedRef = useRef(isSessionFinished);
   isSessionFinishedRef.current = isSessionFinished;
 
+  const currentWord = words[currentWordIndex] || words[0];
+  const currentWordRef = useRef(currentWord);
+  currentWordRef.current = currentWord;
+
   const { speakWord, playSuccess, playEncourage, stop: stopAudio } = useAudio(
     preferences.volume,
     preferences.soundEffectsEnabled,
     preferences.speechSpeed || 0.75
   );
 
-  const currentWord = words[currentWordIndex] || words[0];
   const t = translations[lang];
 
   // Helper to get random encouragement or success phrase
@@ -145,72 +149,13 @@ export const useGameController = ({
   playCurrentWordRef.current = playCurrentWord;
 
   /**
-   * Starts listening to Imrane's voice repetition
-   */
-  const listenForRepetition = useCallback(() => {
-    if (!currentWord || !preferences.speechRecognitionEnabled) return;
-
-    setIsListening(true);
-    setGameState('listening');
-    setLionState('listening');
-    setFeedbackText(t.iAmListening);
-
-    startListening({
-      lang,
-      timeoutSeconds: 5,
-      onStart: () => {
-        setIsListening(true);
-      },
-      onResult: (spokenText) => {
-        setIsListening(false);
-        handleSpokenResult(spokenText);
-      },
-      onError: (err) => {
-        setIsListening(false);
-        console.debug('Speech recognition notice:', err);
-        if (err !== 'no-speech') {
-          handleMismatchOrRetry('...');
-        }
-      },
-      onEnd: () => {
-        setIsListening(false);
-      },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWord, lang, preferences.speechRecognitionEnabled, preferences.difficultyLevel, t]);
-
-  /**
-   * Processes the recognized text through pronunciation evaluator
-   */
-  const handleSpokenResult = useCallback(
-    (spokenText: string) => {
-      if (!currentWord) return;
-
-      const evalResult = evaluatePronunciation(
-        spokenText,
-        currentWord,
-        lang,
-        preferences.difficultyLevel
-      );
-      setLastEvaluation(evalResult);
-
-      if (evalResult.isMatch) {
-        handleSuccess();
-      } else {
-        handleMismatchOrRetry(spokenText);
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentWord, lang, preferences.difficultyLevel, retriesCount]
-  );
-
-  /**
    * Success handler: lion is happy, award star, confetti
    */
   const handleSuccess = useCallback(() => {
     clearRepeatTimer();
     stopListening();
     setIsListening(false);
+    setAudioLevel(0);
     setGameState('success');
     setLionState('happy');
 
@@ -234,7 +179,109 @@ export const useGameController = ({
       }, 2600);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clearRepeatTimer, currentWord, onStarAwarded, playSuccess, preferences.autoAdvance, t.successMessages]);
+  }, [clearRepeatTimer, currentWord.id, onStarAwarded, playSuccess, preferences.autoAdvance, t.successMessages]);
+
+  /**
+   * Processes the recognized text through pronunciation evaluator
+   */
+  const handleSpokenResult = useCallback(
+    (spokenText: string, alternatives?: string[]) => {
+      const activeWord = currentWordRef.current;
+      if (!activeWord) return;
+
+      const evalResult = evaluatePronunciation(
+        spokenText,
+        activeWord,
+        lang,
+        preferences.difficultyLevel,
+        alternatives
+      );
+      setLastEvaluation(evalResult);
+
+      if (evalResult.isMatch) {
+        handleSuccess();
+      } else {
+        handleMismatchOrRetry(spokenText);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [handleSuccess, lang, preferences.difficultyLevel, retriesCount]
+  );
+
+  /**
+   * Starts listening to Imrane's voice repetition with zero-lag interim detection
+   */
+  const listenForRepetition = useCallback(() => {
+    const activeWord = currentWordRef.current;
+    if (!activeWord || !preferences.speechRecognitionEnabled) return;
+
+    setIsListening(true);
+    setAudioLevel(0);
+    setGameState('listening');
+    setLionState('listening');
+    setFeedbackText(t.iAmListening);
+
+    startListening({
+      lang,
+      timeoutSeconds: 9,
+      onStart: () => {
+        setIsListening(true);
+      },
+      onAudioLevel: (level) => {
+        setAudioLevel(level);
+      },
+      onInterimResult: (spokenText, alternatives) => {
+        // Fast instant match check: as soon as the child says the word, reward immediately!
+        const targetWord = currentWordRef.current;
+        if (!targetWord) return;
+
+        const evalResult = evaluatePronunciation(
+          spokenText,
+          targetWord,
+          lang,
+          preferences.difficultyLevel,
+          alternatives
+        );
+
+        if (evalResult.isMatch) {
+          setLastEvaluation(evalResult);
+          stopListening();
+          setIsListening(false);
+          setAudioLevel(0);
+          handleSuccess();
+        }
+      },
+      onResult: (spokenText, alternatives) => {
+        setIsListening(false);
+        setAudioLevel(0);
+        handleSpokenResult(spokenText, alternatives);
+      },
+      onError: (err) => {
+        setIsListening(false);
+        setAudioLevel(0);
+        console.debug('Speech recognition notice:', err);
+        if (err === 'no-speech') {
+          // Warm, gentle guidance when silence or very soft speech is heard
+          setLionState('encouraging');
+          setFeedbackText(
+            lang === 'fr'
+              ? `Le lion t’écoute... Parle tout doucement 🦁`
+              : lang === 'ary'
+              ? `كنسمعك عمران... عاود قول معايا بشوية 🦁`
+              : `أنا أستمع يا عمران... ردد معي بلطف 🦁`
+          );
+          playEncourage();
+        } else {
+          handleMismatchOrRetry('...');
+        }
+      },
+      onEnd: () => {
+        setIsListening(false);
+        setAudioLevel(0);
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleSuccess, lang, preferences.speechRecognitionEnabled, preferences.difficultyLevel, t]);
 
   /**
    * Friendly encouragement if mismatch: never scold
@@ -368,6 +415,7 @@ export const useGameController = ({
       sessionWordsLearned,
       lastEvaluation,
       isSessionFinished,
+      audioLevel,
     },
     actions: {
       playCurrentWord: () => playCurrentWord(false),

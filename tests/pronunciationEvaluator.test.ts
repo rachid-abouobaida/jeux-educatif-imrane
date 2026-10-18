@@ -79,4 +79,36 @@ describe('Pronunciation Evaluator', () => {
     expect(silenceRes.isMatch).toBe(false);
     expect(silenceRes.feedbackKey).toBe('silence');
   });
+
+  it('recognizes French words phonetically even with soft voice or dropped letters', () => {
+    const sampleWordWater: Word = {
+      id: 'water',
+      category: 'nature',
+      translations: { fr: 'eau', ar: 'ماء', ary: 'ما' },
+      image: '/assets/words/water.png',
+      audio: { fr: '', ar: '', ary: '' },
+      acceptedVariants: { fr: ['eau', 'de l eau', "l'eau"], ar: ['ماء', 'الماء'], ary: ['ما', 'الما'] },
+    };
+
+    // When recognizer transcribes "o" for "eau"
+    const waterRes = evaluatePronunciation('o', sampleWordWater, 'fr', 'easy');
+    expect(waterRes.isMatch).toBe(true);
+
+    // When child adds helper words: "c'est un chat"
+    const phraseRes = evaluatePronunciation("c'est un chat", sampleWordCat, 'fr', 'easy');
+    expect(phraseRes.isMatch).toBe(true);
+  });
+
+  it('evaluates multiple candidate alternatives from Web Speech API', () => {
+    // If top alternative was noisy but alternative 1 has the word
+    const res = evaluatePronunciation(
+      ['chapeau', 'chaton', 'chat'],
+      sampleWordCat,
+      'fr',
+      'easy'
+    );
+    expect(res.isMatch).toBe(true);
+    expect(res.score).toBeGreaterThanOrEqual(95);
+  });
 });
+

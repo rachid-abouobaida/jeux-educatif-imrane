@@ -64,6 +64,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
     isListening,
     sessionStarsGained,
     isSessionFinished,
+    audioLevel,
   } = state;
 
   const isFirstWord = currentWordIndex === 0;
@@ -403,34 +404,72 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
             {/* Action 2: Repeat with Mic / Listening State (Strictly Fixed Position & Size) */}
             {preferences.speechRecognitionEnabled ? (
-              <motion.button
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.94 }}
-                onClick={
-                  isListening || gameState === 'listening'
-                    ? actions.validateManually
-                    : actions.startListeningRepeat
-                }
-                className={`relative flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2.5 sm:space-x-3 rtl:space-x-reverse px-4 rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl lg:text-2xl text-white shadow-xl transition-all cursor-pointer border-2 border-white/80 overflow-hidden ring-4 ${
-                  isListening || gameState === 'listening'
-                    ? 'bg-gradient-to-r from-teal-400 to-emerald-500 ring-teal-300 shadow-teal-300/60'
-                    : 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 shadow-amber-300/50 ring-amber-200/60'
-                }`}
-                aria-label={isListening || gameState === 'listening' ? t.iAmListening : t.trySpeaking}
-              >
-                {/* Visual pulse effect when listening */}
-                {(isListening || gameState === 'listening') && (
-                  <motion.div
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.7, 0.3] }}
-                    transition={{ repeat: Infinity, duration: 1.2 }}
-                    className="absolute inset-0 bg-white/25 rounded-2xl sm:rounded-3xl pointer-events-none"
-                  />
-                )}
-                <Mic className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 flex-shrink-0 z-10 ${isListening || gameState === 'listening' ? 'animate-pulse text-yellow-200' : ''}`} />
-                <span className="font-rounded tracking-wide truncate z-10">
-                  {isListening || gameState === 'listening' ? 'J’écoute… 👂' : 'Je parle 🎤'}
-                </span>
-              </motion.button>
+              (() => {
+                const isListeningActive = isListening || gameState === 'listening';
+                const isHearingVoice = isListeningActive && audioLevel > 12;
+
+                return (
+                  <motion.button
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileTap={{ scale: 0.94 }}
+                    onClick={
+                      isListeningActive
+                        ? actions.validateManually
+                        : actions.startListeningRepeat
+                    }
+                    className={`relative flex-1 min-w-[140px] h-16 sm:h-20 lg:h-22 flex items-center justify-center space-x-2 sm:space-x-2.5 rtl:space-x-reverse px-3 sm:px-4 rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl lg:text-2xl text-white shadow-xl transition-all cursor-pointer border-2 border-white/80 overflow-hidden ring-4 ${
+                      isListeningActive
+                        ? isHearingVoice
+                          ? 'bg-gradient-to-r from-emerald-400 to-lime-500 ring-lime-300 shadow-lime-300/60 scale-[1.02]'
+                          : 'bg-gradient-to-r from-teal-400 to-emerald-500 ring-teal-300 shadow-teal-300/60'
+                        : 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 shadow-amber-300/50 ring-amber-200/60'
+                    }`}
+                    aria-label={isListeningActive ? t.iAmListening : t.trySpeaking}
+                  >
+                    {/* Visual pulse effect when listening */}
+                    {isListeningActive && (
+                      <motion.div
+                        animate={{
+                          scale: isHearingVoice ? [1, 1.5, 1] : [1, 1.4, 1],
+                          opacity: isHearingVoice ? [0.4, 0.8, 0.4] : [0.3, 0.7, 0.3],
+                        }}
+                        transition={{ repeat: Infinity, duration: isHearingVoice ? 0.7 : 1.2 }}
+                        className="absolute inset-0 bg-white/25 rounded-2xl sm:rounded-3xl pointer-events-none"
+                      />
+                    )}
+                    <Mic
+                      className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 flex-shrink-0 z-10 ${
+                        isListeningActive ? 'animate-pulse text-yellow-200' : ''
+                      }`}
+                    />
+                    {/* Live Audio Frequency Bars when listening */}
+                    {isListeningActive && (
+                      <div className="flex items-center space-x-1 z-10 px-0.5">
+                        {[0.6, 1.3, 0.8, 1.5].map((factor, i) => {
+                          const barHeight = Math.max(4, Math.min(18, (audioLevel / 100) * 22 * factor));
+                          return (
+                            <motion.div
+                              key={i}
+                              animate={{ height: `${barHeight}px` }}
+                              transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+                              className={`w-1 rounded-full ${
+                                isHearingVoice ? 'bg-yellow-200' : 'bg-white/70'
+                              }`}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                    <span className="font-rounded tracking-wide truncate z-10">
+                      {isListeningActive
+                        ? isHearingVoice
+                          ? 'Je t’entends ! 🎵'
+                          : 'J’écoute… 👂'
+                        : 'Je parle 🎤'}
+                    </span>
+                  </motion.button>
+                );
+              })()
             ) : (
               /* Fallback if mic disabled in settings: keeps layout 100% stable */
               <div

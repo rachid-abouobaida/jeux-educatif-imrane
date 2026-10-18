@@ -12,6 +12,7 @@ export interface GameControllerState {
   sessionWordsLearned: string[];
   lastEvaluation: SpeechEvaluationResult | null;
   isSessionFinished: boolean;
+  audioLevel: number;
 }
 
 export interface GameControllerActions {

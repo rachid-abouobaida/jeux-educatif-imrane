@@ -9,7 +9,7 @@ import { RewardAnimation } from '../../components/RewardAnimation';
 import { BigActionButton } from '../../components/BigActionButton';
 import { useAudio } from '../../hooks/useAudio';
 import { startListening, stopListening } from '../speech/speechRecognitionService';
-import { normalizeByLanguage, calculateSimilarity } from '../speech/pronunciationEvaluator';
+import { normalizeByLanguage, calculateSimilarity, phoneticFrench, stripLeadingArticles } from '../speech/pronunciationEvaluator';
 import { addStarAndWord } from '../../services/storageService';
 import { Home, Volume2, Mic, ArrowRight, ArrowLeft, Star, RotateCcw, Award } from 'lucide-react';
 
@@ -35,6 +35,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   const [lionState, setLionState] = useState<LionState>('idle');
   const [feedbackText, setFeedbackText] = useState<string>('');
   const [isListening, setIsListening] = useState(false);
+  const [audioLevel, setAudioLevel] = useState(0);
   const [isCelebrating, setIsCelebrating] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [starsWon, setStarsWon] = useState(0);
@@ -54,40 +55,80 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   const stepIcons = ['☀️', '🛏️', '🛁', '💧', '🪥', '🥣', '👕', '🎒'];
 
   /**
-   * Evaluates if Imrane's speech matches the routine sentence
+   * Evaluates if Imrane's speech matches the routine sentence.
+   * Tolerant of soft child voices, dropped letters, and polite prefixes.
    */
   const evaluateRoutineSpeech = useCallback(
-    (spokenText: string, step: RoutineStep): boolean => {
-      if (!spokenText.trim()) return false;
-      const normalizedSpoken = normalizeByLanguage(spokenText, lang);
+    (spokenText: string | string[], step: RoutineStep, alternatives: string[] = []): boolean => {
+      const candidates = (Array.isArray(spokenText) ? [...spokenText, ...alternatives] : [spokenText, ...alternatives])
+        .map((s) => (s ? s.trim() : ''))
+        .filter(Boolean);
+
+      if (candidates.length === 0) return false;
+
       const target = normalizeByLanguage(step.repeatSentence[lang], lang);
       const variants = (step.acceptedVariants[lang] || []).map((v) =>
         normalizeByLanguage(v, lang)
       );
+      const allTargets = [target, ...variants];
 
-      // Exact or variant match
-      if (normalizedSpoken === target || variants.includes(normalizedSpoken)) {
-        return true;
-      }
+      for (const text of candidates) {
+        const normalizedSpoken = normalizeByLanguage(text, lang);
+        const strippedSpoken = stripLeadingArticles(normalizedSpoken, lang);
 
-      // Token inclusion (e.g. child said "bonjour maman" or "je mange bien")
-      const spokenTokens = normalizedSpoken.split(' ').filter(Boolean);
-      for (const variant of [target, ...variants]) {
-        if (spokenTokens.includes(variant) || normalizedSpoken.includes(variant)) {
+        // 1. Exact or variant match (raw or stripped)
+        if (
+          allTargets.includes(normalizedSpoken) ||
+          allTargets.includes(strippedSpoken)
+        ) {
+          return true;
+        }
+
+        // 2. Token inclusion (e.g. child said "bonjour maman" or "je me lave bien")
+        const spokenTokens = normalizedSpoken.split(' ').filter(Boolean);
+        for (const variant of allTargets) {
+          if (spokenTokens.includes(variant) || normalizedSpoken.includes(variant)) {
+            return true;
+          }
+          // Multi-word token match if key words overlap (e.g. "visage", "dents", "ecole", "mange")
+          const variantTokens = variant.split(' ').filter((vt) => vt.length >= 3);
+          if (variantTokens.length > 0 && variantTokens.some((vt) => spokenTokens.includes(vt))) {
+            return true;
+          }
+        }
+
+        // 3. Phonetic matching for French (e.g. "leve" vs "lève", "dents" vs "dan", "ecole" vs "ekol")
+        if (lang === 'fr' && preferences.difficultyLevel !== 'hard') {
+          const targetPhon = phoneticFrench(target);
+          const spokenPhon = phoneticFrench(strippedSpoken);
+          const spokenPhonTokens = phoneticFrench(normalizedSpoken).split(' ').filter(Boolean);
+          const allPhonTargets = allTargets.map((t) => phoneticFrench(t));
+
+          if (
+            allPhonTargets.includes(spokenPhon) ||
+            spokenPhon.includes(targetPhon) ||
+            targetPhon.includes(spokenPhon) ||
+            allPhonTargets.some((pt) => spokenPhonTokens.includes(pt))
+          ) {
+            return true;
+          }
+        }
+
+        // 4. Fuzzy similarity (tolerant for a 4yo child)
+        let bestSim = 0;
+        for (const cand of allTargets) {
+          const sim = calculateSimilarity(normalizedSpoken, cand);
+          if (sim > bestSim) bestSim = sim;
+          const strippedSim = calculateSimilarity(strippedSpoken, cand);
+          if (strippedSim > bestSim) bestSim = strippedSim;
+        }
+
+        const threshold = preferences.difficultyLevel === 'hard' ? 0.70 : 0.40;
+        if (bestSim >= threshold) {
           return true;
         }
       }
-
-      // Fuzzy similarity (tolerant for a 4yo child)
-      let bestSim = 0;
-      for (const cand of [target, ...variants]) {
-        const sim = calculateSimilarity(normalizedSpoken, cand);
-        if (sim > bestSim) bestSim = sim;
-      }
-
-      // Threshold based on difficulty
-      const threshold = preferences.difficultyLevel === 'hard' ? 0.70 : 0.45;
-      return bestSim >= threshold;
+      return false;
     },
     [lang, preferences.difficultyLevel]
   );
@@ -171,16 +212,28 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
     if (!currentStep || !preferences.speechRecognitionEnabled) return;
 
     setIsListening(true);
+    setAudioLevel(0);
     setLionState('listening');
     setFeedbackText(t.iAmListening);
 
     startListening({
       lang,
-      timeoutSeconds: 8,
+      timeoutSeconds: 9,
       onStart: () => setIsListening(true),
-      onResult: (spokenText) => {
+      onAudioLevel: (lvl) => setAudioLevel(lvl),
+      onInterimResult: (spokenText, alternatives) => {
+        // Fast instant match check for routine sentences
+        if (evaluateRoutineSpeech(spokenText, currentStep, alternatives)) {
+          stopListening();
+          setIsListening(false);
+          setAudioLevel(0);
+          handleStepSuccess();
+        }
+      },
+      onResult: (spokenText, alternatives) => {
         setIsListening(false);
-        const isMatch = evaluateRoutineSpeech(spokenText, currentStep);
+        setAudioLevel(0);
+        const isMatch = evaluateRoutineSpeech(spokenText, currentStep, alternatives);
         if (isMatch) {
           handleStepSuccess();
         } else {
@@ -196,11 +249,25 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
           playEncourage();
         }
       },
-      onError: () => {
+      onError: (err) => {
         setIsListening(false);
+        setAudioLevel(0);
         setLionState('encouraging');
+        if (err === 'no-speech') {
+          setFeedbackText(
+            lang === 'fr'
+              ? `Je t’écoute Imrane ! Répète tout doucement avec moi 🦁`
+              : lang === 'ary'
+              ? `كنسمعك عمران ! عاود معايا بشوية 🦁`
+              : `أنا أستمع إليك يا عمران ! ردد معي بلطف 🦁`
+          );
+          playEncourage();
+        }
       },
-      onEnd: () => setIsListening(false),
+      onEnd: () => {
+        setIsListening(false);
+        setAudioLevel(0);
+      },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStep, evaluateRoutineSpeech, lang, preferences.speechRecognitionEnabled, t.iAmListening]);
@@ -211,6 +278,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   const handleStepSuccess = useCallback(() => {
     stopListening();
     setIsListening(false);
+    setAudioLevel(0);
     setIsCelebrating(true);
     setLionState('happy');
 
@@ -454,6 +522,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                   <ListeningIndicator
                     label={t.iAmListening}
                     isListening={isListening}
+                    audioLevel={audioLevel}
                     onValidateManual={handleStepSuccess}
                     validateLabel={t.stepValidated}
                     isRtl={isRtl}
