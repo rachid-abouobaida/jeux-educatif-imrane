@@ -375,12 +375,18 @@ export const stopListening = (): void => {
   stopAudioMonitor();
   if (activeRecognition) {
     try {
+      activeRecognition.onstart = null;
+      activeRecognition.onresult = null;
+      activeRecognition.onerror = null;
+      activeRecognition.onend = null;
       activeRecognition.abort();
     } catch {
       // ignore
     }
     activeRecognition = null;
   }
+  lastResultAlternatives = [];
+  hasDeliveredFinalResult = false;
   setTimeout(() => {
     isStoppingExplicitly = false;
   }, 100);

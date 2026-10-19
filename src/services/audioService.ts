@@ -257,7 +257,9 @@ export const speakWithVoice = (
 
       utterance.onerror = (e) => {
         console.debug('Speech synthesis error or interrupted:', e);
-        onEnd?.();
+        if (e.error !== 'interrupted' && e.error !== 'canceled') {
+          onEnd?.();
+        }
         resolve();
       };
 

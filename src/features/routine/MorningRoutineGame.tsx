@@ -9,8 +9,8 @@ import { RewardAnimation } from '../../components/RewardAnimation';
 import { BigActionButton } from '../../components/BigActionButton';
 import { useAudio } from '../../hooks/useAudio';
 import { startListening, stopListening } from '../speech/speechRecognitionService';
-import { normalizeByLanguage, calculateSimilarity, phoneticFrench, stripLeadingArticles } from '../speech/pronunciationEvaluator';
 import { addStarAndWord } from '../../services/storageService';
+import { evaluateRoutineSpeech } from './routineSpeechEvaluator';
 import {
   Home,
   Volume2,
@@ -76,6 +76,9 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   }, []);
 
   const autoNextTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const speechCooldownTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const introTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHandlingSuccessRef = useRef<boolean>(false);
   const hasAnnouncedIntroRef = useRef<boolean>(false);
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const thumbnailsContainerRef = useRef<HTMLDivElement | null>(null);
@@ -106,95 +109,264 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   }, [currentStepIndex]);
 
   /**
-   * Evaluates if Imrane's speech matches the routine sentence.
-   * Tolerant of soft child voices, dropped letters, and polite prefixes.
+   * Advances to the next routine step or grand finale
    */
-  const evaluateRoutineSpeech = useCallback(
-    (spokenText: string | string[], step: RoutineStep, alternatives: string[] = []): boolean => {
-      const candidates = (Array.isArray(spokenText) ? [...spokenText, ...alternatives] : [spokenText, ...alternatives])
-        .map((s) => (s ? s.trim() : ''))
-        .filter(Boolean);
+  const goToNextStep = useCallback(() => {
+    if (autoNextTimerRef.current) {
+      clearTimeout(autoNextTimerRef.current);
+      autoNextTimerRef.current = null;
+    }
+    if (speechCooldownTimerRef.current) {
+      clearTimeout(speechCooldownTimerRef.current);
+      speechCooldownTimerRef.current = null;
+    }
+    if (introTimerRef.current) {
+      clearTimeout(introTimerRef.current);
+      introTimerRef.current = null;
+    }
+    isHandlingSuccessRef.current = false;
+    setIsCelebrating(false);
+    stopAudio();
+    stopListening();
 
-      if (candidates.length === 0) return false;
+    if (currentStepIndex + 1 < steps.length) {
+      setDirection(1);
+      setCurrentStepIndex((prev) => prev + 1);
+      setLionState('idle');
+    } else {
+      setIsFinished(true);
+      setLionState('happy');
+      setFeedbackText(t.routineCompletedTitle);
+      playSuccess();
+    }
+  }, [currentStepIndex, steps.length, stopAudio, t.routineCompletedTitle, playSuccess]);
 
-      const target = normalizeByLanguage(step.repeatSentence[lang], lang);
-      const variants = (step.acceptedVariants[lang] || []).map((v) =>
-        normalizeByLanguage(v, lang)
-      );
-      const allTargets = [target, ...variants];
-
-      for (const text of candidates) {
-        const normalizedSpoken = normalizeByLanguage(text, lang);
-        const strippedSpoken = stripLeadingArticles(normalizedSpoken, lang);
-
-        // 1. Exact or variant match (raw or stripped)
-        if (
-          allTargets.includes(normalizedSpoken) ||
-          allTargets.includes(strippedSpoken)
-        ) {
-          return true;
-        }
-
-        // 2. Token inclusion (e.g. child said "bonjour maman" or "je me lave bien")
-        const spokenTokens = normalizedSpoken.split(' ').filter(Boolean);
-        for (const variant of allTargets) {
-          if (spokenTokens.includes(variant) || normalizedSpoken.includes(variant)) {
-            return true;
-          }
-          const variantTokens = variant.split(' ').filter((vt) => vt.length >= 3);
-          if (variantTokens.length > 0 && variantTokens.some((vt) => spokenTokens.includes(vt))) {
-            return true;
-          }
-        }
-
-        // 3. Phonetic matching for French (e.g. "leve" vs "lève", "dents" vs "dan", "ecole" vs "ekol")
-        if (lang === 'fr' && preferences.difficultyLevel !== 'hard') {
-          const targetPhon = phoneticFrench(target);
-          const spokenPhon = phoneticFrench(strippedSpoken);
-          const spokenPhonTokens = phoneticFrench(normalizedSpoken).split(' ').filter(Boolean);
-          const allPhonTargets = allTargets.map((t) => phoneticFrench(t));
-
-          if (
-            allPhonTargets.includes(spokenPhon) ||
-            spokenPhon.includes(targetPhon) ||
-            targetPhon.includes(spokenPhon) ||
-            allPhonTargets.some((pt) => spokenPhonTokens.includes(pt))
-          ) {
-            return true;
-          }
-        }
-
-        // 4. Fuzzy similarity (tolerant for a 4yo child)
-        let bestSim = 0;
-        for (const cand of allTargets) {
-          const sim = calculateSimilarity(normalizedSpoken, cand);
-          if (sim > bestSim) bestSim = sim;
-          const strippedSim = calculateSimilarity(strippedSpoken, cand);
-          if (strippedSim > bestSim) bestSim = strippedSim;
-        }
-
-        const threshold = preferences.difficultyLevel === 'hard' ? 0.70 : 0.40;
-        if (bestSim >= threshold) {
-          return true;
-        }
+  /**
+   * Go back to previous step
+   */
+  const goToPreviousStep = useCallback(() => {
+    if (currentStepIndex > 0) {
+      if (autoNextTimerRef.current) {
+        clearTimeout(autoNextTimerRef.current);
+        autoNextTimerRef.current = null;
       }
-      return false;
-    },
-    [lang, preferences.difficultyLevel]
-  );
+      if (speechCooldownTimerRef.current) {
+        clearTimeout(speechCooldownTimerRef.current);
+        speechCooldownTimerRef.current = null;
+      }
+      if (introTimerRef.current) {
+        clearTimeout(introTimerRef.current);
+        introTimerRef.current = null;
+      }
+      isHandlingSuccessRef.current = false;
+      setIsCelebrating(false);
+      stopAudio();
+      stopListening();
+      setDirection(-1);
+      setCurrentStepIndex((prev) => prev - 1);
+      setLionState('idle');
+    }
+  }, [currentStepIndex, stopAudio]);
+
+  /**
+   * Navigates directly to any step index with slider direction
+   */
+  const goToStep = useCallback((targetIndex: number) => {
+    if (targetIndex === currentStepIndex || targetIndex < 0 || targetIndex >= steps.length) return;
+    setDirection(targetIndex > currentStepIndex ? 1 : -1);
+    if (autoNextTimerRef.current) {
+      clearTimeout(autoNextTimerRef.current);
+      autoNextTimerRef.current = null;
+    }
+    if (speechCooldownTimerRef.current) {
+      clearTimeout(speechCooldownTimerRef.current);
+      speechCooldownTimerRef.current = null;
+    }
+    if (introTimerRef.current) {
+      clearTimeout(introTimerRef.current);
+      introTimerRef.current = null;
+    }
+    isHandlingSuccessRef.current = false;
+    setIsCelebrating(false);
+    stopAudio();
+    stopListening();
+    setCurrentStepIndex(targetIndex);
+    setLionState('idle');
+  }, [currentStepIndex, steps.length, stopAudio]);
+
+  /**
+   * Restart the morning routine session
+   */
+  const restartRoutine = () => {
+    if (autoNextTimerRef.current) {
+      clearTimeout(autoNextTimerRef.current);
+      autoNextTimerRef.current = null;
+    }
+    if (speechCooldownTimerRef.current) {
+      clearTimeout(speechCooldownTimerRef.current);
+      speechCooldownTimerRef.current = null;
+    }
+    if (introTimerRef.current) {
+      clearTimeout(introTimerRef.current);
+      introTimerRef.current = null;
+    }
+    isHandlingSuccessRef.current = false;
+    hasAnnouncedIntroRef.current = false;
+    setIsCelebrating(false);
+    setIsFinished(false);
+    setDirection(0);
+    setCurrentStepIndex(0);
+    setCompletedSteps([]);
+    setStarsWon(0);
+    setLionState('idle');
+  };
+
+  /**
+   * Handles successful repetition: Lion cheer, confetti, star and audio fanfare.
+   * Strictly guarded so it runs once per step to prevent repeated animations or doubled stars.
+   */
+  const handleStepSuccess = useCallback(() => {
+    if (isHandlingSuccessRef.current) return;
+    isHandlingSuccessRef.current = true;
+
+    if (speechCooldownTimerRef.current) {
+      clearTimeout(speechCooldownTimerRef.current);
+      speechCooldownTimerRef.current = null;
+    }
+    stopListening();
+    setIsListening(false);
+    setAudioLevel(0);
+    setIsCelebrating(true);
+    setLionState('happy');
+
+    const praise = currentStep.encouragement[lang];
+    setFeedbackText(praise);
+    playSuccess();
+
+    // Award star once per step
+    if (!completedSteps.includes(currentStepIndex)) {
+      addStarAndWord(currentStep.id);
+      setStarsWon((prev) => prev + 1);
+      onStarGained?.();
+      setCompletedSteps((prev) => [...prev, currentStepIndex]);
+    }
+
+    // Auto-advance after celebratory show if autoAdvance enabled
+    if (preferences.autoAdvance) {
+      if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
+      autoNextTimerRef.current = setTimeout(() => {
+        setIsCelebrating(false);
+        goToNextStep();
+      }, 3000);
+    }
+  }, [currentStep, completedSteps, currentStepIndex, onStarGained, playSuccess, preferences.autoAdvance, lang, goToNextStep]);
+
+  /**
+   * Starts microphone listening for Imrane's repetition
+   */
+  const startStepListening = useCallback(() => {
+    if (!currentStep || !preferences.speechRecognitionEnabled || isHandlingSuccessRef.current) return;
+
+    setIsListening(true);
+    setAudioLevel(0);
+    setLionState('listening');
+    setFeedbackText(t.iAmListening);
+
+    startListening({
+      lang,
+      timeoutSeconds: 9,
+      onStart: () => setIsListening(true),
+      onAudioLevel: (lvl) => setAudioLevel(lvl),
+      onInterimResult: (spokenText, alternatives) => {
+        if (isHandlingSuccessRef.current) return;
+        if (evaluateRoutineSpeech(spokenText, currentStep, lang, preferences.difficultyLevel, alternatives)) {
+          stopListening();
+          setIsListening(false);
+          setAudioLevel(0);
+          handleStepSuccess();
+        }
+      },
+      onResult: (spokenText, alternatives) => {
+        setIsListening(false);
+        setAudioLevel(0);
+        if (isHandlingSuccessRef.current) return;
+        const isMatch = evaluateRoutineSpeech(spokenText, currentStep, lang, preferences.difficultyLevel, alternatives);
+        if (isMatch) {
+          handleStepSuccess();
+        } else {
+          setLionState('encouraging');
+          setFeedbackText(
+            lang === 'fr'
+              ? `Presque Imrane ! Essaie de dire : ${currentStep.repeatSentence[lang]} ! 🦁`
+              : lang === 'ary'
+              ? `قريب بزاف عمران ! عاود قول معايا : ${currentStep.repeatSentence[lang]} ! 🦁`
+              : `أنت قريب يا عمران ! حاول أن تقول : ${currentStep.repeatSentence[lang]} ! 🦁`
+          );
+          playEncourage();
+        }
+      },
+      onError: (err) => {
+        setIsListening(false);
+        setAudioLevel(0);
+        if (isHandlingSuccessRef.current) return;
+        setLionState('encouraging');
+        if (err === 'no-speech') {
+          setFeedbackText(
+            lang === 'fr'
+              ? `Je t’écoute Imrane ! Répète tout doucement avec moi 🦁`
+              : lang === 'ary'
+              ? `كنسمعك عمران ! عاود معايا بشوية 🦁`
+              : `أنا أستمع إليك يا عمران ! ردد معي بلطف 🦁`
+          );
+          playEncourage();
+        }
+      },
+      onEnd: () => {
+        setIsListening(false);
+        setAudioLevel(0);
+      },
+    });
+  }, [currentStep, handleStepSuccess, lang, preferences.difficultyLevel, preferences.speechRecognitionEnabled, t.iAmListening, playEncourage]);
 
   /**
    * Reads and announces the current step with deliberate clarity.
    * Announces "Mon programme du matin" at the beginning, then speaks only the step expression.
+   * Introduces a safety cooldown between speech synthesis and mic listening to prevent speaker echo.
    */
   const playCurrentStep = useCallback(
     async (andThenListen = true) => {
       if (!currentStep) return;
+      isHandlingSuccessRef.current = false;
+      if (speechCooldownTimerRef.current) {
+        clearTimeout(speechCooldownTimerRef.current);
+        speechCooldownTimerRef.current = null;
+      }
+      if (introTimerRef.current) {
+        clearTimeout(introTimerRef.current);
+        introTimerRef.current = null;
+      }
       stopAudio();
       stopListening();
       setIsListening(false);
 
       const stepText = currentStep.spokenPrompt[lang];
+
+      const startListeningSafely = () => {
+        if (!preferences.speechRecognitionEnabled || isHandlingSuccessRef.current) return;
+        setLionState('listening');
+        setFeedbackText(
+          lang === 'fr'
+            ? 'À toi ! Répète avec moi 🦁'
+            : lang === 'ary'
+            ? 'دورك ! عاود معايا 🦁'
+            : 'دورك ! ردد معي 🦁'
+        );
+        speechCooldownTimerRef.current = setTimeout(() => {
+          if (!isHandlingSuccessRef.current) {
+            startStepListening();
+          }
+        }, 600);
+      };
 
       // At the start of the routine, announce "Mon programme du matin" first
       if (currentStepIndex === 0 && !hasAnnouncedIntroRef.current) {
@@ -208,7 +380,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
           lang,
           () => setLionState('speaking'),
           () => {
-            setTimeout(async () => {
+            introTimerRef.current = setTimeout(async () => {
               setLionState('speaking');
               setFeedbackText(stepText);
               await speakWord(
@@ -217,8 +389,8 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                 lang,
                 () => setLionState('speaking'),
                 () => {
-                  if (andThenListen && preferences.speechRecognitionEnabled) {
-                    startStepListening();
+                  if (andThenListen) {
+                    startListeningSafely();
                   } else {
                     setLionState('idle');
                   }
@@ -242,8 +414,8 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         lang,
         () => setLionState('speaking'),
         () => {
-          if (andThenListen && preferences.speechRecognitionEnabled) {
-            startStepListening();
+          if (andThenListen) {
+            startListeningSafely();
           } else {
             setLionState('idle');
           }
@@ -251,173 +423,8 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         preferences.speechSpeed || 0.75
       );
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [currentStep, currentStepIndex, lang, preferences.speechRecognitionEnabled, preferences.speechSpeed, t.routineIntroAnnouncement]
+    [currentStep, currentStepIndex, lang, preferences.speechRecognitionEnabled, preferences.speechSpeed, t.routineIntroAnnouncement, startStepListening, speakWord, stopAudio]
   );
-
-  /**
-   * Starts microphone listening for Imrane's repetition
-   */
-  const startStepListening = useCallback(() => {
-    if (!currentStep || !preferences.speechRecognitionEnabled) return;
-
-    setIsListening(true);
-    setAudioLevel(0);
-    setLionState('listening');
-    setFeedbackText(t.iAmListening);
-
-    startListening({
-      lang,
-      timeoutSeconds: 9,
-      onStart: () => setIsListening(true),
-      onAudioLevel: (lvl) => setAudioLevel(lvl),
-      onInterimResult: (spokenText, alternatives) => {
-        if (evaluateRoutineSpeech(spokenText, currentStep, alternatives)) {
-          stopListening();
-          setIsListening(false);
-          setAudioLevel(0);
-          handleStepSuccess();
-        }
-      },
-      onResult: (spokenText, alternatives) => {
-        setIsListening(false);
-        setAudioLevel(0);
-        const isMatch = evaluateRoutineSpeech(spokenText, currentStep, alternatives);
-        if (isMatch) {
-          handleStepSuccess();
-        } else {
-          setLionState('encouraging');
-          setFeedbackText(
-            lang === 'fr'
-              ? `Presque Imrane ! Essaie de dire : ${currentStep.repeatSentence[lang]} ! 🦁`
-              : lang === 'ary'
-              ? `قريب بزاف عمران ! عاود قول معايا : ${currentStep.repeatSentence[lang]} ! 🦁`
-              : `أنت قريب يا عمران ! حاول أن تقول : ${currentStep.repeatSentence[lang]} ! 🦁`
-          );
-          playEncourage();
-        }
-      },
-      onError: (err) => {
-        setIsListening(false);
-        setAudioLevel(0);
-        setLionState('encouraging');
-        if (err === 'no-speech') {
-          setFeedbackText(
-            lang === 'fr'
-              ? `Je t’écoute Imrane ! Répète tout doucement avec moi 🦁`
-              : lang === 'ary'
-              ? `كنسمعك عمران ! عاود معايا بشوية 🦁`
-              : `أنا أستمع إليك يا عمران ! ردد معي بلطف 🦁`
-          );
-          playEncourage();
-        }
-      },
-      onEnd: () => {
-        setIsListening(false);
-        setAudioLevel(0);
-      },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStep, evaluateRoutineSpeech, lang, preferences.speechRecognitionEnabled, t.iAmListening]);
-
-  /**
-   * Handles successful repetition: Lion cheer, confetti, star and audio fanfare
-   */
-  const handleStepSuccess = useCallback(() => {
-    stopListening();
-    setIsListening(false);
-    setAudioLevel(0);
-    setIsCelebrating(true);
-    setLionState('happy');
-
-    const praise = currentStep.encouragement[lang];
-    setFeedbackText(praise);
-    playSuccess();
-
-    // Award star
-    addStarAndWord(currentStep.id);
-    setStarsWon((prev) => prev + 1);
-    onStarGained?.();
-
-    if (!completedSteps.includes(currentStepIndex)) {
-      setCompletedSteps((prev) => [...prev, currentStepIndex]);
-    }
-
-    // Auto-advance after celebratory show if autoAdvance enabled
-    if (preferences.autoAdvance) {
-      if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
-      autoNextTimerRef.current = setTimeout(() => {
-        setIsCelebrating(false);
-        goToNextStep();
-      }, 3000);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStep, completedSteps, currentStepIndex, onStarGained, playSuccess, preferences.autoAdvance, lang]);
-
-  /**
-   * Navigates directly to any step index with slider direction
-   */
-  const goToStep = useCallback((targetIndex: number) => {
-    if (targetIndex === currentStepIndex || targetIndex < 0 || targetIndex >= steps.length) return;
-    setDirection(targetIndex > currentStepIndex ? 1 : -1);
-    if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
-    setIsCelebrating(false);
-    stopAudio();
-    stopListening();
-    setCurrentStepIndex(targetIndex);
-    setLionState('idle');
-  }, [currentStepIndex, steps.length, stopAudio]);
-
-  /**
-   * Advances to the next routine step or grand finale
-   */
-  const goToNextStep = useCallback(() => {
-    if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
-    setIsCelebrating(false);
-    stopAudio();
-    stopListening();
-
-    if (currentStepIndex + 1 < steps.length) {
-      setDirection(1);
-      setCurrentStepIndex((prev) => prev + 1);
-      setLionState('idle');
-    } else {
-      setIsFinished(true);
-      setLionState('happy');
-      setFeedbackText(t.routineCompletedTitle);
-      playSuccess();
-    }
-  }, [currentStepIndex, steps.length, stopAudio, t.routineCompletedTitle, playSuccess]);
-
-  /**
-   * Go back to previous step
-   */
-  const goToPreviousStep = useCallback(() => {
-    if (currentStepIndex > 0) {
-      if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
-      setIsCelebrating(false);
-      stopAudio();
-      stopListening();
-      setDirection(-1);
-      setCurrentStepIndex((prev) => prev - 1);
-      setLionState('idle');
-    }
-  }, [currentStepIndex, stopAudio]);
-
-  /**
-   * Restart the morning routine session
-   */
-  const restartRoutine = () => {
-    if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
-    hasAnnouncedIntroRef.current = false;
-    setIsCelebrating(false);
-    setIsFinished(false);
-    setDirection(0);
-    setCurrentStepIndex(0);
-    setCompletedSteps([]);
-    setStarsWon(0);
-    setLionState('idle');
-  };
 
   // Keyboard navigation for desktop & accessibility
   useEffect(() => {
@@ -447,6 +454,8 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   useEffect(() => {
     return () => {
       if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
+      if (speechCooldownTimerRef.current) clearTimeout(speechCooldownTimerRef.current);
+      if (introTimerRef.current) clearTimeout(introTimerRef.current);
       stopAudio();
       stopListening();
     };
@@ -497,6 +506,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         <RewardAnimation
           isRtl={isRtl}
           message={feedbackText}
+          onComplete={() => setIsCelebrating(false)}
         />
       )}
 

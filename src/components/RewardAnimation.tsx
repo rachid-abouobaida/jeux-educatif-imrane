@@ -14,8 +14,11 @@ export const RewardAnimation: React.FC<RewardAnimationProps> = ({
   message,
   isRtl = false,
 }) => {
+  const onCompleteRef = React.useRef(onComplete);
+  onCompleteRef.current = onComplete;
+
   useEffect(() => {
-    // Fire gentle pastel confetti
+    // Fire gentle pastel confetti exactly once per reward animation mount
     try {
       confetti({
         particleCount: 50,
@@ -28,11 +31,11 @@ export const RewardAnimation: React.FC<RewardAnimationProps> = ({
     }
 
     const timer = setTimeout(() => {
-      onComplete?.();
+      onCompleteRef.current?.();
     }, 2200);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, []);
 
   return (
     <div
