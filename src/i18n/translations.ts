@@ -22,6 +22,7 @@ export interface TranslationStrings {
     actions: string;
     numbers: string;
     letters: string;
+    shapes: string;
   };
   welcomeMessage: string;
   presentationText: (word: string) => string;
@@ -77,7 +78,8 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
       vehicles: "Moyens de transport",
       actions: "Actions simples",
       numbers: "Chiffres (1 à 20)",
-      letters: "Alphabet (A à Z)"
+      letters: "Alphabet (A à Z)",
+      shapes: "Formes géométriques"
     },
     welcomeMessage:
       "Coucou Imrane ! 🦁 Je suis ton ami le Petit Lion. Aujourd'hui, nous allons apprendre de nouveaux mots, écouter, parler et nous amuser ensemble !",
@@ -155,7 +157,8 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
       vehicles: "وسائل النقل",
       actions: "أفعال بسيطة",
       numbers: "الأرقام (1 إلى 20)",
-      letters: "الحروف الأبجدية (A إلى Z)"
+      letters: "الحروف الأبجدية (A إلى Z)",
+      shapes: "الأشكال الهندسية"
     },
     welcomeMessage:
       "مرحباً عمران! 🦁 أنا صديقك الأسد الصغير. هيا نتعلم كلمات جديدة ونلعب معاً!",
@@ -233,7 +236,8 @@ export const translations: Record<AppLanguage, TranslationStrings> = {
       vehicles: "التران والطوموبيل والطيارة",
       actions: "أفعال ولعب",
       numbers: "الأرقام (من 1 لـ 20)",
-      letters: "الحروف (من A لـ Z)"
+      letters: "الحروف (من A لـ Z)",
+      shapes: "الأشكال الهندسية"
     },
     welcomeMessage:
       "سلام عمران! 🦁 أنا صاحبك الأسد الصغير. يلا نتعلمو كلمات جداد ونلعبو مع بعضياتنا!",

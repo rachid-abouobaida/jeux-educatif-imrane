@@ -26,7 +26,8 @@ export type WordCategory =
   | 'vehicles'
   | 'actions'
   | 'numbers'
-  | 'letters';
+  | 'letters'
+  | 'shapes';
 
 export interface Word {
   id: string;

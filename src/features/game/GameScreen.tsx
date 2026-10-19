@@ -130,6 +130,12 @@ export const GameScreen: React.FC<GameScreenProps> = ({
       label: t.categories.actions,
       count: words.filter((w) => w.category === 'actions').length,
     },
+    {
+      id: 'shapes',
+      icon: '🔷',
+      label: t.categories.shapes,
+      count: words.filter((w) => w.category === 'shapes').length,
+    },
   ];
 
   return (

@@ -3489,5 +3489,272 @@
       "ar": "Z كما في Zèbre (حمار وحشي) !",
       "ary": "Z بحال Zèbre !"
     }
+  },
+  {
+    "id": "shape_square",
+    "category": "shapes",
+    "translations": {
+      "fr": "carré",
+      "ar": "مربع",
+      "ary": "مربع"
+    },
+    "phonetic": {
+      "fr": "kare",
+      "ar": "murabba'",
+      "ary": "murabba"
+    },
+    "image": "/assets/words/shape_square.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_square.mp3",
+      "ar": "/assets/audio/ar/shape_square.mp3",
+      "ary": "/assets/audio/ary/shape_square.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "carré",
+        "carre",
+        "le carré",
+        "le carre",
+        "un carré",
+        "un carre"
+      ],
+      "ar": [
+        "مربع",
+        "المربع",
+        "شكل مربع"
+      ],
+      "ary": [
+        "مربع",
+        "المربع",
+        "كاري"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Le carré a quatre côtés égaux !",
+      "ar": "المربع له أربعة أضلاع متساوية!",
+      "ary": "المربع عندو ربعة د الجناب مقادين!"
+    }
+  },
+  {
+    "id": "shape_circle",
+    "category": "shapes",
+    "translations": {
+      "fr": "cercle",
+      "ar": "دائرة",
+      "ary": "دائرة"
+    },
+    "phonetic": {
+      "fr": "serkl",
+      "ar": "da'irah",
+      "ary": "da'ira"
+    },
+    "image": "/assets/words/shape_circle.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_circle.mp3",
+      "ar": "/assets/audio/ar/shape_circle.mp3",
+      "ary": "/assets/audio/ary/shape_circle.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "cercle",
+        "le cercle",
+        "un cercle",
+        "rond",
+        "le rond",
+        "un rond"
+      ],
+      "ar": [
+        "دائرة",
+        "الدائرة",
+        "شكل دائري",
+        "مدور"
+      ],
+      "ary": [
+        "دائرة",
+        "الدائرة",
+        "دوارة",
+        "مدور"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Le cercle est tout rond comme un ballon !",
+      "ar": "الدائرة مستديرة مثل الكرة!",
+      "ary": "الدائرة مدورة بحال الكورة!"
+    }
+  },
+  {
+    "id": "shape_triangle",
+    "category": "shapes",
+    "translations": {
+      "fr": "triangle",
+      "ar": "مثلث",
+      "ary": "مثلث"
+    },
+    "phonetic": {
+      "fr": "triangl",
+      "ar": "muthallath",
+      "ary": "moufallaf"
+    },
+    "image": "/assets/words/shape_triangle.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_triangle.mp3",
+      "ar": "/assets/audio/ar/shape_triangle.mp3",
+      "ary": "/assets/audio/ary/shape_triangle.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "triangle",
+        "le triangle",
+        "un triangle"
+      ],
+      "ar": [
+        "مثلث",
+        "المثلث",
+        "شكل مثلث"
+      ],
+      "ary": [
+        "مثلث",
+        "المثلث",
+        "تريونغل"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Le triangle a trois côtés et trois pointes !",
+      "ar": "المثلث له ثلاثة أضلاع وثلاث زوايا!",
+      "ary": "المثلث عندو تلاتة د القنات وتلاتة د الجناب!"
+    }
+  },
+  {
+    "id": "shape_star",
+    "category": "shapes",
+    "translations": {
+      "fr": "étoile",
+      "ar": "نجمة",
+      "ary": "نجمة"
+    },
+    "phonetic": {
+      "fr": "etwal",
+      "ar": "najmah",
+      "ary": "nejma"
+    },
+    "image": "/assets/words/shape_star.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_star.mp3",
+      "ar": "/assets/audio/ar/shape_star.mp3",
+      "ary": "/assets/audio/ary/shape_star.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "étoile",
+        "etoile",
+        "l'étoile",
+        "l'etoile",
+        "letoile",
+        "une étoile",
+        "une etoile"
+      ],
+      "ar": [
+        "نجمة",
+        "النجمة",
+        "شكل نجمة"
+      ],
+      "ary": [
+        "نجمة",
+        "النجمة",
+        "نجيمة"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "L'étoile brille fort dans le ciel la nuit !",
+      "ar": "النجمة تلمع في السماء ليلاً!",
+      "ary": "النجمة كتضوي فالسما بالليل!"
+    }
+  },
+  {
+    "id": "shape_rectangle",
+    "category": "shapes",
+    "translations": {
+      "fr": "rectangle",
+      "ar": "مستطيل",
+      "ary": "مستطيل"
+    },
+    "phonetic": {
+      "fr": "rektangl",
+      "ar": "mustateel",
+      "ary": "moustatiiil"
+    },
+    "image": "/assets/words/shape_rectangle.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_rectangle.mp3",
+      "ar": "/assets/audio/ar/shape_rectangle.mp3",
+      "ary": "/assets/audio/ary/shape_rectangle.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "rectangle",
+        "le rectangle",
+        "un rectangle"
+      ],
+      "ar": [
+        "مستطيل",
+        "المستطيل",
+        "شكل مستطيل"
+      ],
+      "ary": [
+        "مستطيل",
+        "المستطيل",
+        "ريكتونغل"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Le rectangle ressemble à une porte ou une fenêtre !",
+      "ar": "المستطيل يشبه الباب أو النافذة!",
+      "ary": "المستطيل كيشبه للباب ولا الشرجم!"
+    }
+  },
+  {
+    "id": "shape_losange",
+    "category": "shapes",
+    "translations": {
+      "fr": "losange",
+      "ar": "معين",
+      "ary": "معين"
+    },
+    "phonetic": {
+      "fr": "lozanj",
+      "ar": "mu'ayyan",
+      "ary": "mou3ayyan"
+    },
+    "image": "/assets/words/shape_losange.svg",
+    "audio": {
+      "fr": "/assets/audio/fr/shape_losange.mp3",
+      "ar": "/assets/audio/ar/shape_losange.mp3",
+      "ary": "/assets/audio/ary/shape_losange.mp3"
+    },
+    "acceptedVariants": {
+      "fr": [
+        "losange",
+        "le losange",
+        "un losange",
+        "diamant",
+        "le diamant"
+      ],
+      "ar": [
+        "معين",
+        "المعين",
+        "شكل معين",
+        "جوهرة"
+      ],
+      "ary": [
+        "معين",
+        "المعين",
+        "لوزونج"
+      ]
+    },
+    "exampleSentence": {
+      "fr": "Le losange ressemble à un joli cerf-volant !",
+      "ar": "المعين يشبه الطائرة الورقية الجميلة!",
+      "ary": "المعين كيشبه للطيارة ديال الورق!"
+    }
   }
 ]

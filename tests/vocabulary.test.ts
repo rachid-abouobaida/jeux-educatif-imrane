@@ -9,7 +9,7 @@ describe('Vocabulary Database Integrity', () => {
     expect(words.length).toBeGreaterThanOrEqual(30);
   });
 
-  it('covers all 6 required preschool categories', () => {
+  it('covers all required preschool categories including shapes', () => {
     const categories = new Set(words.map((w) => w.category));
     expect(categories.has('animals')).toBe(true);
     expect(categories.has('food')).toBe(true);
@@ -17,6 +17,29 @@ describe('Vocabulary Database Integrity', () => {
     expect(categories.has('body')).toBe(true);
     expect(categories.has('vehicles')).toBe(true);
     expect(categories.has('actions')).toBe(true);
+    expect(categories.has('numbers')).toBe(true);
+    expect(categories.has('letters')).toBe(true);
+    expect(categories.has('shapes')).toBe(true);
+  });
+
+  it('contains the 6 required geometric shapes', () => {
+    const shapeIds = words.filter((w) => w.category === 'shapes').map((w) => w.id);
+    expect(shapeIds).toContain('shape_square');
+    expect(shapeIds).toContain('shape_circle');
+    expect(shapeIds).toContain('shape_triangle');
+    expect(shapeIds).toContain('shape_star');
+    expect(shapeIds).toContain('shape_rectangle');
+    expect(shapeIds).toContain('shape_losange');
+
+    const shapeWords = words.filter((w) => w.category === 'shapes');
+    expect(shapeWords.map((w) => w.translations.fr)).toEqual([
+      'carré',
+      'cercle',
+      'triangle',
+      'étoile',
+      'rectangle',
+      'losange'
+    ]);
   });
 
   it('contains valid translations for all 3 languages in every word', () => {

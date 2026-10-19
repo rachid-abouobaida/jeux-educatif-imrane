@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="triGrad" cx="45%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="60%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </radialGradient>
+    <filter id="triShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#78350F" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded Triangle path -->
+  <path d="M 90 26 C 96 16 104 16 110 26 L 176 148 C 182 158 178 168 166 168 L 34 168 C 22 168 18 158 24 148 Z" fill="url(#triGrad)" stroke="#B45309" stroke-width="6" stroke-linejoin="round" filter="url(#triShadow)"/>
+
+  <!-- Glossy light on left shoulder -->
+  <path d="M 96 36 L 42 144 C 38 152 44 158 54 158 C 50 148 64 120 90 70 Z" fill="#FFFFFF" opacity="0.45"/>
+
+  <!-- Eyes -->
+  <ellipse cx="85" cy="115" rx="7.5" ry="10" fill="#1E293B"/>
+  <ellipse cx="115" cy="115" rx="7.5" ry="10" fill="#1E293B"/>
+  <!-- Catchlights -->
+  <circle cx="87" cy="111" r="3" fill="#FFFFFF"/>
+  <circle cx="117" cy="111" r="3" fill="#FFFFFF"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="72" cy="128" rx="7.5" ry="5" fill="#F43F5E" opacity="0.6"/>
+  <ellipse cx="128" cy="128" rx="7.5" ry="5" fill="#F43F5E" opacity="0.6"/>
+
+  <!-- Cheerful Triangle Smile -->
+  <path d="M 92 126 Q 100 138 108 126" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Sparkles -->
+  <polygon points="145,55 147,60 152,62 147,64 145,69 143,64 138,62 143,60" fill="#FFFFFF"/>
+  <polygon points="50,110 52,114 56,115 52,117 50,121 48,117 44,115 48,114" fill="#FEF08A"/>
+</svg>
