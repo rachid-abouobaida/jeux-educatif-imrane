@@ -3494,12 +3494,12 @@
     "id": "shape_square",
     "category": "shapes",
     "translations": {
-      "fr": "carré",
+      "fr": "Le carré",
       "ar": "مربع",
       "ary": "مربع"
     },
     "phonetic": {
-      "fr": "kare",
+      "fr": "le kare",
       "ar": "murabba'",
       "ary": "murabba"
     },
@@ -3511,10 +3511,10 @@
     },
     "acceptedVariants": {
       "fr": [
-        "carré",
-        "carre",
         "le carré",
         "le carre",
+        "carré",
+        "carre",
         "un carré",
         "un carre"
       ],
@@ -3539,12 +3539,12 @@
     "id": "shape_circle",
     "category": "shapes",
     "translations": {
-      "fr": "cercle",
+      "fr": "Le cercle",
       "ar": "دائرة",
       "ary": "دائرة"
     },
     "phonetic": {
-      "fr": "serkl",
+      "fr": "le serkl",
       "ar": "da'irah",
       "ary": "da'ira"
     },
@@ -3556,11 +3556,11 @@
     },
     "acceptedVariants": {
       "fr": [
-        "cercle",
         "le cercle",
+        "cercle",
         "un cercle",
-        "rond",
         "le rond",
+        "rond",
         "un rond"
       ],
       "ar": [
@@ -3586,12 +3586,12 @@
     "id": "shape_triangle",
     "category": "shapes",
     "translations": {
-      "fr": "triangle",
+      "fr": "Le triangle",
       "ar": "مثلث",
       "ary": "مثلث"
     },
     "phonetic": {
-      "fr": "triangl",
+      "fr": "le triangl",
       "ar": "muthallath",
       "ary": "moufallaf"
     },
@@ -3603,8 +3603,8 @@
     },
     "acceptedVariants": {
       "fr": [
-        "triangle",
         "le triangle",
+        "triangle",
         "un triangle"
       ],
       "ar": [
@@ -3628,12 +3628,12 @@
     "id": "shape_star",
     "category": "shapes",
     "translations": {
-      "fr": "étoile",
+      "fr": "L'étoile",
       "ar": "نجمة",
       "ary": "نجمة"
     },
     "phonetic": {
-      "fr": "etwal",
+      "fr": "l'etwal",
       "ar": "najmah",
       "ary": "nejma"
     },
@@ -3645,11 +3645,11 @@
     },
     "acceptedVariants": {
       "fr": [
-        "étoile",
-        "etoile",
         "l'étoile",
         "l'etoile",
         "letoile",
+        "étoile",
+        "etoile",
         "une étoile",
         "une etoile"
       ],
@@ -3674,12 +3674,12 @@
     "id": "shape_rectangle",
     "category": "shapes",
     "translations": {
-      "fr": "rectangle",
+      "fr": "Le rectangle",
       "ar": "مستطيل",
       "ary": "مستطيل"
     },
     "phonetic": {
-      "fr": "rektangl",
+      "fr": "le rektangl",
       "ar": "mustateel",
       "ary": "moustatiiil"
     },
@@ -3691,8 +3691,8 @@
     },
     "acceptedVariants": {
       "fr": [
-        "rectangle",
         "le rectangle",
+        "rectangle",
         "un rectangle"
       ],
       "ar": [
@@ -3716,12 +3716,12 @@
     "id": "shape_losange",
     "category": "shapes",
     "translations": {
-      "fr": "losange",
+      "fr": "Le losange",
       "ar": "معين",
       "ary": "معين"
     },
     "phonetic": {
-      "fr": "lozanj",
+      "fr": "le lozanj",
       "ar": "mu'ayyan",
       "ary": "mou3ayyan"
     },
@@ -3733,8 +3733,8 @@
     },
     "acceptedVariants": {
       "fr": [
-        "losange",
         "le losange",
+        "losange",
         "un losange",
         "diamant",
         "le diamant"

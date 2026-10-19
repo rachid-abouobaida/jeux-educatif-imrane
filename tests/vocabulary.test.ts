@@ -33,12 +33,12 @@ describe('Vocabulary Database Integrity', () => {
 
     const shapeWords = words.filter((w) => w.category === 'shapes');
     expect(shapeWords.map((w) => w.translations.fr)).toEqual([
-      'carré',
-      'cercle',
-      'triangle',
-      'étoile',
-      'rectangle',
-      'losange'
+      'Le carré',
+      'Le cercle',
+      'Le triangle',
+      "L'étoile",
+      'Le rectangle',
+      'Le losange'
     ]);
   });
 
