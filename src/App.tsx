@@ -85,7 +85,7 @@ export const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="relative z-10 min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-10 max-w-[1440px] mx-auto w-full"
+            className="relative z-10 min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden flex flex-col justify-between p-3 sm:p-5 lg:px-8 lg:py-3 max-w-[1550px] mx-auto w-full"
           >
             {/* Top Bar: Progress and Settings */}
             <header className="flex items-center justify-between w-full">
@@ -121,7 +121,7 @@ export const App: React.FC = () => {
             </header>
 
             {/* Main Welcome Hero: Mascot on Left, Enlarged Content & Actions on Right */}
-            <main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-14 xl:gap-18 my-6 w-full">
+            <main className="flex-1 min-h-0 flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10 xl:gap-14 my-auto w-full">
               {/* Left Column: Petit Lion Mascot Companion */}
               <div className="w-full md:w-5/12 lg:w-5/12 flex flex-col items-center justify-center relative flex-shrink-0">
                 {/* Soft ambient warm aura */}
@@ -134,73 +134,73 @@ export const App: React.FC = () => {
                 />
               </div>
 
-              {/* Right Column (Grand & Majestueux): Titles, Welcome Speech & Action Buttons */}
-              <div className="w-full md:w-7/12 lg:w-7/12 flex flex-col items-center md:items-start rtl:md:items-end text-center md:text-left rtl:md:text-right space-y-6">
+              {/* Right Column: Titles, Welcome Speech & Action Buttons */}
+              <div className="w-full md:w-7/12 lg:w-7/12 flex flex-col items-center md:items-start rtl:md:items-end text-center md:text-left rtl:md:text-right space-y-3 sm:space-y-4 lg:space-y-4">
                 {/* Imrane Champion Badge */}
                 <motion.div
                   initial={{ scale: 0.9 }}
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                  className="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-2 bg-amber-200/80 rounded-full text-amber-950 font-extrabold text-sm sm:text-base border-2 border-amber-300 shadow-sm"
+                  className="inline-flex items-center space-x-2 rtl:space-x-reverse px-4 py-1.5 bg-amber-200/80 rounded-full text-amber-950 font-extrabold text-xs sm:text-sm border-2 border-amber-300 shadow-sm"
                 >
-                  <Sparkles className="w-5 h-5 text-amber-600" />
+                  <Sparkles className="w-4 h-4 text-amber-600" />
                   <span>Pour notre petit champion Imrane (عمران)</span>
                 </motion.div>
 
                 {/* Title & Subtitle */}
-                <div className="space-y-2">
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-amber-950 font-rounded tracking-tight drop-shadow-sm leading-tight">
+                <div className="space-y-1">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-amber-950 font-rounded tracking-tight drop-shadow-sm leading-tight">
                     {t.appName}
                   </h1>
-                  <p className="text-lg sm:text-2xl lg:text-3xl text-teal-800 font-bold max-w-2xl leading-snug">
+                  <p className="text-base sm:text-xl lg:text-2xl text-teal-800 font-bold max-w-2xl leading-snug">
                     {t.appSubtitle}
                   </p>
                 </div>
 
-                {/* Mascot Welcome Speech Bubble Card (Enlarged) */}
+                {/* Mascot Welcome Speech Bubble Card */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="relative bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-7 border-4 border-amber-300 shadow-xl text-slate-800 font-bold text-base sm:text-lg lg:text-xl w-full max-w-2xl lg:max-w-3xl leading-relaxed"
+                  className="relative bg-white/95 backdrop-blur-md rounded-2xl lg:rounded-3xl p-3.5 sm:p-4 lg:p-5 border-3 border-amber-300 shadow-xl text-slate-800 font-bold text-sm sm:text-base lg:text-lg w-full max-w-2xl lg:max-w-3xl leading-relaxed"
                 >
-                  <div className="flex items-start space-x-3.5 rtl:space-x-reverse">
-                    <span className="text-3xl select-none flex-shrink-0">💬</span>
+                  <div className="flex items-start space-x-3 rtl:space-x-reverse">
+                    <span className="text-2xl sm:text-3xl select-none flex-shrink-0">💬</span>
                     <p className="font-rounded text-slate-700">
                       {t.welcomeMessage}
                     </p>
                   </div>
                 </motion.div>
 
-                {/* Main Action Buttons (Enlarged and Generous) */}
-                <div className="flex flex-col gap-4 w-full max-w-2xl lg:max-w-3xl pt-2">
+                {/* Main Action Buttons */}
+                <div className="flex flex-col gap-3 sm:gap-3.5 w-full max-w-2xl lg:max-w-3xl pt-1">
                   <BigActionButton
                     label={t.playButton}
-                    icon={<Play className="w-8 h-8 fill-white" />}
+                    icon={<Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white" />}
                     onClick={() => setActiveScreen('game')}
                     variant="primary"
-                    size="xl"
-                    className="w-full shadow-2xl py-6 text-2xl sm:text-3xl"
+                    size="lg"
+                    className="w-full shadow-2xl py-4 sm:py-5 text-xl sm:text-2xl"
                     isRtl={isRtl}
                   />
 
-                  <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
                     <BigActionButton
                       label={t.routineButton}
-                      icon={<Sun className="w-7 h-7 text-amber-100" />}
+                      icon={<Sun className="w-6 h-6 text-amber-100" />}
                       onClick={() => setActiveScreen('routine')}
                       variant="warning"
-                      size="xl"
-                      className="w-full sm:w-auto flex-1 shadow-xl py-5 text-xl sm:text-2xl"
+                      size="lg"
+                      className="w-full sm:w-auto flex-1 shadow-xl py-3.5 sm:py-4 text-lg sm:text-xl"
                       isRtl={isRtl}
                     />
 
                     <BigActionButton
                       label={t.challengeButton}
-                      icon={<BookOpen className="w-7 h-7" />}
+                      icon={<BookOpen className="w-6 h-6" />}
                       onClick={() => setActiveScreen('challenge')}
                       variant="secondary"
-                      size="xl"
-                      className="w-full sm:w-auto flex-1 shadow-lg py-5 text-xl sm:text-2xl"
+                      size="lg"
+                      className="w-full sm:w-auto flex-1 shadow-lg py-3.5 sm:py-4 text-lg sm:text-xl"
                       isRtl={isRtl}
                     />
                   </div>

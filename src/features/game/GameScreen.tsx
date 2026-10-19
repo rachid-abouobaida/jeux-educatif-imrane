@@ -134,7 +134,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
   return (
     <div
-      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-5 lg:p-6 max-w-7xl mx-auto w-full select-none"
+      className="relative min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden flex flex-col justify-between p-2 sm:p-4 lg:py-2.5 max-w-7xl mx-auto w-full select-none"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Confetti & Star Animation on Success */}
@@ -239,7 +239,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
       {/* 2. MAIN LEARNING ARENA */}
       {!isSessionFinished ? (
-        <main className="flex-1 flex flex-col justify-center items-center my-auto py-2 sm:py-3 w-full">
+        <main className="flex-1 min-h-0 flex flex-col justify-center items-center my-auto py-1 sm:py-2 w-full">
           {/* A. Friendly Lion Mascot with Speech Guidance Banner (Fixed Height - 0px layout shift) */}
           <div className="w-full max-w-2xl h-20 sm:h-24 flex items-center justify-center px-4 mb-1">
             <div className="flex items-center space-x-3 rtl:space-x-reverse bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-lg border-2 border-amber-200/90 max-w-full">

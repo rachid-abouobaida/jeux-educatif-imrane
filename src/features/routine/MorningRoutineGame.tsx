@@ -481,7 +481,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
 
   return (
     <div
-      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-5 lg:p-6 max-w-[1520px] mx-auto w-full select-none"
+      className="relative min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden flex flex-col justify-between p-2 sm:p-4 lg:px-6 lg:py-2.5 max-w-[1580px] mx-auto w-full select-none"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Confetti & Golden Star Celebration */}
@@ -528,13 +528,13 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
 
       {/* Main Central Stage: Majestic Carousel / Slider Presentation */}
       {!isFinished && currentStep ? (
-        <main className="flex-1 flex flex-col items-center justify-center relative w-full my-3 sm:my-5 px-1 sm:px-4 z-10">
+        <main className="flex-1 min-h-0 flex flex-col items-center justify-center relative w-full my-auto px-1 sm:px-2 lg:px-4 z-10">
           
           {/* Ambient Warm Sun Halo Backlight for Audiovisual Drama */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[500px] lg:w-[720px] h-80 sm:h-[450px] lg:h-[550px] bg-gradient-to-tr from-amber-300/35 via-orange-200/30 to-yellow-100/25 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[500px] lg:w-[800px] h-80 sm:h-[450px] lg:h-[550px] bg-gradient-to-tr from-amber-300/35 via-orange-200/30 to-yellow-100/25 rounded-full blur-3xl pointer-events-none -z-10" />
 
           {/* Carousel Viewport with Side Navigation Chevrons */}
-          <div className="relative w-full max-w-5xl flex items-center justify-center">
+          <div className="relative w-full max-w-5xl xl:max-w-6xl 2xl:max-w-7xl flex items-center justify-center">
 
             {/* Previous Step Chevron (Left flank) */}
             <motion.button
@@ -542,18 +542,18 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               whileTap={{ scale: 0.9 }}
               onClick={isRtl ? goToNextStep : goToPreviousStep}
               disabled={isRtl ? currentStepIndex === steps.length - 1 : currentStepIndex === 0}
-              className={`hidden sm:flex absolute -left-3 sm:-left-6 lg:-left-10 z-30 items-center justify-center w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/95 backdrop-blur-md text-amber-900 border-3 border-amber-300 shadow-xl transition-all cursor-pointer ${
+              className={`hidden sm:flex absolute -left-3 sm:-left-5 lg:-left-7 z-30 items-center justify-center w-11 h-11 lg:w-14 lg:h-14 rounded-full bg-white/95 backdrop-blur-md text-amber-900 border-3 border-amber-300 shadow-xl transition-all cursor-pointer ${
                 (isRtl ? currentStepIndex === steps.length - 1 : currentStepIndex === 0)
                   ? 'opacity-30 cursor-not-allowed'
                   : 'hover:bg-amber-100 hover:border-amber-400 hover:shadow-2xl'
               }`}
               aria-label="Étape précédente"
             >
-              <ChevronLeft className="w-7 h-7 lg:w-9 lg:h-9" />
+              <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8" />
             </motion.button>
 
-            {/* Central Stage Card (Grande, Centrale & Magnifique) */}
-            <div className="w-full flex flex-col items-center justify-center overflow-hidden py-2 px-1">
+            {/* Central Stage Card (Landscape 2-Column on Web to Use Full Width & Avoid Scrolling) */}
+            <div className="w-full flex flex-col items-center justify-center overflow-hidden py-1 px-1">
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
                   key={currentStep.id}
@@ -575,142 +575,145 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                       else goToPreviousStep();
                     }
                   }}
-                  className="relative w-full max-w-2xl lg:max-w-3xl bg-white/95 backdrop-blur-md rounded-[2.5rem] p-4 sm:p-7 lg:p-8 shadow-2xl border-4 border-amber-300 flex flex-col items-center text-center"
+                  className="relative w-full max-w-5xl xl:max-w-6xl 2xl:max-w-7xl bg-white/95 backdrop-blur-md rounded-3xl lg:rounded-[2.2rem] p-3 sm:p-5 lg:p-5 xl:p-6 shadow-2xl border-4 border-amber-300 flex flex-col lg:flex-row items-center gap-4 lg:gap-6 xl:gap-8"
                 >
-                  {/* Top Header Inside Card: Step indicator & Audio Replay Button */}
-                  <div className="w-full flex items-center justify-between mb-3 px-2">
-                    <span className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-4 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full text-xs sm:text-sm font-black shadow-md">
-                      <span>{stepIcons[currentStepIndex]}</span>
-                      <span>{t.stepIndicator(currentStep.stepNumber, steps.length)}</span>
-                    </span>
-
-                    <motion.button
-                      whileHover={{ scale: 1.12, rotate: 6 }}
-                      whileTap={{ scale: 0.92 }}
+                  {/* Left Column (Hero Photo Container) */}
+                  <div className="w-full lg:w-[46%] xl:w-[44%] flex flex-col items-center flex-shrink-0">
+                    <motion.div
+                      whileHover={{ scale: 1.015 }}
                       onClick={() => playCurrentStep(false)}
-                      aria-label="Réécouter l'étape"
-                      className="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 shadow-sm transition-colors cursor-pointer"
+                      className="relative w-full h-52 sm:h-64 md:h-72 lg:h-[290px] xl:h-[340px] rounded-2xl lg:rounded-3xl overflow-hidden border-4 border-amber-200/90 shadow-xl bg-gradient-to-b from-amber-50 to-orange-50 cursor-pointer flex items-center justify-center group"
                     >
-                      <Volume2 className="w-5 h-5 text-amber-700" />
-                      <span className="text-xs sm:text-sm font-extrabold hidden sm:inline">Écouter</span>
-                    </motion.button>
+                      <img
+                        src={currentStep.image}
+                        alt={currentStep.title[lang]}
+                        className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
+                        draggable={false}
+                      />
+
+                      {/* Subtle Sun-kissed Vignette Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+
+                      {/* Quick Play Audio Ripple Trigger on Image */}
+                      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 p-2.5 sm:p-3 bg-white/90 backdrop-blur-md rounded-2xl text-amber-900 shadow-lg border border-amber-200 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </div>
+                    </motion.div>
                   </div>
 
-                  {/* Grand Hero Photo Container (Au Milieu, Plus Grande et Centrale) */}
-                  <motion.div
-                    whileHover={{ scale: 1.015 }}
-                    onClick={() => playCurrentStep(false)}
-                    className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] rounded-3xl overflow-hidden border-4 border-amber-200/90 shadow-2xl bg-gradient-to-b from-amber-50 to-orange-50 cursor-pointer flex items-center justify-center group"
-                  >
-                    <img
-                      src={currentStep.image}
-                      alt={currentStep.title[lang]}
-                      className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
-                      draggable={false}
-                    />
+                  {/* Right Column: Title, Speech Prompt, Lion Companion & Interactive Action Controls */}
+                  <div className="w-full lg:w-[54%] xl:w-[56%] flex flex-col items-center lg:items-start rtl:lg:items-end text-center lg:text-left rtl:lg:text-right justify-between space-y-2.5 sm:space-y-3">
+                    {/* Top Header Inside Card: Step indicator & Audio Replay Button */}
+                    <div className="w-full flex items-center justify-between px-1">
+                      <span className="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full text-xs sm:text-sm font-black shadow-md">
+                        <span>{stepIcons[currentStepIndex]}</span>
+                        <span>{t.stepIndicator(currentStep.stepNumber, steps.length)}</span>
+                      </span>
 
-                    {/* Subtle Sun-kissed Vignette Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-
-                    {/* Quick Play Audio Ripple Trigger on Image */}
-                    <div className="absolute bottom-4 right-4 p-3 bg-white/90 backdrop-blur-md rounded-2xl text-amber-900 shadow-lg border border-amber-200 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                      <Volume2 className="w-6 h-6" />
+                      <motion.button
+                        whileHover={{ scale: 1.1, rotate: 6 }}
+                        whileTap={{ scale: 0.92 }}
+                        onClick={() => playCurrentStep(false)}
+                        aria-label="Réécouter l'étape"
+                        className="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 shadow-sm transition-colors cursor-pointer"
+                      >
+                        <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-700" />
+                        <span className="text-xs sm:text-sm font-extrabold hidden sm:inline">{t.repeatWord}</span>
+                      </motion.button>
                     </div>
-                  </motion.div>
 
-                  {/* Stage Text: Big Title & Spoken Expression */}
-                  <div className="mt-4 sm:mt-5 w-full flex flex-col items-center">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-800 font-rounded tracking-tight drop-shadow-sm">
+                    {/* Step Title */}
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-800 font-rounded tracking-tight drop-shadow-sm leading-tight">
                       {currentStep.title[lang]}
                     </h2>
 
                     {/* Speech Prompt Banner */}
-                    <div className="mt-2.5 inline-flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-100 via-orange-100 to-amber-100 border-2 border-amber-300 px-5 sm:px-7 py-2 sm:py-2.5 rounded-2xl shadow-sm text-center">
-                      <span className="text-xl sm:text-2xl">🗣️</span>
-                      <p className="text-base sm:text-xl lg:text-2xl font-black text-amber-950">
+                    <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-amber-100 via-orange-100 to-amber-100 border-2 border-amber-300 px-4 sm:px-6 py-1.5 sm:py-2 rounded-2xl shadow-sm text-center">
+                      <span className="text-lg sm:text-2xl">🗣️</span>
+                      <p className="text-sm sm:text-lg lg:text-xl font-black text-amber-950">
                         {lang === 'fr' ? 'Répète :' : lang === 'ary' ? 'عاود قول :' : 'ردد :'} <span className="text-amber-800 underline decoration-amber-400 decoration-wavy underline-offset-4 font-black">« {currentStep.repeatSentence[lang]} »</span>
                       </p>
                     </div>
-                  </div>
 
-                  {/* Integrated Lion Companion Feedback Bar */}
-                  <div className="mt-3.5 w-full flex items-center justify-center gap-3 bg-amber-50/80 border border-amber-200/80 rounded-2xl p-2.5 sm:p-3">
-                    <LionCharacter
-                      state={lionState}
-                      size="sm"
-                      isRtl={isRtl}
-                    />
-                    <p className="text-sm sm:text-base font-extrabold text-amber-950 flex-1 text-center sm:text-left rtl:sm:text-right">
-                      {feedbackText || (lang === 'fr' ? 'À toi de répéter avec le Petit Lion !' : lang === 'ary' ? 'دورك تعاود مع السبيع الصغير !' : 'دورك لتردد مع الأسد الصغير !')}
-                    </p>
-                  </div>
+                    {/* Integrated Lion Companion Feedback Bar */}
+                    <div className="w-full flex items-center justify-center lg:justify-start rtl:lg:justify-end gap-3 bg-amber-50/80 border border-amber-200/80 rounded-2xl p-2 sm:p-2.5">
+                      <LionCharacter
+                        state={lionState}
+                        size="sm"
+                        isRtl={isRtl}
+                      />
+                      <p className="text-xs sm:text-sm lg:text-base font-extrabold text-amber-950 flex-1 text-center lg:text-left rtl:lg:text-right">
+                        {feedbackText || (lang === 'fr' ? 'À toi de répéter avec le Petit Lion !' : lang === 'ary' ? 'دورك تعاود مع السبيع الصغير !' : 'دورك لتردد مع الأسد الصغير !')}
+                      </p>
+                    </div>
 
-                  {/* Listening Indicator with Sound Waves */}
-                  <AnimatePresence>
-                    {isListening && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="w-full flex justify-center mt-3"
-                      >
-                        <ListeningIndicator
-                          label={t.iAmListening}
-                          isListening={isListening}
-                          audioLevel={audioLevel}
-                          onValidateManual={handleStepSuccess}
-                          validateLabel={t.stepValidated}
+                    {/* Listening Indicator with Sound Waves */}
+                    <AnimatePresence>
+                      {isListening && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="w-full flex justify-center lg:justify-start rtl:lg:justify-end mt-1"
+                        >
+                          <ListeningIndicator
+                            label={t.iAmListening}
+                            isListening={isListening}
+                            audioLevel={audioLevel}
+                            onValidateManual={handleStepSuccess}
+                            validateLabel={t.stepValidated}
+                            isRtl={isRtl}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Interactive Action Control Buttons for Imrane */}
+                    <div className="flex flex-wrap items-center justify-center lg:justify-start rtl:lg:justify-end gap-2 sm:gap-3 w-full pt-1">
+                      {/* Replay Sound Button */}
+                      <BigActionButton
+                        label={t.repeatStep}
+                        icon={<Volume2 className="w-5 h-5" />}
+                        onClick={() => playCurrentStep(false)}
+                        variant="secondary"
+                        size="md"
+                        isRtl={isRtl}
+                      />
+
+                      {/* Microphone Activation Button (if speech enabled) */}
+                      {preferences.speechRecognitionEnabled && !isListening && (
+                        <BigActionButton
+                          label={t.trySpeaking}
+                          icon={<Mic className="w-5 h-5" />}
+                          onClick={startStepListening}
+                          variant="primary"
+                          size="md"
                           isRtl={isRtl}
                         />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      )}
 
-                  {/* Interactive Action Control Buttons for Imrane */}
-                  <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mt-4 w-full">
-                    {/* Replay Sound Button */}
-                    <BigActionButton
-                      label={t.repeatStep}
-                      icon={<Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />}
-                      onClick={() => playCurrentStep(false)}
-                      variant="secondary"
-                      size="md"
-                      isRtl={isRtl}
-                    />
+                      {/* Child Validation Button (Never blocked) */}
+                      {!isListening && (
+                        <BigActionButton
+                          label={t.stepValidated}
+                          icon={<Star className="w-5 h-5 fill-amber-100" />}
+                          onClick={handleStepSuccess}
+                          variant="success"
+                          size="md"
+                          isRtl={isRtl}
+                        />
+                      )}
 
-                    {/* Microphone Activation Button (if speech enabled) */}
-                    {preferences.speechRecognitionEnabled && !isListening && (
+                      {/* Next Step Button */}
                       <BigActionButton
-                        label={t.trySpeaking}
-                        icon={<Mic className="w-5 h-5 sm:w-6 sm:h-6" />}
-                        onClick={startStepListening}
+                        label={t.nextStep}
+                        icon={isRtl ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                        onClick={goToNextStep}
                         variant="primary"
                         size="md"
                         isRtl={isRtl}
                       />
-                    )}
-
-                    {/* Child Validation Button (Never blocked) */}
-                    {!isListening && (
-                      <BigActionButton
-                        label={t.stepValidated}
-                        icon={<Star className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-100" />}
-                        onClick={handleStepSuccess}
-                        variant="success"
-                        size="md"
-                        isRtl={isRtl}
-                      />
-                    )}
-
-                    {/* Next Step Button */}
-                    <BigActionButton
-                      label={t.nextStep}
-                      icon={isRtl ? <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" /> : <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />}
-                      onClick={goToNextStep}
-                      variant="primary"
-                      size="md"
-                      isRtl={isRtl}
-                    />
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -721,10 +724,10 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               whileHover={{ scale: 1.12 }}
               whileTap={{ scale: 0.9 }}
               onClick={isRtl ? goToPreviousStep : goToNextStep}
-              className="hidden sm:flex absolute -right-3 sm:-right-6 lg:-right-10 z-30 items-center justify-center w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/95 backdrop-blur-md text-amber-900 border-3 border-amber-300 shadow-xl hover:bg-amber-100 hover:border-amber-400 hover:shadow-2xl transition-all cursor-pointer"
+              className="hidden sm:flex absolute -right-3 sm:-right-5 lg:-right-7 z-30 items-center justify-center w-11 h-11 lg:w-14 lg:h-14 rounded-full bg-white/95 backdrop-blur-md text-amber-900 border-3 border-amber-300 shadow-xl hover:bg-amber-100 hover:border-amber-400 hover:shadow-2xl transition-all cursor-pointer"
               aria-label="Étape suivante"
             >
-              <ChevronRight className="w-7 h-7 lg:w-9 lg:h-9" />
+              <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8" />
             </motion.button>
           </div>
         </main>
@@ -781,10 +784,10 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
 
       {/* Bottom Filmstrip Carousel / Slider ("Affiche les images en bas") */}
       {!isFinished && (
-        <section className="relative w-full mt-3 sm:mt-4 z-20">
-          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-3 sm:p-4 border-2 border-amber-200/90 shadow-xl max-w-6xl mx-auto">
+        <section className="relative w-full mt-2 lg:mt-2.5 z-20 flex-shrink-0">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-2 sm:p-2.5 lg:p-3 border-2 border-amber-200/90 shadow-xl max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto">
             {/* Carousel Header with Track Navigation */}
-            <div className="flex items-center justify-between px-2 mb-2">
+            <div className="flex items-center justify-between px-2 mb-1.5">
               <div className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span className="text-base sm:text-lg">🎞️</span>
                 <span className="text-xs sm:text-sm font-black text-amber-950">
@@ -797,7 +800,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               </div>
 
               {/* Mini Scroll Chevrons for Mobile / Overflow */}
-              <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
+              <div className="flex lg:hidden items-center space-x-1.5 rtl:space-x-reverse">
                 <button
                   onClick={() => scrollThumbnails('left')}
                   className="p-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 transition-colors shadow-sm"
@@ -815,10 +818,10 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               </div>
             </div>
 
-            {/* Horizontal Filmstrip of Real Images */}
+            {/* Horizontal Filmstrip of Real Images (8 columns on web to use full width without scroll) */}
             <div
               ref={thumbnailsContainerRef}
-              className="flex items-center space-x-3 sm:space-x-4 rtl:space-x-reverse overflow-x-auto py-2 px-1 scroll-smooth no-scrollbar"
+              className="flex lg:grid lg:grid-cols-8 items-center space-x-2.5 lg:space-x-0 lg:gap-2 xl:gap-3 rtl:space-x-reverse overflow-x-auto lg:overflow-visible py-1 px-1 scroll-smooth no-scrollbar"
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {steps.map((st, idx) => {
@@ -831,12 +834,12 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                     ref={(el) => {
                       thumbnailRefs.current[idx] = el;
                     }}
-                    whileHover={{ scale: 1.08, y: -4 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => goToStep(idx)}
-                    className={`relative flex-shrink-0 flex flex-col items-center rounded-2xl p-1.5 transition-all cursor-pointer ${
+                    className={`relative flex-shrink-0 lg:flex-shrink flex flex-col items-center rounded-2xl p-1 sm:p-1.5 transition-all cursor-pointer w-full ${
                       isCurrent
-                        ? 'ring-4 ring-amber-400 bg-amber-100/90 shadow-2xl scale-105 sm:scale-110 -translate-y-1'
+                        ? 'ring-4 ring-amber-400 bg-amber-100/90 shadow-xl scale-102 sm:scale-105'
                         : isDone
                         ? 'ring-2 ring-emerald-400 bg-emerald-50/80 shadow-md opacity-90'
                         : 'border-2 border-slate-200 bg-white/70 shadow-sm opacity-70 hover:opacity-100'
@@ -845,7 +848,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                     title={st.title[lang]}
                   >
                     {/* Thumbnail Image Container */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl overflow-hidden bg-slate-100 relative border border-black/10">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-full lg:h-16 xl:h-20 rounded-xl overflow-hidden bg-slate-100 relative border border-black/10">
                       <img
                         src={st.image}
                         alt={st.title[lang]}
@@ -875,7 +878,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                     </div>
 
                     {/* Step Title Label Under Image */}
-                    <span className={`text-[11px] sm:text-xs font-black mt-1.5 max-w-[76px] sm:max-w-[96px] truncate ${
+                    <span className={`text-[10px] sm:text-xs font-black mt-1 w-full text-center truncate ${
                       isCurrent ? 'text-amber-950 font-extrabold' : 'text-slate-600'
                     }`}>
                       {st.title[lang].replace(/[!.]/g, '')}

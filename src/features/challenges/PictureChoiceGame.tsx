@@ -129,7 +129,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
 
   return (
     <div
-      className="relative min-h-screen flex flex-col justify-between p-3 sm:p-6 max-w-4xl mx-auto"
+      className="relative min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden flex flex-col justify-between p-2 sm:p-5 lg:px-8 lg:py-3 max-w-6xl 2xl:max-w-7xl mx-auto w-full select-none"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {isSuccess && (
@@ -140,7 +140,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
       )}
 
       {/* Header */}
-      <header className="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-3xl p-3 sm:p-4 shadow-lg border-2 border-amber-200">
+      <header className="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 shadow-lg border-2 border-amber-200">
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
@@ -162,7 +162,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
       </header>
 
       {/* Main Challenge Arena */}
-      <main className="flex-1 flex flex-col items-center justify-center my-4 space-y-6">
+      <main className="flex-1 min-h-0 flex flex-col items-center justify-center my-auto space-y-4 lg:space-y-5 w-full">
         {/* Animated Lion Companion */}
         <LionCharacter
           state={lionState}
@@ -186,7 +186,7 @@ export const PictureChoiceGame: React.FC<PictureChoiceGameProps> = ({
 
         {/* 3 Large Picture Choices */}
         {currentRound && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-2xl px-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl lg:max-w-5xl px-2">
             <AnimatePresence>
               {currentRound.options.map((option) => {
                 const isSelected = selectedWordId === option.id;
