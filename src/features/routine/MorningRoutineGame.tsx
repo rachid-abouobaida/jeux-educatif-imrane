@@ -75,13 +75,36 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
+  const ROUTINE_REPEAT_INTERVAL_MS = 6000;
   const autoNextTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const speechCooldownTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const introTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const repeatTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const playCurrentStepRef = useRef<((andThenListen?: boolean) => Promise<void>) | null>(null);
   const isHandlingSuccessRef = useRef<boolean>(false);
   const hasAnnouncedIntroRef = useRef<boolean>(false);
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const thumbnailsContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const clearRepeatTimer = useCallback(() => {
+    if (repeatTimerRef.current) {
+      clearTimeout(repeatTimerRef.current);
+      repeatTimerRef.current = null;
+    }
+  }, []);
+
+  const scheduleRepeat = useCallback(
+    (delayMs = ROUTINE_REPEAT_INTERVAL_MS) => {
+      clearRepeatTimer();
+      if (isHandlingSuccessRef.current || isFinished) return;
+
+      repeatTimerRef.current = setTimeout(() => {
+        if (isHandlingSuccessRef.current || isFinished) return;
+        playCurrentStepRef.current?.(true);
+      }, delayMs);
+    },
+    [clearRepeatTimer, isFinished]
+  );
 
   const { speakWord, playSuccess, playEncourage, stop: stopAudio } = useAudio(
     preferences.volume,
@@ -112,6 +135,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
    * Advances to the next routine step or grand finale
    */
   const goToNextStep = useCallback(() => {
+    clearRepeatTimer();
     if (autoNextTimerRef.current) {
       clearTimeout(autoNextTimerRef.current);
       autoNextTimerRef.current = null;
@@ -139,13 +163,14 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
       setFeedbackText(t.routineCompletedTitle);
       playSuccess();
     }
-  }, [currentStepIndex, steps.length, stopAudio, t.routineCompletedTitle, playSuccess]);
+  }, [clearRepeatTimer, currentStepIndex, steps.length, stopAudio, t.routineCompletedTitle, playSuccess]);
 
   /**
    * Go back to previous step
    */
   const goToPreviousStep = useCallback(() => {
     if (currentStepIndex > 0) {
+      clearRepeatTimer();
       if (autoNextTimerRef.current) {
         clearTimeout(autoNextTimerRef.current);
         autoNextTimerRef.current = null;
@@ -166,7 +191,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
       setCurrentStepIndex((prev) => prev - 1);
       setLionState('idle');
     }
-  }, [currentStepIndex, stopAudio]);
+  }, [clearRepeatTimer, currentStepIndex, stopAudio]);
 
   /**
    * Navigates directly to any step index with slider direction
@@ -174,6 +199,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   const goToStep = useCallback((targetIndex: number) => {
     if (targetIndex === currentStepIndex || targetIndex < 0 || targetIndex >= steps.length) return;
     setDirection(targetIndex > currentStepIndex ? 1 : -1);
+    clearRepeatTimer();
     if (autoNextTimerRef.current) {
       clearTimeout(autoNextTimerRef.current);
       autoNextTimerRef.current = null;
@@ -192,12 +218,13 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
     stopListening();
     setCurrentStepIndex(targetIndex);
     setLionState('idle');
-  }, [currentStepIndex, steps.length, stopAudio]);
+  }, [clearRepeatTimer, currentStepIndex, steps.length, stopAudio]);
 
   /**
    * Restart the morning routine session
    */
   const restartRoutine = () => {
+    clearRepeatTimer();
     if (autoNextTimerRef.current) {
       clearTimeout(autoNextTimerRef.current);
       autoNextTimerRef.current = null;
@@ -228,6 +255,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   const handleStepSuccess = useCallback(() => {
     if (isHandlingSuccessRef.current) return;
     isHandlingSuccessRef.current = true;
+    clearRepeatTimer();
 
     if (speechCooldownTimerRef.current) {
       clearTimeout(speechCooldownTimerRef.current);
@@ -259,7 +287,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         goToNextStep();
       }, 3000);
     }
-  }, [currentStep, completedSteps, currentStepIndex, onStarGained, playSuccess, preferences.autoAdvance, lang, goToNextStep]);
+  }, [clearRepeatTimer, currentStep, completedSteps, currentStepIndex, onStarGained, playSuccess, preferences.autoAdvance, lang, goToNextStep]);
 
   /**
    * Starts microphone listening for Imrane's repetition
@@ -280,6 +308,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
       onInterimResult: (spokenText, alternatives) => {
         if (isHandlingSuccessRef.current) return;
         if (evaluateRoutineSpeech(spokenText, currentStep, lang, preferences.difficultyLevel, alternatives)) {
+          clearRepeatTimer();
           stopListening();
           setIsListening(false);
           setAudioLevel(0);
@@ -292,6 +321,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         if (isHandlingSuccessRef.current) return;
         const isMatch = evaluateRoutineSpeech(spokenText, currentStep, lang, preferences.difficultyLevel, alternatives);
         if (isMatch) {
+          clearRepeatTimer();
           handleStepSuccess();
         } else {
           setLionState('encouraging');
@@ -303,6 +333,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               : `أنت قريب يا عمران ! حاول أن تقول : ${currentStep.repeatSentence[lang]} ! 🦁`
           );
           playEncourage();
+          scheduleRepeat(2000);
         }
       },
       onError: (err) => {
@@ -319,6 +350,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
               : `أنا أستمع إليك يا عمران ! ردد معي بلطف 🦁`
           );
           playEncourage();
+          scheduleRepeat(2000);
         }
       },
       onEnd: () => {
@@ -326,7 +358,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         setAudioLevel(0);
       },
     });
-  }, [currentStep, handleStepSuccess, lang, preferences.difficultyLevel, preferences.speechRecognitionEnabled, t.iAmListening, playEncourage]);
+  }, [currentStep, handleStepSuccess, lang, preferences.difficultyLevel, preferences.speechRecognitionEnabled, t.iAmListening, playEncourage, clearRepeatTimer, scheduleRepeat]);
 
   /**
    * Reads and announces the current step with deliberate clarity.
@@ -337,6 +369,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
     async (andThenListen = true) => {
       if (!currentStep) return;
       isHandlingSuccessRef.current = false;
+      clearRepeatTimer();
       if (speechCooldownTimerRef.current) {
         clearTimeout(speechCooldownTimerRef.current);
         speechCooldownTimerRef.current = null;
@@ -391,6 +424,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                 () => {
                   if (andThenListen) {
                     startListeningSafely();
+                    scheduleRepeat(); // Repeats step every 6 seconds if not pronounced correctly
                   } else {
                     setLionState('idle');
                   }
@@ -416,6 +450,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         () => {
           if (andThenListen) {
             startListeningSafely();
+            scheduleRepeat(); // Repeats step every 6 seconds if not pronounced correctly
           } else {
             setLionState('idle');
           }
@@ -423,8 +458,10 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
         preferences.speechSpeed || 0.75
       );
     },
-    [currentStep, currentStepIndex, lang, preferences.speechRecognitionEnabled, preferences.speechSpeed, t.routineIntroAnnouncement, startStepListening, speakWord, stopAudio]
+    [currentStep, currentStepIndex, lang, preferences.speechRecognitionEnabled, preferences.speechSpeed, t.routineIntroAnnouncement, startStepListening, speakWord, stopAudio, clearRepeatTimer, scheduleRepeat]
   );
+
+  playCurrentStepRef.current = playCurrentStep;
 
   // Keyboard navigation for desktop & accessibility
   useEffect(() => {
@@ -453,13 +490,14 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
   // Clean up timers on unmount
   useEffect(() => {
     return () => {
+      clearRepeatTimer();
       if (autoNextTimerRef.current) clearTimeout(autoNextTimerRef.current);
       if (speechCooldownTimerRef.current) clearTimeout(speechCooldownTimerRef.current);
       if (introTimerRef.current) clearTimeout(introTimerRef.current);
       stopAudio();
       stopListening();
     };
-  }, [stopAudio]);
+  }, [clearRepeatTimer, stopAudio]);
 
   // Framer-motion carousel sliding variants
   const slideVariants: Variants = {
