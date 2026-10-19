@@ -632,11 +632,11 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
           </aside>
 
           {/* 2. RIGHT / CENTER: Fullscreen Hero Image & Learning Stage */}
-          <main className="routine-stage">
+          <main className={`routine-stage routine-stage-${currentStep.id} routine-stage-step-${currentStep.stepNumber}`}>
             
             {/* Ambient Blurred Background of current image */}
             <div
-              className="routine-stage-bg"
+              className={`routine-stage-bg routine-stage-bg-${currentStep.id} routine-stage-bg-step-${currentStep.stepNumber}`}
               style={{ backgroundImage: `url(${currentStep.image})` }}
             />
 
@@ -669,7 +669,7 @@ export const MorningRoutineGame: React.FC<MorningRoutineGameProps> = ({
                   <img
                     src={currentStep.image}
                     alt={currentStep.title[lang]}
-                    className="routine-stage-image cursor-pointer"
+                    className={`routine-stage-image routine-stage-image-${currentStep.id} routine-stage-image-step-${currentStep.stepNumber} cursor-pointer`}
                     onClick={() => playCurrentStep(false)}
                     draggable={false}
                   />
